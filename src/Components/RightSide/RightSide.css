@@ -1,5 +1,97 @@
 .rightside {
     width: 50%;
     height: 100%;
-    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12.6rem 17.4rem;
+    background-color: whitesmoke;
+}
+
+.rightside-container {
+    max-width: 32rem;
+}
+
+.rightside-login {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.rightside-login h1 {
+    color: #F97272;
+    font-size: 2.6rem;
+    font-family: sans-serif;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.rightside-inputs {
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.rightside-inputs label {
+    color: #7B7B7B;
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.rightside-inputs input {
+    width: 32rem;
+    height: 4rem;
+    flex-shrink: 0;
+    padding-left: 1.5rem;
+
+    outline: 0;
+    border-radius: .4rem;
+    border: .1rem solid var(--Grey-2, #E4E4E4);
+    background-color: var(--Grey-1, #F1F1F1);
+    transition: .5s ease-in-out;
+}
+
+
+.rightside-inputs input:focus {
+    outline: none;
+    border-radius: 0;
+    border-bottom: .2rem solid #F97272;
+    background-color: #FFFFFF;
+}
+
+.rightside-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    display: flex;
+    width: 154px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    outline: 0;
+    border: none;
+    background-color: #F97272;
+    border-radius: .5rem;
+    cursor: pointer;
+
+    color: var(--White-1, #FFF);
+    font-family: "Uni Neue";
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.rightside-buttons span {
+    color: var(--Grey-3, #7B7B7B);
+
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 155.99%;
+    text-decoration-line: underline;
 }
