@@ -1,0 +1,10 @@
+.leftSide {
+    width: 50%;
+    height: 100%;
+}
+
+.leftSide .img-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
