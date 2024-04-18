@@ -1,8 +1,7 @@
-.FullSize {
+.fullsize {
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
-    background-color: #eee5;
+    overflow: hidden;
 }

@@ -1,0 +1,27 @@
+.layout {
+    width: 144rem;
+    height: 87.6rem;
+    margin: 0 auto;
+}
+
+.layout-container {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left,
+.right {
+    min-width: 72rem;
+    height: 100%;
+}
+
+.left {
+    background-color: blueviolet;
+}
+
+.right {
+    background-color: brown;
+}

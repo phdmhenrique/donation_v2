@@ -1,5 +1,6 @@
 .leftSide {
-    min-width: 40%;
+    width: 50%;
+    min-width: 36rem;
 }
 
 .leftSide .img-banner {

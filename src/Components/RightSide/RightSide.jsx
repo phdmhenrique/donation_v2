@@ -25,12 +25,13 @@ function RightSide() {
         </div>
         <p className="no-account">Não tem uma conta? <Link to="/create-account" className="link">Criar Conta</Link></p>
 
-        <div className="righside__other-access">
-          <p>ou</p>
+        <div className="rightside__other-access">
+          <p className="rightside__other-access__or">ou</p>
           <span>Acesse com</span>
-          <ButtonAccess icon="google" text="Acesse com o Google"></ButtonAccess>
-          <ButtonAccess icon="facebook" text="Acesse com o Facebook"></ButtonAccess>
-          <ButtonAccess icon="twitter" text="Acesse com o X"></ButtonAccess>
+          <ButtonAccess icon="google" text="Acesse com o Google" />
+          <ButtonAccess icon="facebook" text="Acesse com o Facebook" />
+          <ButtonAccess icon="x" text="Acesse com o X" />
+          <p className="rightside__other-access__message">Compartilhe, Inspire, Transforme. <br /> Unindo Ações para um Mundo Melhor.</p>
         </div>
       </div>
     </div>

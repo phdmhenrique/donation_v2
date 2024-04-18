@@ -2,7 +2,7 @@ import './FullSize.css';
 
 function FullSize(props) {
   return (
-    <div className="FullSize">
+    <div className="fullsize">
       {props.children}
     </div>
   )

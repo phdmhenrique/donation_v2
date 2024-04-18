@@ -1,8 +1,10 @@
 .rightside {
+    width: 50%;
+    min-width: 36rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 12.6rem 17.4rem;
+    padding-top: 12.6rem;
     background-color: #FFF;
 }
 
@@ -19,7 +21,7 @@
 .rightside-login h1 {
     color: #F97272;
     font-size: 2.6rem;
-    
+
     font-weight: 700;
     word-wrap: break-word;
 }
@@ -65,7 +67,7 @@
 }
 
 .rightside-buttons span {
-    color: var(--Grey-3, #7B7B7B);    
+    color: var(--Grey-3, #7B7B7B);
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 155.99%;
@@ -84,4 +86,34 @@
     color: #F97272;
     font-weight: 700;
     cursor: pointer;
+}
+
+.rightside__other-access {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.rightside__other-access__or {
+    color: var(--Grey-3, #7B7B7B);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 100%;
+    padding-top: 2.4rem;
+    padding-bottom: 1.7rem;
+}
+
+.rightside__other-access span {
+    color: var(--Text-Color-B2, #3F4243);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 155.99%;
+}
+
+.rightside__other-access__message {
+    color: #F97272;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 155.99%;
+    margin-top: 9.7rem;
 }
