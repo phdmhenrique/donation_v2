@@ -1,11 +1,9 @@
 .rightside {
-    width: 50%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 12.6rem 17.4rem;
-    background-color: whitesmoke;
+    background-color: #FFF;
 }
 
 .rightside-container {
@@ -21,7 +19,7 @@
 .rightside-login h1 {
     color: #F97272;
     font-size: 2.6rem;
-    font-family: sans-serif;
+    
     font-weight: 700;
     word-wrap: break-word;
 }
@@ -36,7 +34,6 @@
 .rightside-inputs label {
     color: #7B7B7B;
     font-size: 1.4rem;
-    font-family: sans-serif;
     font-weight: 500;
     word-wrap: break-word;
 }
@@ -58,7 +55,7 @@
 .rightside-inputs input:focus {
     outline: none;
     border-radius: 0;
-    border-bottom: .2rem solid #F97272;
+    border-bottom: .1rem solid #F97272;
     background-color: #FFFFFF;
 }
 
@@ -67,31 +64,24 @@
     justify-content: space-between;
 }
 
-.button {
-    display: flex;
-    width: 154px;
-    height: 48px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    outline: 0;
-    border: none;
-    background-color: #F97272;
-    border-radius: .5rem;
-    cursor: pointer;
-
-    color: var(--White-1, #FFF);
-    font-family: "Uni Neue";
-    font-size: 1.6rem;
-    font-weight: 700;
-}
-
 .rightside-buttons span {
-    color: var(--Grey-3, #7B7B7B);
-
-    font-family: sans-serif;
+    color: var(--Grey-3, #7B7B7B);    
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 155.99%;
     text-decoration-line: underline;
+}
+
+.no-account {
+    color: var(--Grey-3, #7B7B7B);
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 1.8rem 0;
+    border-bottom: .1rem solid #eee;
+}
+
+.link {
+    color: #F97272;
+    font-weight: 700;
+    cursor: pointer;
 }

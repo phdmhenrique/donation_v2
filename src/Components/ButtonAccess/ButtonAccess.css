@@ -1,0 +1,8 @@
+.button__social-media {
+    display: flex;
+    width: 20.3rem;
+    height: 4rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

@@ -2,7 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: "Uni Neue", sans-serif;
+}
+
+a, ul, li {
+  text-decoration: none;
+  list-style: none;
+  color: #a1a1a1;
 }
 
 html {
@@ -10,9 +16,10 @@ html {
 }
 
 .divisory {
-  width: 144rem;
-  height: 87.2rem;
+  max-width: 144rem;
+  min-height: 87.2rem;
   display: flex;
-  margin: 0 auto
-
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
 }
