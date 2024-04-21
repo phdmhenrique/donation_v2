@@ -6,13 +6,12 @@
     gap: 1.2rem;
     padding: 0 1rem;
     outline: none;
-    border: .1rem solid var(--Grey-2, #E4E4E4);
+    border: .1rem solid var(--gray-2);
     border-radius: .5rem;
 
-    color: var(--Grey-3, #7B7B7B);
-    font-size: 1.4rem;
+    color: var(--gray-3);
+    font-size: var(--font__14);
     font-weight: 500;
-    line-height: normal;
 
     cursor: pointer;
     transition: .1s ease-in-out;
@@ -20,26 +19,4 @@
 
 .button__social-media:hover {
     font-size: 1.42rem;
-}
-
-@keyframes balance {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(-35deg);
-    }
-
-    50% {
-        transform: rotate(35deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-.button__social-media:hover img {
-    animation: balance .3s forwards;
 }

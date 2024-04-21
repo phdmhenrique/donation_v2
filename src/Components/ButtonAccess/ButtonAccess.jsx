@@ -1,10 +1,9 @@
 import React from "react";
 import './ButtonAccess.css';
-import Google from '../../Icons/google.png';
-import Facebook from '../../Icons/facebook.png';
-import X from '../../Icons/x.png';
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGoogle, faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
+import Google from '../../Icons/Google.jsx';
+import Facebook from '../../Icons/Facebook.jsx';
+import X from '../../Icons/X.jsx';
 
 function ButtonAccess({ icon, text }) {
   let iconComponent;
@@ -12,13 +11,13 @@ function ButtonAccess({ icon, text }) {
   // Determina o ícone com base na prop 'icone'
   switch (icon) {
     case 'google':
-      iconComponent = <img src={Google} alt={Google} />;
+      iconComponent = <Google />;
       break;
     case 'facebook':
-      iconComponent = <img src={Facebook} alt={Facebook} />;
+      iconComponent = <Facebook />;
       break;
     case 'x':
-      iconComponent = <img src={X} alt={X} />;
+      iconComponent = <X />;
       break;
     default:
       iconComponent = null;
