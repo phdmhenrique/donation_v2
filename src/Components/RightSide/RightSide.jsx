@@ -1,13 +1,24 @@
 import React from "react";
-import "./RightSide.css";
-import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+
+import "./RightSide.css";
+
 import ButtonAccess from '../ButtonAccess/ButtonAccess.jsx';
+import Button from "../Button/Button";
+
+/*
+  O que será componente aqui pra ser reutilizado com props:
+  .rightside-login h1 (entrar);
+  .rightside-inputs (label, input);
+  .rightside__other-access__message
+  .no-account (terá que mudar de nome)
+*/
 
 function RightSide() {
   return (
     <div className="rightside">
       <div className="rightside-container">
+
         <div className="rightside-login">
           <h1>Entrar</h1>
           <div className="rightside-inputs">
@@ -19,10 +30,11 @@ function RightSide() {
             <input type="text" />
           </div>
           <div className="rightside-buttons">
-            <Button status="ativo">Logar</Button>
+            <Button addStatusClass="disabled">Entrar</Button>
             <span>Esqueceu sua senha?</span>
           </div>
         </div>
+
         <p className="no-account">Não tem uma conta? <Link to="/create-account" className="link">Criar Conta</Link></p>
 
         <div className="rightside__other-access">

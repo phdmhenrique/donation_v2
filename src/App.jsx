@@ -1,7 +1,5 @@
 // import { Link } from "react-router-dom";
 import React from "react";
-import "./Fonts/fonts.css";
-import './Styles/GlobalStyles.css';
 
 import FullSize from "./Components/FullSize/FullSize.jsx";
 import Divisory from "./Components/Divisory/Divisory.jsx";
@@ -16,7 +14,14 @@ function App() {
     <React.Fragment>
       <FullSize>
         <Divisory>
-          <LeftSide imgPath={imageBanner} alt="Donation Logo" />
+          <LeftSide
+            // DonationTitles={["#Compartilhe", "#Inspire", "#Transforme"]}
+            DonationTitles={["do"]}
+            bold={0}
+            // customClasses="leftside__more-titles"
+            imgPath={imageBanner}
+            alt="Donation Logo"
+          />
           <RightSide />
         </Divisory>
         <Footer />

@@ -1,0 +1,43 @@
+@media (max-width: 1164px) {
+    /* edita o tamanho da fonte do banner a esquerda (doNation, #Compartilhe e etc...) - leftside.jsx */
+    .leftside__title li {
+        font-size: 6rem !important;
+    }
+}
+
+@media (max-width: 960px) {
+    /* edita o tamanho da fonte do banner a esquerda (doNation, #Compartilhe e etc...) - leftside.jsx */
+    .leftside__title li {
+        font-size: 4.5rem !important;
+    }
+}
+
+@media (max-width: 738px) {
+    .leftside {
+        display: none;
+    }
+
+    .rightside {
+        padding-top: 6rem !important;
+    }
+    
+    .footer-container {
+        padding: 7rem 2rem 0 !important;
+    }
+
+    .footer-infos {
+        padding: 4.1rem 0 0 !important;
+    }
+}
+
+@media (max-width: 505px) {
+    .footer-infos__list {
+        justify-content: space-around !important;
+    }
+}
+
+@media (max-width: 323px) {
+    .footer-infos__list {
+        justify-content: flex-start !important;
+    }
+}
