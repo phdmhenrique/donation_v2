@@ -1,12 +1,15 @@
-import React from 'react'
-import './LeftSide.css'
+import React from "react";
+import "./LeftSide.css";
 
-function LeftSide({ imgPath }) {
+function LeftSide({ imgPath, altImg }) { // { imgPath, altImg }
   return (
-    <div className='leftSide'>
-        <img src={imgPath} className='img-banner' alt="Imagem" />
+    <div className="leftside">
+      <ul className="leftside__title">
+        <li>do</li>
+      </ul> 
+      <img src={imgPath} className="img-banner" alt={altImg} /> 
     </div>
-  )
+  );
 }
 
-export default LeftSide
+export default LeftSide;

@@ -1,9 +1,9 @@
 import './FullSize.css';
 
-function FullSize(props) {
+function FullSize({ children }) {
   return (
     <div className="fullsize">
-      {props.children}
+      {children}
     </div>
   )
 }
