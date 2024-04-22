@@ -10,19 +10,31 @@ import Footer from "./Components/Footer/Footer.jsx";
 import imageBanner from "./Assets/donation-banner.png";
 
 function App() {
+
+  const inputsConfig = [
+    {
+      label: "Email",
+      type: "email",
+      placeholder: "Digite seu e-mail válido",
+    },
+    {
+      label: "Senha",
+      type: "password",
+      placeholder: "Digite sua senha de 8-16",
+    },
+  ];
+
   return (
     <React.Fragment>
       <FullSize>
         <Divisory>
           <LeftSide
-            // DonationTitles={["#Compartilhe", "#Inspire", "#Transforme"]}
             DonationTitles={["do"]}
             bold={0}
-            // customClasses="leftside__more-titles"
             imgPath={imageBanner}
             alt="Donation Logo"
           />
-          <RightSide />
+          <RightSide pageTitle="Entrar" inputsConfig={inputsConfig} buttonText="Entrar" />
         </Divisory>
         <Footer />
       </FullSize>

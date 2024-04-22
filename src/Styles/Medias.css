@@ -1,3 +1,9 @@
+@media (max-width: 1370px) {
+    .leftside__title li {
+        font-size: 8rem !important;
+    }
+}
+
 @media (max-width: 1164px) {
     /* edita o tamanho da fonte do banner a esquerda (doNation, #Compartilhe e etc...) - leftside.jsx */
     .leftside__title li {
@@ -18,7 +24,12 @@
     }
 
     .rightside {
+        width: 100% !important;
         padding-top: 6rem !important;
+    }
+
+    .rightside-container {
+        padding: 0 1rem;
     }
     
     .footer-container {
