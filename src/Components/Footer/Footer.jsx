@@ -1,65 +1,66 @@
 import React from "react";
-import "./Footer.css";
+import {
+  FooterContainer,
+  FooterContent,
+  FooterInfos,
+  InfosList,
+  InfosUlis,
+  InfosSpan,
+  InfosLi,
+  SocialMedia,
+  SocialMediaSpan,
+  SocialMediaItems,
+  FooterDonation,
+} from "./Footer.js";
 
 import FacebookMedia from "../../Icons/FacebookMedia";
 import XMedia from "../../Icons/XMedia";
 import TiktokMedia from "../../Icons/TiktokMedia";
 import InstagramMedia from "../../Icons/InstagramMedia";
 
-function Footer() {
+const Footer = () => {
   return (
-    <div className="footer">
-      <div className="footer-container">
-        <div className="footer-infos">
-          <div className="footer-infos__list">
-            <ul className="footer-infos__ulis">
-              <span>Sobre</span>
-              <li>Termos</li>
-              <li>Privacidade</li>
-              <li>Disclaimer</li>
-              <li>Termos de Uso</li>
-            </ul>
-
-            <ul className="footer-infos__ulis">
-              <span>FAQ</span>
-              <li>Política de Reclamações</li>
-              <li>Aviso de Cookies</li>
-              <li>DMCA</li>
-              <li>USC 2257</li>
-            </ul>
-
-            <ul className="footer-infos__ulis">
-              <span>Contato</span>
-              <li>Ajuda</li>
-              <li>Referência</li>
-              <li>Contrato Padrão</li>
-
-              <div className="social-media">
-                <span>Compartilhe o DoNatiton</span>
-                <div className="footer-infos__social-media">
-                  <li>
-                    <FacebookMedia />
-                  </li>
-                  <li>
-                    <XMedia />
-                  </li>
-                  <li>
-                    <TiktokMedia />
-                  </li>
-                  <li>
-                    <InstagramMedia />
-                  </li>
-                </div>
-              </div>
-            </ul>
-          </div>
-          <div className="footer-donation">
+    <FooterContainer>
+      <FooterContent>
+        <FooterInfos>
+          <InfosList>
+            <InfosUlis>
+              <InfosSpan>Sobre</InfosSpan>
+              <InfosLi>Termos</InfosLi>
+              <InfosLi>Privacidade</InfosLi>
+              <InfosLi>Disclaimer</InfosLi>
+              <InfosLi>Termos de Uso</InfosLi>
+            </InfosUlis>
+            <InfosUlis>
+              <InfosSpan>FAQ</InfosSpan>
+              <InfosLi>Política de Reclamações</InfosLi>
+              <InfosLi>Aviso de Cookies</InfosLi>
+              <InfosLi>DMCA</InfosLi>
+              <InfosLi>USC 2257</InfosLi>
+            </InfosUlis>
+            <InfosUlis>
+              <InfosSpan>Contato</InfosSpan>
+              <InfosLi>Ajuda</InfosLi>
+              <InfosLi>Referência</InfosLi>
+              <InfosLi>Contrato Padrão</InfosLi>
+              <SocialMedia>
+                <SocialMediaSpan>Compartilhe o DoNatiton</SocialMediaSpan>
+                <SocialMediaItems>
+                  <FacebookMedia />
+                  <XMedia />
+                  <TiktokMedia />
+                  <InstagramMedia />
+                </SocialMediaItems>
+              </SocialMedia>
+            </InfosUlis>
+          </InfosList>
+          <FooterDonation className="footer-donation">
             © 2024 DoNation. Todos os direitos reservados.
-          </div>
-        </div>
-      </div>
-    </div>
+          </FooterDonation>
+        </FooterInfos>
+      </FooterContent>
+    </FooterContainer>
   );
-}
+};
 
 export default Footer;

@@ -1,20 +1,16 @@
 import React from "react";
-import "./LeftSide.css";
+import { LeftSideContainer, TitleList, TitleItem, ImageBanner } from "./LeftSide.js";
 
-function LeftSide({ DonationTitles, customClasses, bold, imgPath, altImg }) { // { imgPath, altImg }
-  
-  const classes = `leftside__title ${customClasses}`;
-  
+function LeftSide({ DonationTitles, customClasses, bold, imgPath, altImg }) {
   return (
-    <div className="leftside">
-      <ul className={classes}>
-        {/* Mapeando o array de títulos para renderizar cada <li> com um título diferente */}
+    <LeftSideContainer className="leftside">
+      <TitleList className={`leftside__title ${customClasses}`}>
         {DonationTitles.map((DonationTitle, index) => (
-          <li key={index} className={bold === index ? "bold" : "fw300"}>{DonationTitle}</li>
+          <TitleItem key={index} className={bold === index ? "bold" : "fw300"}>{DonationTitle}</TitleItem>
         ))}
-      </ul> 
-      <img src={imgPath} className="img-banner" alt={altImg} /> 
-    </div>
+      </TitleList>
+      <ImageBanner src={imgPath} alt={altImg} className="img-banner" />
+    </LeftSideContainer>
   );
 }
 

@@ -1,21 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import "./RightSide.css";
+import { RightSideContainer } from "./RightSide.js";
 
 import ButtonAccess from "../ButtonAccess/ButtonAccess.jsx";
 import Button from "../Button/Button";
 import CustomInputsGroups from "../CustomInputsGroups/CustomInputsGroups.jsx";
 
-/*
-  O que será componente aqui pra ser reutilizado com props:
-  .rightside__other-access__message
-  .no-account (terá que mudar de nome)
-*/
-
 function RightSide({ pageTitle, inputsConfig, buttonText }) {
   return (
-    <div className="rightside">
+    <RightSideContainer>
       <div className="rightside-container">
         <div className="rightside-login">
           <h1 className="rightside-login__title">{pageTitle}</h1>
@@ -45,7 +38,7 @@ function RightSide({ pageTitle, inputsConfig, buttonText }) {
           </p>
         </div>
       </div>
-    </div>
+    </RightSideContainer>
   );
 }
 
