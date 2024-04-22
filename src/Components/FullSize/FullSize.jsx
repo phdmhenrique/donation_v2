@@ -1,10 +1,10 @@
-import './FullSize.css';
+import { Container } from './FullSize.js';
 
 function FullSize({ children }) {
   return (
-    <div className="fullsize">
+    <Container className="fullsize">
       {children}
-    </div>
+    </Container>
   )
 }
 
