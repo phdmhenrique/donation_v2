@@ -1,12 +1,12 @@
 import React from "react";
-import './CustomInput.css';
+import {RightsideInputs, RightsideLabel, RightsideInput } from './CustomInput.js';
 
 function CustomInput({ label, type, placeholder, ...inputProps }) {
   return (
-    <div className="rightside-inputs">
-      <label>{label}</label>
-      <input type={type} placeholder={placeholder} {...inputProps} />
-    </div>
+    <RightsideInputs className="rightside-inputs">
+      <RightsideLabel>{label}</RightsideLabel>
+      <RightsideInput type={type} placeholder={placeholder} {...inputProps} />
+    </RightsideInputs>
   );
 }
 

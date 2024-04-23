@@ -1,15 +1,21 @@
 import React from "react";
-import './CustomInputGroups.css'
-import CustomInput from "../CustomInput/CustomInput";
+import { CustomInputGroup } from './CustomInputGroups.js'
+import { RightsideInputs, RightsideLabel, RightsideInput } from "../CustomInput/CustomInput";
 
-function CustomInputsGroup({ inputsConfig }) {
+function CustomInputsGroups({ inputsConfig }) {
   return (
-    <div className="custom-inputs-group">
+    <CustomInputGroup className="custom-inputs-group">
       {inputsConfig.map((inputConfig, index) => (
-        <CustomInput key={index} {...inputConfig} />
+        <RightsideInputs key={index} className="rightside-inputs">
+          <RightsideLabel>{inputConfig.label}</RightsideLabel>
+          <RightsideInput
+            type={inputConfig.type}
+            placeholder={inputConfig.placeholder}
+          />
+        </RightsideInputs>
       ))}
-    </div>
+    </CustomInputGroup>
   );
 }
 
-export default CustomInputsGroup;
+export default CustomInputsGroups;

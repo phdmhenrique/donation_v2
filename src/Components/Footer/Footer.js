@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterContainer = styled.div`
+export const FooterContainer = styled.footer`
   width: 144rem;
   max-width: 100%;
   margin: 0 auto;
@@ -13,6 +13,10 @@ export const FooterContent = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 7rem 4.1rem 0 4.1rem;
+
+  @media (max-width: 738px) {
+    padding: 7rem 2rem 0 !important;
+  }
 `;
 
 export const FooterInfos = styled.div`
@@ -25,6 +29,10 @@ export const FooterInfos = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 738px) {
+    padding: 4.1rem 0 0 !important;
+  }
 `;
 
 export const InfosList = styled.div`
@@ -32,6 +40,14 @@ export const InfosList = styled.div`
   flex-wrap: wrap;
   gap: 3rem;
   justify-content: space-between;
+
+  @media (max-width: 505px) {
+    justify-content: space-around !important;
+  }
+
+  @media (max-width: 323px) {
+    justify-content: flex-start !important;
+  }
 `;
 
 export const InfosUlis = styled.ul`

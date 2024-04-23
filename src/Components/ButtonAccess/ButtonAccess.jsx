@@ -1,5 +1,5 @@
 import React from "react";
-import './ButtonAccess.css';
+import { ButtonSocialMedia } from './ButtonAccess.js';
 
 import Google from '../../Icons/Google.jsx';
 import Facebook from '../../Icons/Facebook.jsx';
@@ -24,10 +24,10 @@ function ButtonAccess({ icon, text }) {
   }
 
   return (
-    <button className='button__social-media'>
+    <ButtonSocialMedia className='button__social-media'>
       {iconComponent}
       {text}
-    </button>
+    </ButtonSocialMedia>
   );
 }
 

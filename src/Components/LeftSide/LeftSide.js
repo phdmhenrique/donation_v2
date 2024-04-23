@@ -1,33 +1,13 @@
 import styled from "styled-components";
 
-export const LeftSideContainer = styled.div`
+export const LeftSideContainer = styled.section`
   width: 50%;
   min-width: 36rem;
   position: relative;
 
   /* Media Queries */
-  @media (max-width: 1370px) {
-    .leftside__title li {
-      font-size: 8rem;
-    }
-  }
-
-  @media (max-width: 1164px) {
-    .leftside__title li {
-      font-size: 6rem;
-    }
-  }
-
-  @media (max-width: 960px) {
-    .leftside__title li {
-      font-size: 4.5rem;
-    }
-  }
-
   @media (max-width: 738px) {
-    .leftside {
-      display: none;
-    }
+    display: none;
   }
 `;
 
@@ -42,12 +22,29 @@ export const TitleList = styled.ul`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  &.leftside__more-titles {
+    padding: 0 5.5rem !important;
+    align-items: flex-start !important;
+  }
 `;
 
 export const TitleItem = styled.li`
   color: var(--white);
   font-size: 10rem;
   overflow-x: hidden;
+
+  @media (max-width: 1370px) {
+    font-size: 8rem;
+  }
+
+  @media (max-width: 1164px) {
+    font-size: 6rem;
+  }
+
+  @media (max-width: 960px) {
+    font-size: 4.5rem;
+  }
 
   &.bold::after {
     content: "Nation";
