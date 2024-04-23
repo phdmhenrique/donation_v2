@@ -73,6 +73,7 @@ export const InfosLi = styled.li`
 export const SocialMedia = styled.div`
   display: flex;
   flex-direction: column;
+  gap: .5rem;
 `;
 
 export const SocialMediaSpan = styled.span`

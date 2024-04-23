@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RightsideLogin = styled.div`
+export const RightsideLogin = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
@@ -20,9 +20,3 @@ export const RightSideButtons = styled.div`
   gap: 1rem;
 `;
 
-export const RightSideButtons__Span = styled.span`
-    color: var(--gray-3);
-    font-size: var(--font__12);
-    font-weight: 500;
-    text-decoration-line: underline;
-`;

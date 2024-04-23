@@ -14,6 +14,7 @@ import App from './App.jsx';
 import Teste from './Components/Teste/Teste.jsx';
 import Layout from './Components/Layout/Layout.jsx';
 import CreateAccount from './Components/CreateAccount/CreateAccount.jsx'
+import StageOne from './Components/CreateAccount/StageOne/StageOne.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/layout" element={<Layout />} />
         <Route path="/teste" element={<Teste />}></Route>
         <Route path="/create-account" element={<CreateAccount />}></Route>
+        <Route path="/create-account-stageone" element={<StageOne />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

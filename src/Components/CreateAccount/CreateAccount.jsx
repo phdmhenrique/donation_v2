@@ -12,8 +12,12 @@ import NoAccount from "../../Components/RightSide/Account/Account.jsx";
 
 import imageBanner from '../../Assets/donation-banner.png'
 import SocialMedia from "../RightSide/SocialMedia/SocialMedia.jsx";
+import Button from '../Button/Button.jsx';
 
-function App() {
+// Styled Components
+import { Terms, TermsHightlight } from './CreateAccount.js';
+
+function CreateAccount() {
 
   const inputsConfig = [
     {
@@ -56,8 +60,17 @@ function App() {
           <Login
             pageTitle="Cadastrar"
             customComponent={<CustomInputsGroups inputsConfig={inputsConfig} />}
-            buttonText="Entrar"
+            formButtons={[
+              <Button key={1} addStatusClass="inactive">Cancelar</Button>,
+              <Button key={2} addStatusClass="active">Cadastrar</Button>,
+              <Terms key={3}>
+                Ao se inscrever você concorda com nossos <TermsHightlight>Termos de Serviço</TermsHightlight> e <TermsHightlight>Política de Privacidade</TermsHightlight> e confirma que tem pelo menos 18 anos de idade.
+              </Terms>,
+            ]}
           />
+
+
+
           <NoAccount className="no-account">
             Já tem uma conta?{" "}
             <LinkStyled to="/" className="link">
@@ -82,4 +95,4 @@ function App() {
   );
 }
 
-export default App;
+export default CreateAccount;

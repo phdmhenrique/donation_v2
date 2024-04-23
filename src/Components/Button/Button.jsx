@@ -1,12 +1,12 @@
 import React from 'react';
-import './Button.css';
+import { ButtonStyled } from './Button.js';
 
 function Button({ children, addStatusClass }) { // onClick
 
     const addStatus = `button ${addStatusClass}`;
 
     return (
-        <button className={addStatus}>{children}</button> // onClick={onClick}
+        <ButtonStyled className={addStatus}>{children}</ButtonStyled> // onClick={onClick}
     );
 };
 
