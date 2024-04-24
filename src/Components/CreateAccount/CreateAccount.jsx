@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FullSize from "../../Components/FullSize/FullSize.jsx";
 import Divisory from "../../Components/Divisory/Divisory.jsx";
 import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
@@ -7,43 +7,102 @@ import RightSide from "../../Components/RightSide/RightSide.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
 import LinkStyled from "../../Components/LinkStyled/LinkStyled";
 import Login from "../../Components/RightSide/Login/Login.jsx";
-// import CustomInputsGroups from "../../Components/CustomInputsGroups/CustomInputsGroups.jsx";
 import NoAccount from "../../Components/RightSide/Account/Account.jsx";
-
-import imageBanner from '../../Assets/donation-banner.png'
+import Button from "../Button/Button.jsx";
+import imageBanner from "../../Assets/donation-banner.png";
 import SocialMedia from "../RightSide/SocialMedia/SocialMedia.jsx";
-import Button from '../Button/Button.jsx';
-
-// Styled Components
-import { Terms, TermsHightlight } from './CreateAccount.js';
+import { Terms, TermsHightlight } from "./CreateAccount.js";
+import CustomFields from "../CustomFields/CustomFields.jsx";
+import { Link } from "react-router-dom";
 
 function CreateAccount() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+  });
 
-  const inputsConfig = [
+  const [formErrors, setFormErrors] = useState({});
+  const [notification, setNotification] = useState(null);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const validateForm = () => {
+    const { fullName, username, email, password, repeatPassword } = formData;
+    const errors = {};
+    if (!fullName) {
+      errors.fullName = "Por favor, digite seu nome completo.";
+    }
+    if (!username) {
+      errors.username = "Por favor, digite seu nome de usuário.";
+    }
+    if (!email) {
+      errors.email = "Por favor, digite seu email.";
+    }
+    if (!password) {
+      errors.password = "Por favor, digite sua senha.";
+    } else if (password !== repeatPassword) {
+      errors.repeatPassword = "As senhas não coincidem.";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0; // Retorna true se não houver erros
+  };
+
+  const [formCompleted, setFormCompleted] = useState(false);
+
+const handleFormSubmit = (e) => {
+  e.preventDefault();
+  const isValidForm = validateForm();
+  if (isValidForm) {
+    setNotification({
+      type: "success",
+      message: "Formulário enviado com sucesso!",
+    });
+    navigate("/create-account-stageone", { state: formData });
+  } else {
+    setNotification({
+      type: "error",
+      message: "Por favor, preencha todos os campos corretamente.",
+    });
+  }
+};
+
+  const fieldsConfigs = [
     {
       label: "Nome Completo",
       type: "text",
       placeholder: "Seu Nome Completo",
+      name: "fullName",
     },
     {
       label: "Nome de Usuário",
       type: "text",
       placeholder: "Seunomedeusuario",
+      name: "username",
     },
     {
       label: "Email",
       type: "email",
       placeholder: "seuemail@gmail.com",
+      name: "email",
     },
     {
       label: "Senha (A senha deve conter de 8-16 caracteres)",
       type: "password",
       placeholder: "A-Z,a-z,0-9,!@#",
+      name: "password",
     },
     {
       label: "Repetir a Senha",
       type: "password",
       placeholder: "A-Z,a-z,0-9,!@#",
+      name: "repeatPassword",
     },
   ];
 
@@ -57,19 +116,48 @@ function CreateAccount() {
           alt="Donation Logo"
         />
         <RightSide>
+          {notification && (
+            <div className={`notification ${notification.type}`}>
+              {notification.message}
+            </div>
+          )}
           <Login
             pageTitle="Cadastrar"
-            customComponent={<CustomInputsGroups inputsConfig={inputsConfig} />}
+            rightsideInputs={fieldsConfigs.map(
+              ({ label, type, placeholder, name }) => (
+                <CustomFields
+                  key={name}
+                  label={label}
+                  type={type}
+                  placeholder={placeholder}
+                  name={name}
+                  value={formData[name]}
+                  onChange={handleChange}
+                  error={formErrors[name]}
+                />
+              )
+            )}
             formButtons={[
-              <Button key={1} addStatusClass="inactive">Cancelar</Button>,
-              <Button key={2} addStatusClass="active">Cadastrar</Button>,
+              <Link to="/" key="no-key">
+                <Button key={1} addStatusClass="inactive">
+                  Cancelar
+                </Button>
+              </Link>,
+              <Button
+                key={2}
+                addStatusClass="active"
+                onClick={handleFormSubmit}
+              >
+                Cadastrar
+              </Button>,
               <Terms key={3}>
-                Ao se inscrever você concorda com nossos <TermsHightlight>Termos de Serviço</TermsHightlight> e <TermsHightlight>Política de Privacidade</TermsHightlight> e confirma que tem pelo menos 18 anos de idade.
+                Ao se inscrever você concorda com nossos{" "}
+                <TermsHightlight>Termos de Serviço</TermsHightlight> e{" "}
+                <TermsHightlight>Política de Privacidade</TermsHightlight> e
+                confirma que tem pelo menos 18 anos de idade.
               </Terms>,
             ]}
           />
-
-
 
           <NoAccount className="no-account">
             Já tem uma conta?{" "}
@@ -87,7 +175,6 @@ function CreateAccount() {
               </React.Fragment>
             }
           />
-
         </RightSide>
       </Divisory>
       <Footer />
