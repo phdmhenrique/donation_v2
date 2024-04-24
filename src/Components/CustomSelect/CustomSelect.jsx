@@ -1,17 +1,16 @@
-import React from "react";
-import { RightsideInputs, RightsideLabel, RightsideSelect } from './CustomSelect.js';
+// import React from "react";
+// import { RightsideSelect } from './CustomInput.js';
 
-function CustomSelect({ label, options, ...selectProps }) {
-  return (
-    <RightsideInputs className="rightside-inputs">
-      <RightsideLabel>{label}</RightsideLabel>
-      <RightsideSelect {...selectProps}>
-        {options.map((option, index) => (
-          <option key={index} value={option.value}>{option.label}</option>
-        ))}
-      </RightsideSelect>
-    </RightsideInputs>
-  );
-}
+// function CustomInput({ ...inputProps, optionValue }) {
+//     return (
+//         <>
+//             <RightsideSelect {...inputProps}>
+//                 {options.map((option, index) => (
+//                     <option key={index} value={option.optionValue}>{optionValue}</option>
+//                 ))}
+//             </RightsideSelect>
+//         </>
+//     );
+// }
 
-export default CustomSelect;
+// export default CustomInput;

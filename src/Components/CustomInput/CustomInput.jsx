@@ -1,13 +1,17 @@
 import React from "react";
-import {RightsideInputs, RightsideLabel, RightsideInput } from './CustomInput.js';
+import { RightsideInput } from './CustomInput.js';
 
-function CustomInput({ label, type, placeholder, ...inputProps }) {
+export default function CustomInput({ inputsConfig, ...inputProps }) {
+  // Verifica se inputsConfig está definido e é uma array
+  if (!Array.isArray(inputsConfig)) {
+    return null; // Ou outra ação apropriada, como um retorno de erro ou renderização condicional
+  }
+
   return (
-    <RightsideInputs className="rightside-inputs">
-      <RightsideLabel>{label}</RightsideLabel>
-      <RightsideInput type={type} placeholder={placeholder} {...inputProps} />
-    </RightsideInputs>
+    <>
+      {inputsConfig.map((inputConfig, index) => (
+        <RightsideInput key={index} type={inputConfig.type} {...inputProps} />
+      ))}
+    </>
   );
 }
-
-export default CustomInput;

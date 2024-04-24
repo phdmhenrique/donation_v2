@@ -6,7 +6,7 @@ import LeftSide from "../../../Components/LeftSide/LeftSide.jsx";
 import RightSide from "../../../Components/RightSide/RightSide.jsx";
 import Footer from "../../../Components/Footer/Footer.jsx";
 import Login from "../../../Components/RightSide/Login/Login.jsx";
-import CustomInputsGroups from "../../../Components/CustomInputsGroups/CustomInputsGroups.jsx";
+// import CustomInputsGroups from "../../../Components/CustomInputsGroups/CustomInputsGroups.jsx";
 
 import imageBanner from '../../../Assets/donation-banner.png'
 import Button from '../../Button/Button.jsx';

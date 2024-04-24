@@ -7,7 +7,7 @@ import RightSide from "../../Components/RightSide/RightSide.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
 import LinkStyled from "../../Components/LinkStyled/LinkStyled";
 import Login from "../../Components/RightSide/Login/Login.jsx";
-import CustomInputsGroups from "../../Components/CustomInputsGroups/CustomInputsGroups.jsx";
+// import CustomInputsGroups from "../../Components/CustomInputsGroups/CustomInputsGroups.jsx";
 import NoAccount from "../../Components/RightSide/Account/Account.jsx";
 
 import imageBanner from '../../Assets/donation-banner.png'
