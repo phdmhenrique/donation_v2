@@ -1,14 +1,17 @@
 import React from "react";
-import { RightsideLabel, RightsideInputs } from "../../App.js";
-import { StyledInput, StyledSelect } from "./CustomFields.js";
+import { RightsideLabel, RightsideInputs, StyledInput, StyledSelect } from "./CustomFields.js";
 
-const CustomFields = ({ label, type, placeholder, options }) => {
+const CustomFields = ({ label, type, placeholder, options, value, onChange, name }) => {
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    onChange(name, value); // Passa o nome do campo junto com o valor para a função onChange
+  };
+
   return (
     <RightsideInputs className="rightside-inputs">
       <RightsideLabel>{label}</RightsideLabel>
-      {/* se o componente inputsConfigs  */}
       {type === "select" ? (
-        <StyledSelect>
+        <StyledSelect onChange={handleInputChange} value={value}>
           {options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}
@@ -16,7 +19,12 @@ const CustomFields = ({ label, type, placeholder, options }) => {
           ))}
         </StyledSelect>
       ) : (
-        <StyledInput type={type} placeholder={placeholder} />
+        <StyledInput
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={handleInputChange}
+        />
       )}
     </RightsideInputs>
   );

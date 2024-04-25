@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import FullSize from "../../Components/FullSize/FullSize.jsx";
 import Divisory from "../../Components/Divisory/Divisory.jsx";
 import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
@@ -24,9 +23,7 @@ function CreateAccount() {
     repeatPassword: "",
   });
 
-  const [formErrors, setFormErrors] = useState({});
-  const [notification, setNotification] = useState(null);
-  const navigate = useNavigate();
+  const [formValid, setFormValid] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,43 +32,28 @@ function CreateAccount() {
 
   const validateForm = () => {
     const { fullName, username, email, password, repeatPassword } = formData;
-    const errors = {};
-    if (!fullName) {
-      errors.fullName = "Por favor, digite seu nome completo.";
-    }
-    if (!username) {
-      errors.username = "Por favor, digite seu nome de usuário.";
-    }
-    if (!email) {
-      errors.email = "Por favor, digite seu email.";
-    }
-    if (!password) {
-      errors.password = "Por favor, digite sua senha.";
-    } else if (password !== repeatPassword) {
-      errors.repeatPassword = "As senhas não coincidem.";
-    }
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0; // Retorna true se não houver erros
+    const isValid =
+      fullName.trim() !== "" &&
+      username.trim() !== "" &&
+      email.trim() !== "" &&
+      password.trim() !== "" &&
+      password.length >= 8 && // Senha com pelo menos 8 caracteres
+      password === repeatPassword;
+  
+    setFormValid(isValid);
   };
+  
 
-  const [formCompleted, setFormCompleted] = useState(false);
-
-const handleFormSubmit = (e) => {
-  e.preventDefault();
-  const isValidForm = validateForm();
-  if (isValidForm) {
-    setNotification({
-      type: "success",
-      message: "Formulário enviado com sucesso!",
-    });
-    navigate("/create-account-stageone", { state: formData });
-  } else {
-    setNotification({
-      type: "error",
-      message: "Por favor, preencha todos os campos corretamente.",
-    });
-  }
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateForm();
+    if (formValid) {
+      console.log("Formulário enviado!");
+      // Adicione aqui a lógica para enviar o formulário
+    } else {
+      console.log("Por favor, preencha todos os campos corretamente.");
+    }
+  };
 
   const fieldsConfigs = [
     {
@@ -116,12 +98,8 @@ const handleFormSubmit = (e) => {
           alt="Donation Logo"
         />
         <RightSide>
-          {notification && (
-            <div className={`notification ${notification.type}`}>
-              {notification.message}
-            </div>
-          )}
           <Login
+            onSubmit={handleSubmit}
             pageTitle="Cadastrar"
             rightsideInputs={fieldsConfigs.map(
               ({ label, type, placeholder, name }) => (
@@ -133,7 +111,6 @@ const handleFormSubmit = (e) => {
                   name={name}
                   value={formData[name]}
                   onChange={handleChange}
-                  error={formErrors[name]}
                 />
               )
             )}
@@ -145,8 +122,8 @@ const handleFormSubmit = (e) => {
               </Link>,
               <Button
                 key={2}
-                addStatusClass="active"
-                onClick={handleFormSubmit}
+                addStatusClass={formValid ? "active" : "disabled"}
+                type="submit"
               >
                 Cadastrar
               </Button>,
