@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FullSize from "../../Components/FullSize/FullSize.jsx";
 import Divisory from "../../Components/Divisory/Divisory.jsx";
 import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
@@ -7,11 +7,11 @@ import Footer from "../../Components/Footer/Footer.jsx";
 import LinkStyled from "../../Components/LinkStyled/LinkStyled";
 import Login from "../../Components/RightSide/Login/Login.jsx";
 import NoAccount from "../../Components/RightSide/Account/Account.jsx";
-import Button from "../Button/Button.jsx";
+import Button from "../../Components/Button/Button.jsx";
 import imageBanner from "../../Assets/donation-banner.png";
-import SocialMedia from "../RightSide/SocialMedia/SocialMedia.jsx";
+import SocialMedia from "../../Components/RightSide/SocialMedia/SocialMedia.jsx";
 import { Terms, TermsHightlight } from "./CreateAccount.js";
-import CustomFields from "../CustomFields/CustomFields.jsx";
+import CustomFields from "../../Components/CustomFields/CustomFields.jsx";
 import { Link } from "react-router-dom";
 
 function CreateAccount() {
@@ -25,10 +25,13 @@ function CreateAccount() {
 
   const [formValid, setFormValid] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (name, value) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
+  useEffect(() => {
+    validateForm();
+  }, [formData]);
 
   const validateForm = () => {
     const { fullName, username, email, password, repeatPassword } = formData;
@@ -39,10 +42,9 @@ function CreateAccount() {
       password.trim() !== "" &&
       password.length >= 8 && // Senha com pelo menos 8 caracteres
       password === repeatPassword;
-  
+
     setFormValid(isValid);
   };
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -110,7 +112,7 @@ function CreateAccount() {
                   placeholder={placeholder}
                   name={name}
                   value={formData[name]}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(name, e.target.value)} // Verifique essa linha
                 />
               )
             )}
