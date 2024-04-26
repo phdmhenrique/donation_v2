@@ -1,10 +1,22 @@
-import React from "react";
-import { RightsideLabel, RightsideInputs, StyledInput, StyledSelect } from "./CustomFields.js";
+import React, { useState } from "react";
+import {
+  RightsideLabel,
+  RightsideInputs,
+  StyledInput,
+  StyledSelect,
+  StyledEyeIcon,
+} from "./CustomFields.js";
 
 const CustomFields = ({ label, type, placeholder, options, value, onChange, name }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleInputChange = (e) => {
     const { value } = e.target;
-    onChange(name, value); // Passa o nome do campo junto com o valor para a função onChange
+    onChange(name, value);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -19,12 +31,20 @@ const CustomFields = ({ label, type, placeholder, options, value, onChange, name
           ))}
         </StyledSelect>
       ) : (
-        <StyledInput
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={handleInputChange}
-        />
+        <div style={{ position: "relative" }}>
+          <StyledInput
+            type={type === "password" && showPassword ? "text" : type}
+            placeholder={placeholder}
+            value={value}
+            onChange={handleInputChange}
+          />
+          {type === "password" && (
+            <StyledEyeIcon
+              onClick={togglePasswordVisibility}
+              showPassword={showPassword}
+            />
+          )}
+        </div>
       )}
     </RightsideInputs>
   );

@@ -15,9 +15,11 @@ import NoAccount from "../../Components/RightSide/Account/Account.jsx";
 import Button from "../../Components/Button/Button.jsx";
 import imageBanner from "../../Assets/donation-banner.png";
 import SocialMedia from "../../Components/RightSide/SocialMedia/SocialMedia.jsx";
-import CustomFields from "../../Components/CustomFields/CustomFields.jsx";
+import CustomFields from "../../Components/CustomFields/CustomFields.jsx"; // Importe CustomFields corretamente
 import { Terms, TermsHightlight } from "./CreateAccount.js";
 import { CustomToastContainer } from "../Notification/Notification.js";
+
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5"; // Importe os ícones corretamente
 
 function CreateAccount() {
   const [formData, setFormData] = useState({
@@ -37,14 +39,14 @@ function CreateAccount() {
   });
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // Estado para controlar a visibilidade da senha
 
   const handleChange = (name, value) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   useEffect(() => {
-    const isFormValid = validateForm();
-    setIsButtonEnabled(isFormValid);
+    validateForm();
   }, [formData]);
 
   const validateForm = () => {
@@ -72,7 +74,7 @@ function CreateAccount() {
       password:
         !formData.password
           ? "Senha é obrigatória"
-          : !validator.isStrongPassword(formData.password, {
+          : !validator.isStrongPassword(String(formData.password), {
               minLength: 8,
               minLowercase: 1,
               minUppercase: 1,
@@ -91,22 +93,25 @@ function CreateAccount() {
     };
 
     setFormErrors(errors);
-    return Object.values(errors).every((error) => !error);
+    setIsButtonEnabled(Object.values(errors).every((error) => !error));
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword((prevState) => !prevState);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isFormValid = validateForm();
-    if (isFormValid) {
+    validateForm();
+    const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
+    if (errorField) {
+      toast.error(formErrors[errorField]);
+    } else {
       toast.success("Cadastro realizado com sucesso!");
       // Simulando o envio do formulário
       setTimeout(() => {
         // Redirecionamento para a próxima página ou lógica adicional
       }, 2000); // Simula um atraso para redirecionamento após 2 segundos
-    } else {
-      // Encontrar o primeiro campo com erro e exibir a mensagem correspondente
-      const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
-      toast.error(formErrors[errorField]);
     }
   };
 
@@ -140,21 +145,27 @@ function CreateAccount() {
     },
     {
       label: "Senha (A senha deve conter de 8-16 caracteres)",
-      type: "password",
+      type: showPassword ? "text" : "password",
       placeholder: "A-Z,a-z,0-9,!@#",
       name: "password",
       value: formData.password,
       onChange: handleChange,
       error: formErrors.password,
+      icon: showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />,
+      onIconClick: handleTogglePassword,
+      showPassword: showPassword, // Garanta que a propriedade showPassword esteja sendo passada
     },
     {
       label: "Repetir a Senha",
-      type: "password",
+      type: showPassword ? "text" : "password",
       placeholder: "A-Z,a-z,0-9,!@#",
       name: "repeatPassword",
       value: formData.repeatPassword,
       onChange: handleChange,
       error: formErrors.repeatPassword,
+      icon: showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />,
+      onIconClick: handleTogglePassword,
+      showPassword: showPassword, // Garanta que a propriedade showPassword esteja sendo passada
     },
   ];
 

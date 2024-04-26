@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const StyledEyeIcon = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--gray-3);
+  font-size: 1.6rem;
+
+  &:hover {
+    color: var(--gray-2);
+  }
+`;
+
 export const StyledInput = styled.input`
   width: 100%;
   height: 4rem;
@@ -35,14 +49,12 @@ export const StyledSelect = styled.select`
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 `;
 
-
 export const RightsideLabel = styled.label`
   color: var(--gray-3);
   font-size: var(--font__14);
   font-weight: 500;
   word-wrap: break-word;
 `;
-
 
 export const RightsideInputs = styled.div`
   max-width: 32rem;
