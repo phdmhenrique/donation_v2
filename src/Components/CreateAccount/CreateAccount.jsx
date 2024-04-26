@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import validator from "validator"; // Importando a biblioteca validator
+
 import FullSize from "../../Components/FullSize/FullSize.jsx";
 import Divisory from "../../Components/Divisory/Divisory.jsx";
 import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
@@ -10,9 +15,9 @@ import NoAccount from "../../Components/RightSide/Account/Account.jsx";
 import Button from "../../Components/Button/Button.jsx";
 import imageBanner from "../../Assets/donation-banner.png";
 import SocialMedia from "../../Components/RightSide/SocialMedia/SocialMedia.jsx";
-import { Terms, TermsHightlight } from "./CreateAccount.js";
 import CustomFields from "../../Components/CustomFields/CustomFields.jsx";
-import { Link } from "react-router-dom";
+import { Terms, TermsHightlight } from "./CreateAccount.js";
+import { CustomToastContainer } from "../Notification/Notification.js";
 
 function CreateAccount() {
   const [formData, setFormData] = useState({
@@ -23,37 +28,85 @@ function CreateAccount() {
     repeatPassword: "",
   });
 
-  const [formValid, setFormValid] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+  });
+
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
   const handleChange = (name, value) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   useEffect(() => {
-    validateForm();
+    const isFormValid = validateForm();
+    setIsButtonEnabled(isFormValid);
   }, [formData]);
 
   const validateForm = () => {
-    const { fullName, username, email, password, repeatPassword } = formData;
-    const isValid =
-      fullName.trim() !== "" &&
-      username.trim() !== "" &&
-      email.trim() !== "" &&
-      password.trim() !== "" &&
-      password.length >= 8 && // Senha com pelo menos 8 caracteres
-      password === repeatPassword;
+    const errors = {
+      fullName:
+        !formData.fullName
+          ? "Nome Completo é obrigatório"
+          : /\d/.test(formData.fullName)
+          ? "Nome Completo não pode conter números"
+          : "",
+      username:
+        !formData.username
+          ? "Nome de Usuário é obrigatório"
+          : !validator.isAlphanumeric(formData.username.replace(/\s/g, ""))
+          ? "Nome de Usuário não pode conter espaços, caracteres especiais ou acentos"
+          : formData.username.length > 12
+          ? "Nome de Usuário deve ter no máximo 12 caracteres"
+          : "",
+      email:
+        !formData.email
+          ? "Email é obrigatório"
+          : !validator.isEmail(formData.email)
+          ? "Email inválido"
+          : "",
+      password:
+        !formData.password
+          ? "Senha é obrigatória"
+          : !validator.isStrongPassword(formData.password, {
+              minLength: 8,
+              minLowercase: 1,
+              minUppercase: 1,
+              minNumbers: 1,
+              minSymbols: 1,
+              returnScore: false,
+            })
+          ? "Senha deve conter de 8-16 caracteres, letras maiúsculas, minúsculas, números e símbolos"
+          : "",
+      repeatPassword:
+        !formData.repeatPassword && formData.password
+          ? "Repetir a senha é obrigatório"
+          : formData.password !== formData.repeatPassword
+          ? "As senhas não estão iguais"
+          : "",
+    };
 
-    setFormValid(isValid);
+    setFormErrors(errors);
+    return Object.values(errors).every((error) => !error);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validateForm();
-    if (formValid) {
-      console.log("Formulário enviado!");
-      // Adicione aqui a lógica para enviar o formulário
+    const isFormValid = validateForm();
+    if (isFormValid) {
+      toast.success("Cadastro realizado com sucesso!");
+      // Simulando o envio do formulário
+      setTimeout(() => {
+        // Redirecionamento para a próxima página ou lógica adicional
+      }, 2000); // Simula um atraso para redirecionamento após 2 segundos
     } else {
-      console.log("Por favor, preencha todos os campos corretamente.");
+      // Encontrar o primeiro campo com erro e exibir a mensagem correspondente
+      const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
+      toast.error(formErrors[errorField]);
     }
   };
 
@@ -63,30 +116,45 @@ function CreateAccount() {
       type: "text",
       placeholder: "Seu Nome Completo",
       name: "fullName",
+      value: formData.fullName,
+      onChange: handleChange,
+      error: formErrors.fullName,
     },
     {
       label: "Nome de Usuário",
       type: "text",
       placeholder: "Seunomedeusuario",
       name: "username",
+      value: formData.username,
+      onChange: handleChange,
+      error: formErrors.username,
     },
     {
       label: "Email",
       type: "email",
       placeholder: "seuemail@gmail.com",
       name: "email",
+      value: formData.email,
+      onChange: handleChange,
+      error: formErrors.email,
     },
     {
       label: "Senha (A senha deve conter de 8-16 caracteres)",
       type: "password",
       placeholder: "A-Z,a-z,0-9,!@#",
       name: "password",
+      value: formData.password,
+      onChange: handleChange,
+      error: formErrors.password,
     },
     {
       label: "Repetir a Senha",
       type: "password",
       placeholder: "A-Z,a-z,0-9,!@#",
       name: "repeatPassword",
+      value: formData.repeatPassword,
+      onChange: handleChange,
+      error: formErrors.repeatPassword,
     },
   ];
 
@@ -101,21 +169,10 @@ function CreateAccount() {
         />
         <RightSide>
           <Login
-            onSubmit={handleSubmit}
             pageTitle="Cadastrar"
-            rightsideInputs={fieldsConfigs.map(
-              ({ label, type, placeholder, name }) => (
-                <CustomFields
-                  key={name}
-                  label={label}
-                  type={type}
-                  placeholder={placeholder}
-                  name={name}
-                  value={formData[name]}
-                  onChange={(e) => handleChange(name, e.target.value)} // Verifique essa linha
-                />
-              )
-            )}
+            rightsideInputs={fieldsConfigs.map((config) => (
+              <CustomFields key={config.name} {...config} />
+            ))}
             formButtons={[
               <Link to="/" key="no-key">
                 <Button key={1} addStatusClass="inactive">
@@ -124,8 +181,8 @@ function CreateAccount() {
               </Link>,
               <Button
                 key={2}
-                addStatusClass={formValid ? "active" : "disabled"}
-                type="submit"
+                addStatusClass={isButtonEnabled ? "active" : "disabled"}
+                onClick={handleSubmit}
               >
                 Cadastrar
               </Button>,
@@ -153,6 +210,12 @@ function CreateAccount() {
                 Unindo Ações para um Mundo Melhor.
               </React.Fragment>
             }
+          />
+
+          <CustomToastContainer
+            toastStyle={{
+              fontSize: "1.4rem", // Tamanho da fonte desejado
+            }}
           />
         </RightSide>
       </Divisory>

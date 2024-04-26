@@ -73,8 +73,6 @@ function App() {
     }
   };
   
-  
-
   const fieldsConfigs = [
     {
       label: "Email",
