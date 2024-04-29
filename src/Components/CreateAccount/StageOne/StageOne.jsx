@@ -1,56 +1,162 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import FullSize from "../../../Components/FullSize/FullSize.jsx";
 import Divisory from "../../../Components/Divisory/Divisory.jsx";
 import LeftSide from "../../../Components/LeftSide/LeftSide.jsx";
 import RightSide from "../../../Components/RightSide/RightSide.jsx";
 import Footer from "../../../Components/Footer/Footer.jsx";
 import Login from "../../../Components/RightSide/Login/Login.jsx";
-import Button from '../../../Components/Button/Button.jsx';
-import CustomFields from '../../CustomFields/CustomFields.jsx'; // Importe o novo componente
+import Button from "../../../Components/Button/Button.jsx";
+import CustomFields from "../../CustomFields/CustomFields.jsx";
+import { CustomToastContainer } from "../../Notification/Notification.js";
 
 // Certifique-se de ter a variável imageBanner definida e importada corretamente
 import imageBanner from "../../../Assets/donation-banner.png";
 
 function StageOne() {
-  const fieldsConfigs = [
+  const [formData, setFormData] = useState({
+    cellphone: "",
+    date: "",
+    state: "",
+    city: "",
+    interests: [], // Inicializando 'interests' como um array vazio
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    cellphone: "",
+    date: "",
+    state: "",
+    city: "",
+  });
+
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [activeTab, setActiveTab] = useState(1);
+
+  const handleChange = (name, value) => {
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  useEffect(() => {
+    validateForm();
+  }, [formData]);
+
+  const validateForm = () => {
+    const errors = {
+      cellphone: !formData.cellphone ? "Número de telefone é obrigatório." : "",
+      date: !formData.date ? "Data de nascimento é obrigatória." : "",
+      state: !formData.state ? "Estado é obrigatório." : "",
+      city: !formData.city ? "Cidade é obrigatória." : "",
+    };
+
+    setFormErrors(errors);
+    setIsButtonEnabled(
+      Object.values(errors).every((error) => !error) && activeTab === 1
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (activeTab === 1) {
+      setActiveTab(2);
+    } else {
+      validateForm();
+      const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
+      if (errorField) {
+        toast.error(formErrors[errorField]);
+      } else {
+        toast.success("Cadastro realizado com sucesso!");
+        setTimeout(() => {
+          // Redirecionamento para a próxima página ou lógica adicional
+        }, 2000);
+      }
+    }
+  };
+
+  const handleBackButton = () => {
+    setActiveTab(1); // Voltar para a etapa 1 ao clicar no botão "Voltar"
+  };
+  
+
+  const fieldsConfigsFirstStep = [
     {
-      id: 'phoneInput',
       label: "Seu número de telefone",
       type: "tel",
       placeholder: "99 99999-9999",
+      name: "cellphone",
+      value: formData.cellphone,
+      onChange: handleChange,
+      error: formErrors.cellphone,
     },
     {
-      id: 'dobInput',
-      label: "Data de nascimento",
+      label: "Sua data de nascimento",
       type: "date",
-      placeholder: "Digite sua data de nascimento",
+      name: "date",
+      value: formData.date,
+      onChange: handleChange,
+      error: formErrors.date,
     },
     {
-      id: 'stateInput',
       label: "Estado",
       type: "select",
+      placeholder: "Selecione um estado",
+      name: "state",
+      value: formData.state,
+      onChange: handleChange,
+      error: formErrors.state,
       options: [
-        { value: 'none', label: 'Selecionar' },
-        { value: 'sp', label: 'São Paulo' },
-        { value: 'rj', label: 'Rio de Janeiro' },
-        { value: 'mg', label: 'Minas Gerais' },
-        { value: 'ba', label: 'Bahia' },
-        { value: 'pr', label: 'Paraná' },
-        { value: 'am', label: 'Amazonas' },
+        { value: "none", label: "Selecionar" },
+        { value: "sp", label: "São Paulo" },
+        { value: "rj", label: "Rio de Janeiro" },
+        { value: "mg", label: "Minas Gerais" },
+        { value: "ba", label: "Bahia" },
+        { value: "pr", label: "Paraná" },
+        { value: "am", label: "Amazonas" },
       ],
     },
     {
-      id: 'cityInput',
       label: "Cidade",
       type: "select",
+      placeholder: "Selecione sua cidade",
+      name: "city",
+      value: formData.city,
+      onChange: handleChange,
+      error: formErrors.city,
       options: [
-        { value: 'none', label: 'Selecionar' },
-        { value: 'saopaulo', label: 'São Paulo' },
-        { value: 'registro', label: 'Registro' },
-        { value: 'cajati', label: 'Cajati' },
-        { value: 'jacupiranga', label: 'Jacupiranga' },
-        { value: 'pariquera-acu', label: 'Pariquera-Açu' },
-        { value: 'juquia', label: 'Juquiá' },
+        { value: "none", label: "Selecionar" },
+        { value: "saopaulo", label: "São Paulo" },
+        { value: "registro", label: "Registro" },
+        { value: "cajati", label: "Cajati" },
+        { value: "jacupiranga", label: "Jacupiranga" },
+        { value: "pariquera-acu", label: "Pariquera-Açu" },
+        { value: "juquia", label: "Juquiá" },
+      ],
+    },
+  ];
+
+  const fieldsConfigsSecondStep = [
+    {
+      label: "Grupos de interesse",
+      type: "checkbox",
+      name: "interests",
+      value: formData.interests,
+      onChange: (name, value) => {
+        const updatedInterests = value.checked
+          ? [...formData.interests, value.label]
+          : formData.interests.filter((item) => item !== value.label);
+        setFormData((prevData) => ({
+          ...prevData,
+          interests: updatedInterests,
+        }));
+      },
+      error: formErrors.interests,
+      options: [
+        { label: "Esportes", value: "esportes" },
+        { label: "Arte e Cultura", value: "arte-cultura" },
+        { label: "Voluntariado", value: "voluntariado" },
+        { label: "Tecnologia", value: "tecnologia" },
       ],
     },
   ];
@@ -68,17 +174,50 @@ function StageOne() {
           <Login
             pageTitle={
               <React.Fragment>
-                Prepare-se… <br /> A uma página de distância 
-                de usar o DoNation"
+                Prepare-se… <br /> A uma página de distância de usar o DoNation
               </React.Fragment>
             }
-            rightsideInputs={fieldsConfigs.map(({ id, ...rest }) => (
-              <CustomFields key={id} {...rest} />
-            ))}
+            rightsideInputs={
+              activeTab === 1
+                ? fieldsConfigsFirstStep.map((config) => (
+                    <CustomFields key={config.name} {...config} />
+                  ))
+                : fieldsConfigsSecondStep.map((config) => (
+                    <CustomFields key={config.name} {...config} />
+                  ))
+            }
             formButtons={[
-              <Button key={1} addStatusClass="inactive">Cancelar</Button>,
-              <Button key={2} addStatusClass="disabled">Cadastrar</Button>,
+              <Link
+                to={
+                  activeTab === 1
+                    ? "/create-account"
+                    : "/create-account-stageone"
+                }
+                key="no-key"
+              >
+                <Button
+                  key={1}
+                  addStatusClass="inactive"
+                  onClick={handleBackButton} // Adiciona o manipulador de eventos para o botão "Voltar"
+                >
+                  {activeTab === 1 ? "Sair" : "Voltar"}
+                </Button>
+              </Link>,
+              <Button
+                key={2}
+                addStatusClass={isButtonEnabled ? "active" : "disabled"}
+                onClick={handleSubmit}
+              >
+                {activeTab === 1 ? "Continuar" : "Confirmar"}
+              </Button>,
             ]}
+            showTabs={activeTab === 1} // Mostrar as tabs apenas na primeira etapa
+          />
+
+          <CustomToastContainer
+            toastStyle={{
+              fontSize: "1.4rem",
+            }}
           />
         </RightSide>
       </Divisory>

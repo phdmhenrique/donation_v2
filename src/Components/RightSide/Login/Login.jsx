@@ -1,9 +1,22 @@
 import React from "react";
 
 // Importando os estilos dos componentes
-import { RightsideLogin, RightsideLogin__Title, RightSideButtons } from "./Login.js";
+import {
+  RightsideLogin,
+  RightsideLogin__Title,
+  RightSideButtons,
+  TabHeader,
+  TabHeaderItem,
+} from "./Login.js";
 
-export default function Login({ pageTitle, formButtons, rightsideInputs, onSubmit }) {
+export default function Login({
+  pageTitle,
+  formButtons,
+  rightsideInputs,
+  onSubmit,
+  showTabs,
+  activeTab,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onSubmit) {
@@ -16,6 +29,19 @@ export default function Login({ pageTitle, formButtons, rightsideInputs, onSubmi
       <RightsideLogin__Title className="rightside-login__title">
         {pageTitle}
       </RightsideLogin__Title>
+
+      {showTabs && (
+        <TabHeader>
+          <TabHeaderItem
+            className={activeTab === 1 ? "active" : ""}
+            onClick={() => setActiveTab(1)}
+          />
+          <TabHeaderItem
+            className={activeTab === 1 ? "active" : ""}
+            onClick={() => setActiveTab(1)}
+          />
+        </TabHeader>
+      )}
 
       {/* Adicionando a propriedade 'key' nos elementos */}
       {rightsideInputs.map((input, index) => (

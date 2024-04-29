@@ -1,24 +1,10 @@
 import styled from "styled-components";
 
-export const StyledEyeIcon = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 1.5rem;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: var(--gray-3);
-  font-size: 1.6rem;
-
-  &:hover {
-    color: var(--gray-2);
-  }
-`;
-
 export const StyledInput = styled.input`
   width: 100%;
   height: 4rem;
   flex-shrink: 0;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   border-radius: 0.4rem;
   border: 0.1rem solid var(--gray-2);
   background-color: var(--gray-1);
@@ -34,19 +20,23 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledSelect = styled.select`
-  appearance: none;
   width: 100%;
   height: 4rem;
-  padding: 0 1.5rem;
-  border: 0.1rem solid var(--gray-2);
+  flex-shrink: 0;
+  padding: 0 0.5rem;
   border-radius: 0.4rem;
+  border: 0.1rem solid var(--gray-2);
   background-color: var(--gray-1);
-  color: var(--font-color);
-  font-size: 1.6rem;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  color: var(--primary);
+`;
+
+export const StyledOption = styled.option`
+  color: var(--gray-4);
+
+  &:hover {
+    background-color: var(--gray-5) !important;
+  }
 `;
 
 export const RightsideLabel = styled.label`
@@ -61,4 +51,19 @@ export const RightsideInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+`;
+
+export const StyledEyeIcon = styled.div`
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--gray-3);
+  font-size: 1.6rem;
+
+  &:hover {
+    color: var(--gray-5);
+  }
 `;
