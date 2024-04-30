@@ -21,8 +21,7 @@ const CustomFields = ({
 }) => {
   const [inputType, setInputType] = useState(type);
 
-  const handleInputChange = (e) => {
-    const { value } = e.target;
+  const handleInputChange = (value) => {
     onChange(name, value);
   };
 
@@ -34,9 +33,11 @@ const CustomFields = ({
     <RightsideInputs className="rightside-inputs">
       <RightsideLabel>{label}</RightsideLabel>
       {type === "select" ? (
-        <StyledSelect onChange={handleInputChange} value={value} name={name}>
+        <StyledSelect onChange={(e) => handleInputChange(e.target.value)} value={value} name={name}>
           {options.map((option) => (
-            <StyledOption key={option.value} value={option.value}>{option.label}</StyledOption>
+            <StyledOption key={option.value} value={option.value}>
+              {option.label}
+            </StyledOption>
           ))}
         </StyledSelect>
       ) : (
@@ -44,9 +45,10 @@ const CustomFields = ({
           <StyledInput
             type={inputType}
             placeholder={placeholder}
-            value={value[name]}
-            onChange={handleInputChange}
+            value={value}
+            onChange={(e) => onChange(name, e.target.value)} // Passa o name junto com o value
           />
+
           {hasIcon && (
             <StyledEyeIcon>
               {inputType === "password" ? (

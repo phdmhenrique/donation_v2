@@ -13,7 +13,6 @@ import Button from "../../../Components/Button/Button.jsx";
 import CustomFields from "../../CustomFields/CustomFields.jsx";
 import { CustomToastContainer } from "../../Notification/Notification.js";
 
-// Certifique-se de ter a variável imageBanner definida e importada corretamente
 import imageBanner from "../../../Assets/donation-banner.png";
 
 function StageOne() {
@@ -22,7 +21,7 @@ function StageOne() {
     date: "",
     state: "",
     city: "",
-    interests: [], // Inicializando 'interests' como um array vazio
+    interests: [],
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -30,6 +29,7 @@ function StageOne() {
     date: "",
     state: "",
     city: "",
+    interests: "",
   });
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
@@ -49,6 +49,7 @@ function StageOne() {
       date: !formData.date ? "Data de nascimento é obrigatória." : "",
       state: !formData.state ? "Estado é obrigatório." : "",
       city: !formData.city ? "Cidade é obrigatória." : "",
+      interests: !formData.interests ? "Selecione ao menos um dos seus interesses." : "",
     };
 
     setFormErrors(errors);
@@ -59,8 +60,9 @@ function StageOne() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (activeTab === 1) {
+    if (activeTab === 1 && isButtonEnabled) {
       setActiveTab(2);
+      setIsButtonEnabled
     } else {
       validateForm();
       const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
@@ -76,9 +78,12 @@ function StageOne() {
   };
 
   const handleBackButton = () => {
-    setActiveTab(1); // Voltar para a etapa 1 ao clicar no botão "Voltar"
+    setActiveTab(1); // Volta para a primeira etapa ao clicar em "Voltar"
   };
-  
+
+  const handleTabClick = (tabIndex) => {
+    setActiveTab(tabIndex); // Atualiza o estado activeTab ao clicar na aba
+  };
 
   const fieldsConfigsFirstStep = [
     {
@@ -198,7 +203,7 @@ function StageOne() {
                 <Button
                   key={1}
                   addStatusClass="inactive"
-                  onClick={handleBackButton} // Adiciona o manipulador de eventos para o botão "Voltar"
+                  onClick={handleBackButton}
                 >
                   {activeTab === 1 ? "Sair" : "Voltar"}
                 </Button>
@@ -211,7 +216,8 @@ function StageOne() {
                 {activeTab === 1 ? "Continuar" : "Confirmar"}
               </Button>,
             ]}
-            showTabs={activeTab === 1} // Mostrar as tabs apenas na primeira etapa
+            showTabs={true} // Define se as tabs devem ser exibidas
+            activeTab={activeTab} // Passa o estado activeTab como propriedade
           />
 
           <CustomToastContainer

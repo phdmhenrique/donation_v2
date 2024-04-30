@@ -16,6 +16,7 @@ export default function Login({
   onSubmit,
   showTabs,
   activeTab,
+  setActiveTab, // Adicione a propriedade setActiveTab
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,14 +33,8 @@ export default function Login({
 
       {showTabs && (
         <TabHeader>
-          <TabHeaderItem
-            className={activeTab === 1 ? "active" : ""}
-            onClick={() => setActiveTab(1)}
-          />
-          <TabHeaderItem
-            className={activeTab === 1 ? "active" : ""}
-            onClick={() => setActiveTab(1)}
-          />
+          <TabHeaderItem className={activeTab === 1 ? "active" : ""} />
+          <TabHeaderItem className={activeTab === 2 ? "active" : ""} />
         </TabHeader>
       )}
 
