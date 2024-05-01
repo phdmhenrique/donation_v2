@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { z, ZodError } from "zod";
 
 import FullSize from "../../../Components/FullSize/FullSize.jsx";
 import Divisory from "../../../Components/Divisory/Divisory.jsx";
@@ -14,6 +15,17 @@ import CustomFields from "../../CustomFields/CustomFields.jsx";
 import { CustomToastContainer } from "../../Notification/Notification.js";
 
 import imageBanner from "../../../Assets/donation-banner.png";
+
+const schemaFirstStep = z.object({
+  cellphone: z.string().min(1, "Número de telefone é obrigatório."),
+  date: z.string().min(1, "Data de nascimento é obrigatória."),
+  state: z.string().min(1, "Estado é obrigatório."),
+  city: z.string().min(1, "Cidade é obrigatória."),
+});
+
+const schemaSecondStep = z.object({
+  interests: z.array(z.string()).min(1, "Selecione ao menos um dos seus interesses."),
+});
 
 function StageOne() {
   const [formData, setFormData] = useState({
@@ -35,54 +47,56 @@ function StageOne() {
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const [activeTab, setActiveTab] = useState(1);
 
-  const handleChange = (name, value) => {
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
   useEffect(() => {
     validateForm();
-  }, [formData]);
+  }, [formData, activeTab]);
 
   const validateForm = () => {
-    const errors = {
-      cellphone: !formData.cellphone ? "Número de telefone é obrigatório." : "",
-      date: !formData.date ? "Data de nascimento é obrigatória." : "",
-      state: !formData.state ? "Estado é obrigatório." : "",
-      city: !formData.city ? "Cidade é obrigatória." : "",
-      interests: !formData.interests ? "Selecione ao menos um dos seus interesses." : "",
-    };
-
-    setFormErrors(errors);
-    setIsButtonEnabled(
-      Object.values(errors).every((error) => !error) && activeTab === 1
-    );
+    const validateData = activeTab === 1 ? schemaFirstStep : schemaSecondStep;
+    try {
+      validateData.parse(formData);
+      setFormErrors({});
+      setIsButtonEnabled(true);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const fieldErrors = {};
+        error.errors.forEach((err) => {
+          fieldErrors[err.path[0]] = err.message;
+        });
+        setFormErrors(fieldErrors);
+        setIsButtonEnabled(false);
+      }
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (activeTab === 1 && isButtonEnabled) {
       setActiveTab(2);
-      setIsButtonEnabled
+    } else if (activeTab === 2) {
+      validateInterests();
     } else {
-      validateForm();
-      const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
-      if (errorField) {
-        toast.error(formErrors[errorField]);
-      } else {
-        toast.success("Cadastro realizado com sucesso!");
-        setTimeout(() => {
-          // Redirecionamento para a próxima página ou lógica adicional
-        }, 2000);
-      }
+      toast.error("Por favor, preencha todos os campos corretamente.");
+    }
+  };
+
+  const validateInterests = () => {
+    if (formData.interests.length > 0) {
+      toast.success("Cadastro realizado com sucesso!");
+      setTimeout(() => {
+        // Redirecionamento para a próxima página ou lógica adicional
+      }, 2000);
+    } else {
+      toast.error("Selecione ao menos um dos seus interesses.");
     }
   };
 
   const handleBackButton = () => {
-    setActiveTab(1); // Volta para a primeira etapa ao clicar em "Voltar"
+    setActiveTab(1);
   };
 
   const handleTabClick = (tabIndex) => {
-    setActiveTab(tabIndex); // Atualiza o estado activeTab ao clicar na aba
+    setActiveTab(tabIndex);
   };
 
   const fieldsConfigsFirstStep = [
@@ -93,7 +107,7 @@ function StageOne() {
       name: "cellphone",
       value: formData.cellphone,
       onChange: handleChange,
-      error: formErrors.cellphone,
+      error: formErrors["cellphone"],
     },
     {
       label: "Sua data de nascimento",
@@ -101,7 +115,7 @@ function StageOne() {
       name: "date",
       value: formData.date,
       onChange: handleChange,
-      error: formErrors.date,
+      error: formErrors["date"],
     },
     {
       label: "Estado",
@@ -110,7 +124,7 @@ function StageOne() {
       name: "state",
       value: formData.state,
       onChange: handleChange,
-      error: formErrors.state,
+      error: formErrors["state"],
       options: [
         { value: "none", label: "Selecionar" },
         { value: "sp", label: "São Paulo" },
@@ -128,7 +142,7 @@ function StageOne() {
       name: "city",
       value: formData.city,
       onChange: handleChange,
-      error: formErrors.city,
+      error: formErrors["city"],
       options: [
         { value: "none", label: "Selecionar" },
         { value: "saopaulo", label: "São Paulo" },
@@ -156,7 +170,7 @@ function StageOne() {
           interests: updatedInterests,
         }));
       },
-      error: formErrors.interests,
+      error: formErrors["interests"],
       options: [
         { label: "Esportes", value: "esportes" },
         { label: "Arte e Cultura", value: "arte-cultura" },
@@ -216,8 +230,8 @@ function StageOne() {
                 {activeTab === 1 ? "Continuar" : "Confirmar"}
               </Button>,
             ]}
-            showTabs={true} // Define se as tabs devem ser exibidas
-            activeTab={activeTab} // Passa o estado activeTab como propriedade
+            showTabs={true}
+            activeTab={activeTab}
           />
 
           <CustomToastContainer
