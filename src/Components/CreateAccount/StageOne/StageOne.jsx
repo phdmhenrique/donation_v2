@@ -10,7 +10,7 @@ import RightSide from "../../../Components/RightSide/RightSide.jsx";
 import Footer from "../../../Components/Footer/Footer.jsx";
 import Login from "../../../Components/RightSide/Login/Login.jsx";
 import Button from "../../../Components/Button/Button.jsx";
-import CustomFields from "../../CustomFields/CustomFields.jsx";
+import StageInputs from "../../Stage/StageInputs.jsx";
 import { CustomToastContainer } from "../../Notification/Notification.js";
 
 import imageBanner from "../../../Assets/donation-banner.png";
@@ -91,6 +91,7 @@ function StageOne() {
       type: "tel",
       placeholder: "99 99999-9999",
       name: "cellphone",
+      hasInfo: true,
       value: formData.cellphone,
       onChange: handleChange,
       error: formErrors.cellphone,
@@ -185,10 +186,10 @@ function StageOne() {
             rightsideInputs={
               activeTab === 1
                 ? fieldsConfigsFirstStep.map((config) => (
-                    <CustomFields key={config.name} {...config} />
+                    <StageInputs key={config.name} {...config} />
                   ))
                 : fieldsConfigsSecondStep.map((config) => (
-                    <CustomFields key={config.name} {...config} />
+                    <StageInputs key={config.name} {...config} />
                   ))
             }
             formButtons={[
