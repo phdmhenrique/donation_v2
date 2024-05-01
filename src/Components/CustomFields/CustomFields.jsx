@@ -3,9 +3,10 @@ import {
   RightsideLabel,
   RightsideInputs,
   StyledInput,
-  StyledSelect,
   StyledEyeIcon,
+  StyledSelect,
   StyledOption,
+  StyledInfo,
 } from "./CustomFields.js";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 
@@ -14,8 +15,8 @@ const CustomFields = ({
   type,
   placeholder,
   value,
-  onChange,
   name,
+  onChange,
   options,
   hasIcon,
 }) => {
@@ -42,11 +43,12 @@ const CustomFields = ({
         </StyledSelect>
       ) : (
         <div style={{ position: "relative" }}>
+
           <StyledInput
             type={inputType}
             placeholder={placeholder}
             value={value}
-            onChange={(e) => onChange(name, e.target.value)} // Passa o name junto com o value
+            onChange={(e) => onChange(name, e.target.value)}
           />
 
           {hasIcon && (
