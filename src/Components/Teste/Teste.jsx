@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyledDatePicker, Container, DateField } from './Teste.js';
+import {
+  StyledDatePicker,
+  Container,
+  DateField,
+  ColumnDate,
+  DateUnique,
+} from './Teste.js';
 import 'react-datepicker/dist/react-datepicker.css';
 import { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -35,14 +41,17 @@ const Teste = () => {
   return (
     <Container>
       <DateField onClick={handleDateFieldClick} style={{ color: dateFieldColor }}>
+        <ColumnDate>
+          <DateUnique>Mês</DateUnique>
+          <DateUnique>Dia</DateUnique>
+          <DateUnique>Ano</DateUnique>
+        </ColumnDate>
         {selectedDate ? (
-          <>
-            {selectedDate.toLocaleDateString('pt-BR', { month: 'short' })}
-            {' | '}
-            {selectedDate.getDate()}
-            {' | '}
-            {selectedDate.getFullYear()}
-          </>
+          <ColumnDate>
+            <DateUnique>{selectedDate.toLocaleDateString('pt-BR', { month: 'short' })}</DateUnique>
+            <DateUnique>{selectedDate.getDate()}</DateUnique>
+            <DateUnique>{selectedDate.getFullYear()}</DateUnique>
+          </ColumnDate>
         ) : (
           'Selecione a Data'
         )}
