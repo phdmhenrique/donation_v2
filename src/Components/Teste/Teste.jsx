@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   StyledDatePicker,
   Container,
@@ -15,7 +15,7 @@ registerLocale('pt-BR', ptBR);
 
 const Teste = () => {
   const currentDate = new Date(); // Obtém a data atual
-  const minDateFor18YearsOld = subYears(currentDate, 17); // Calcula a data mínima para ter 18 anos
+  const minDateFor18YearsOld = subYears(currentDate, 18); // Calcula a data mínima para ter 18 anos
   const [selectedDate, setSelectedDate] = useState(minDateFor18YearsOld);
   const datePickerRef = useRef(null);
 
