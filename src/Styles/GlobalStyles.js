@@ -64,6 +64,7 @@ li {
     --font__28: 2.8rem;
     --font__30: 3.0rem;
     --font__35: 3.5rem;
+    --font__36: 3.6rem;
 }
 `;
 
