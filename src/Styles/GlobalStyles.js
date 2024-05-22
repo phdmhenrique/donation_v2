@@ -42,6 +42,7 @@ li {
     --black-opacity75: #00000075;
     --white: #FFFFFF;
     --white-smoke: #EEEEEE;
+    --gray-pure: #686868;
 
     /* escala de cinza */
     --gray-1: #F1F1F1;
@@ -50,6 +51,7 @@ li {
     --gray-4: #585858;
     --gray-5: #3F4243;
     --gray-6: #3F4243;
+    --gray-7: #A9A9A9;
 
     /* tamanhos de fonte */
     --font__10: 1rem;

@@ -26,18 +26,13 @@ export const LayoutContainer = styled.section`
     width: 100%;
     height: 192rem;
     display: grid;
-    grid-template-columns: 16rem 1fr 31rem;
+    grid-template-columns: 19.2rem 77rem 31.1rem;
+    justify-content: center;
 `;
 
 export const Content = styled.section`
     height: 100%;
     border: .1rem solid var(--gray-2);
-    padding: 0 1.6rem;
-
-`;
-
-export const AsideSuggest = styled.aside`
-    height: 100%;
     padding: 0 1.6rem;
 
 `;

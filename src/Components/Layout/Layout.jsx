@@ -1,8 +1,10 @@
 import React from 'react'
-import { Container, Logo, LayoutContainer, Content, AsideSuggest  } from "./Layout.js";
+import { Container, Logo, LayoutContainer, Content } from "./Layout.js";
 import Footer from '../Footer/Footer.jsx'
 
 import NavAccount from '../NavAccount/NavAccount.jsx';
+import AsideSuggest from '../AsideSuggest/AsideSuggest.jsx';
+
 
 function Layout() {
   return (
