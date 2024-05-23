@@ -25,7 +25,7 @@ export const FooterInfos = styled.div`
   min-height: 32.1rem;
   border-top: 0.1rem solid var(--white-smoke);
   background-color: var(--white);
-  padding: 4.1rem;
+  padding: 4.1rem 4.1rem 0 4.1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

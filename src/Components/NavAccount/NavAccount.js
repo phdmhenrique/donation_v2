@@ -5,6 +5,10 @@ export const Container = styled.nav`
     flex-direction: column;
     padding: 0 1.6rem 0 0;
     gap: 1.5rem;
+
+    @media (max-width: 738px) {
+        display: none;
+    }
 `;
 
 export const PhotoUserImage = styled.div`
@@ -23,6 +27,10 @@ export const NavListLinks = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
+
+    @media (max-width: 1315px) {
+        align-items: center;
+    }
 `;
 
 export const NavLink = styled.li`
@@ -36,6 +44,18 @@ export const NavLink = styled.li`
     cursor: pointer;
     transition: all .1s ease-in;
     border-radius: 1rem;
+
+    @media (max-width: 1315px) {
+        font-size: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        & svg {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
 
     & path {
         stroke: var(--gray-7);

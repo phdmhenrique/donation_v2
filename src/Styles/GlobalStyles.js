@@ -55,6 +55,7 @@ li {
 
     /* tamanhos de fonte */
     --font__10: 1rem;
+    --font__11: 1.1rem;
     --font__12: 1.2rem;
     --font__14: 1.4rem;
     --font__16: 1.6rem;

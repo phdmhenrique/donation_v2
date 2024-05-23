@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-    width: 162rem;
+    max-width: 192rem;
     height: auto;
     margin: 0 auto;
+    padding: 0 1.6rem;
 `;
 
 export const Logo = styled.header`
@@ -26,13 +27,18 @@ export const LayoutContainer = styled.section`
     width: 100%;
     height: 192rem;
     display: grid;
-    grid-template-columns: 19.2rem 77rem 31.1rem;
+    grid-template-columns: 19.2rem minmax(77rem, 2fr) 32.5rem;
     justify-content: center;
-`;
 
-export const Content = styled.section`
-    height: 100%;
-    border: .1rem solid var(--gray-2);
-    padding: 0 1.6rem;
+    @media (max-width: 1315px) {
+        grid-template-columns: 9rem minmax(auto, 2fr) 32.5rem; /* Reduz a largura máxima da coluna central */
+    }
 
+    @media (max-width: 1216px) {
+        grid-template-columns: 9rem minmax(auto, 2fr); /* Remove a seção da direita */
+    }
+
+    @media (max-width: 738px) {
+        grid-template-columns: 1fr; /* Remove a parte da esquerda */
+    }
 `;
