@@ -16,7 +16,7 @@ export default function Login({
   onSubmit,
   showTabs,
   activeTab,
-  setActiveTab, // Adicione a propriedade setActiveTab
+  // setActiveTab, // Adicione a propriedade setActiveTab
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,9 +39,10 @@ export default function Login({
       )}
 
       {/* Adicionando a propriedade 'key' nos elementos */}
-      {rightsideInputs.map((input, index) => (
-        <div key={index}>{input}</div>
-      ))}
+      {Array.isArray(rightsideInputs) &&
+        rightsideInputs.map((input, index) => (
+          <div key={index}>{input}</div>
+        ))}
 
       <RightSideButtons className="rightside-buttons">
         {/* Adicionando a propriedade 'key' nos elementos */}

@@ -17,7 +17,6 @@ export const ButtonStyled = styled.button`
     color: var(--white);
     border: .1rem solid var(--primary);
 
-
     font-size: var(--font__16);
     font-weight: 700;
     transition: .3s ease-in-out;

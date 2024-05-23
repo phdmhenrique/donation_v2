@@ -6,7 +6,7 @@ export const RightSideContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 12.6rem;
+  padding: 12.6rem 2rem 0 4rem;
   background-color: var(--white);
 
   @media (max-width: 738px) {
@@ -16,7 +16,7 @@ export const RightSideContainer = styled.section`
 `;
 
 export const RightsideContent = styled.div`
-    max-width: 32rem;
+    max-width: 38rem;
     width: 100%;
 
   @media (max-width: 738px) {

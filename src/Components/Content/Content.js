@@ -7,3 +7,7 @@ export const Container = styled.section`
     padding: 0 1.6rem;
 
 `;
+
+export const Table = styled.div`
+    
+`;

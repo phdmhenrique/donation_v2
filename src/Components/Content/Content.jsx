@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container } from './Content.js'
+import { Container, Table } from './Content.js'
 
 export default function Content() {
   return (

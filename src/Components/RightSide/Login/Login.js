@@ -35,8 +35,7 @@ export const TabHeaderItem = styled.div`
 
 export const RightSideButtons = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.2rem;
 `;
 

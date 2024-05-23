@@ -11,11 +11,18 @@ import Footer from "../../../Components/Footer/Footer.jsx";
 import Login from "../../../Components/RightSide/Login/Login.jsx";
 import Button from "../../../Components/Button/Button.jsx";
 import StageInputs from "../../Stage/StageInputs.jsx";
+import InterestGroup from "../../InterestGroup/InterestGroup.jsx";
 import { CustomToastContainer } from "../../Notification/Notification.js";
 
 import imageBanner from "../../../Assets/donation-banner.png";
 
 function StageOne() {
+  // UseState's
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [activeTab, setActiveTab] = useState(1);
+  const [selectedInterests, setSelectedInterests] = useState([]);
+  const [selectedGroupsSecondStep, setSelectedGroupsSecondStep] = useState([]);
+
   const [formData, setFormData] = useState({
     cellphone: "",
     date: "",
@@ -32,16 +39,54 @@ function StageOne() {
     interests: "",
   });
 
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  const [activeTab, setActiveTab] = useState(1);
-
+  // Handle Functions Buttons
   const handleChange = (name, value) => {
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    if (name === "interests") {
+      setSelectedInterests(value);
+    } else {
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }
   };
 
+  const handleGroupSelectionChange = (updateGroups) => {
+    setSelectedInterests(updateGroups);
+  };
+
+  const handleFirstStepSubmit = () => {
+    validateForm();
+    const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
+    if (errorField) {
+      toast.error(formErrors[errorField]);
+    } else {
+      setActiveTab(2);
+      setIsButtonEnabled(false); // Desabilitar o botão ao passar para a segunda etapa
+    }
+  };
+
+  const handleSecondStepSubmit = (e) => {
+    // Lógica de validação para a segunda etapa
+    console.log(selectedInterests.length);
+    e.preventDefault();
+
+    if (selectedInterests.length > 0) {
+      toast.success("Cadastro realizado com sucesso!");
+      setTimeout(() => {
+        // Redirecionamento para a próxima página ou lógica adicional
+      }, 2000);
+    } else {
+      toast.error("Selecione ao menos um grupo de interesse.");
+    }
+  };
+
+  const handleBackButton = () => {
+    setActiveTab(1); // Volta para a primeira etapa ao clicar em "Voltar"
+    setSelectedInterests(selectedGroupsSecondStep); // Restaura os grupos selecionados
+  };
+
+  // Validação
   useEffect(() => {
     validateForm();
-  }, [formData]);
+  }, [formData, selectedInterests]);
 
   const validateForm = () => {
     const errors = {
@@ -49,42 +94,17 @@ function StageOne() {
       date: !formData.date ? "Data de nascimento é obrigatória." : "",
       state: !formData.state ? "Estado é obrigatório." : "",
       city: !formData.city ? "Cidade é obrigatória." : "",
-      interests: !formData.interests ? "Selecione ao menos um dos seus interesses." : "",
+      interests:
+        activeTab === 2 && selectedInterests.length === 0
+          ? "Selecione ao menos um grupo de interesse!"
+          : "",
     };
 
     setFormErrors(errors);
-    setIsButtonEnabled(
-      Object.values(errors).every((error) => !error) && activeTab === 1
-    );
+    setIsButtonEnabled(Object.values(errors).every((error) => !error));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (activeTab === 1 && isButtonEnabled) {
-      setActiveTab(2);
-      setIsButtonEnabled
-    } else {
-      validateForm();
-      const errorField = Object.keys(formErrors).find((key) => formErrors[key]);
-      if (errorField) {
-        toast.error(formErrors[errorField]);
-      } else {
-        toast.success("Cadastro realizado com sucesso!");
-        setTimeout(() => {
-          // Redirecionamento para a próxima página ou lógica adicional
-        }, 2000);
-      }
-    }
-  };
-
-  const handleBackButton = () => {
-    setActiveTab(1); // Volta para a primeira etapa ao clicar em "Voltar"
-  };
-
-  const handleTabClick = (tabIndex) => {
-    setActiveTab(tabIndex); // Atualiza o estado activeTab ao clicar na aba
-  };
-
+  // SIMULANDO ENTRADA DE API.
   const fieldsConfigsFirstStep = [
     {
       label: "Seu número de telefone",
@@ -142,31 +162,6 @@ function StageOne() {
     },
   ];
 
-  const fieldsConfigsSecondStep = [
-    {
-      label: "Grupos de interesse",
-      type: "checkbox",
-      name: "interests",
-      value: formData.interests,
-      onChange: (name, value) => {
-        const updatedInterests = value.checked
-          ? [...formData.interests, value.label]
-          : formData.interests.filter((item) => item !== value.label);
-        setFormData((prevData) => ({
-          ...prevData,
-          interests: updatedInterests,
-        }));
-      },
-      error: formErrors.interests,
-      options: [
-        { label: "Esportes", value: "esportes" },
-        { label: "Arte e Cultura", value: "arte-cultura" },
-        { label: "Voluntariado", value: "voluntariado" },
-        { label: "Tecnologia", value: "tecnologia" },
-      ],
-    },
-  ];
-
   return (
     <FullSize>
       <Divisory>
@@ -180,7 +175,8 @@ function StageOne() {
           <Login
             pageTitle={
               <React.Fragment>
-                Prepare-se… <br /> A uma página de distância de usar o DoNation
+                Prepare-se… <br /> A uma página de distância <br /> de usar o
+                DoNation
               </React.Fragment>
             }
             rightsideInputs={
@@ -188,9 +184,16 @@ function StageOne() {
                 ? fieldsConfigsFirstStep.map((config) => (
                     <StageInputs key={config.name} {...config} />
                   ))
-                : fieldsConfigsSecondStep.map((config) => (
-                    <StageInputs key={config.name} {...config} />
-                  ))
+                : [
+                    <InterestGroup
+                      onGroupSelectionChange={handleGroupSelectionChange}
+                      selectedGroups={
+                        activeTab === 2
+                          ? selectedGroupsSecondStep
+                          : selectedInterests
+                      }
+                    />,
+                  ]
             }
             formButtons={[
               <Link
@@ -209,13 +212,23 @@ function StageOne() {
                   {activeTab === 1 ? "Sair" : "Voltar"}
                 </Button>
               </Link>,
-              <Button
-                key={2}
-                addStatusClass={isButtonEnabled ? "active" : "disabled"}
-                onClick={handleSubmit}
-              >
-                {activeTab === 1 ? "Continuar" : "Confirmar"}
-              </Button>,
+              activeTab === 1 ? (
+                <Button
+                  key={2}
+                  addStatusClass={isButtonEnabled ? "active" : "disabled"}
+                  onClick={handleFirstStepSubmit}
+                >
+                  Continuar
+                </Button>
+              ) : (
+                <Button
+                  key={2}
+                  addStatusClass={isButtonEnabled ? "active" : "disabled"}
+                  onClick={handleSecondStepSubmit}
+                >
+                  Confirmar
+                </Button>
+              ),
             ]}
             showTabs={true} // Define se as tabs devem ser exibidas
             activeTab={activeTab} // Passa o estado activeTab como propriedade
