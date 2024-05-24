@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,16 +12,21 @@ import Login from "../../../Components/RightSide/Login/Login.jsx";
 import Button from "../../../Components/Button/Button.jsx";
 import StageInputs from "../../Stage/StageInputs.jsx";
 import InterestGroup from "../../InterestGroup/InterestGroup.jsx";
+import LoadingScreen from '../../LoadingScreen/LoadingScreen.jsx';
 import { CustomToastContainer } from "../../Notification/Notification.js";
 
 import imageBanner from "../../../Assets/donation-banner.png";
 
 function StageOne() {
+  // Links
+  const navigate = useNavigate();
+
   // UseState's
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const [activeTab, setActiveTab] = useState(1);
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [selectedGroupsSecondStep, setSelectedGroupsSecondStep] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     cellphone: "",
@@ -49,7 +54,12 @@ function StageOne() {
   };
 
   const handleGroupSelectionChange = (updateGroups) => {
-    setSelectedInterests(updateGroups);
+    if (activeTab === 2) {
+      setSelectedGroupsSecondStep(updateGroups);
+      setIsButtonEnabled(updateGroups.length > 0);
+    } else {
+      setSelectedInterests(updateGroups);
+    }
   };
 
   const handleFirstStepSubmit = () => {
@@ -59,21 +69,21 @@ function StageOne() {
       toast.error(formErrors[errorField]);
     } else {
       setActiveTab(2);
-      setIsButtonEnabled(false); // Desabilitar o botão ao passar para a segunda etapa
+      validateForm(); // Chama a validação novamente ao mudar para a segunda etapa
     }
   };
 
   const handleSecondStepSubmit = (e) => {
-    // Lógica de validação para a segunda etapa
-    console.log(selectedInterests.length);
     e.preventDefault();
-
-    if (selectedInterests.length > 0) {
+    // validateForm();
+    if (selectedGroupsSecondStep.length > 0) {
       toast.success("Cadastro realizado com sucesso!");
+      setIsLoading(true);
       setTimeout(() => {
-        // Redirecionamento para a próxima página ou lógica adicional
+        navigate('/home');
       }, 2000);
     } else {
+      setIsButtonEnabled(false);
       toast.error("Selecione ao menos um grupo de interesse.");
     }
   };
@@ -84,10 +94,6 @@ function StageOne() {
   };
 
   // Validação
-  useEffect(() => {
-    validateForm();
-  }, [formData, selectedInterests]);
-
   const validateForm = () => {
     const errors = {
       cellphone: !formData.cellphone ? "Número de telefone é obrigatório." : "",
@@ -95,14 +101,23 @@ function StageOne() {
       state: !formData.state ? "Estado é obrigatório." : "",
       city: !formData.city ? "Cidade é obrigatória." : "",
       interests:
-        activeTab === 2 && selectedInterests.length === 0
+        activeTab === 2 && selectedGroupsSecondStep.length === 0
           ? "Selecione ao menos um grupo de interesse!"
           : "",
     };
 
     setFormErrors(errors);
-    setIsButtonEnabled(Object.values(errors).every((error) => !error));
+
+    if (activeTab === 1) {
+      setIsButtonEnabled(Object.values(errors).every((error) => !error));
+    } else if (activeTab === 2) {
+      setIsButtonEnabled(selectedGroupsSecondStep.length > 0);
+    }
   };
+
+  useEffect(() => {
+    validateForm();
+  }, [formData, selectedInterests, selectedGroupsSecondStep]);  
 
   // SIMULANDO ENTRADA DE API.
   const fieldsConfigsFirstStep = [
@@ -162,6 +177,10 @@ function StageOne() {
     },
   ];
 
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <FullSize>
       <Divisory>
@@ -182,18 +201,15 @@ function StageOne() {
             rightsideInputs={
               activeTab === 1
                 ? fieldsConfigsFirstStep.map((config) => (
-                    <StageInputs key={config.name} {...config} />
-                  ))
+                  <StageInputs key={config.name} {...config} />
+                ))
                 : [
-                    <InterestGroup
-                      onGroupSelectionChange={handleGroupSelectionChange}
-                      selectedGroups={
-                        activeTab === 2
-                          ? selectedGroupsSecondStep
-                          : selectedInterests
-                      }
-                    />,
-                  ]
+                  <InterestGroup
+                    key="interest-group"
+                    onGroupSelectionChange={handleGroupSelectionChange}
+                    selectedGroups={selectedGroupsSecondStep}
+                  />,
+                ]
             }
             formButtons={[
               <Link
@@ -222,7 +238,7 @@ function StageOne() {
                 </Button>
               ) : (
                 <Button
-                  key={2}
+                  key={3}
                   addStatusClass={isButtonEnabled ? "active" : "disabled"}
                   onClick={handleSecondStepSubmit}
                 >
