@@ -3,21 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import FullSize from "../../../Components/FullSize/FullSize.jsx";
-import Divisory from "../../../Components/Divisory/Divisory.jsx";
-import LeftSide from "../../../Components/LeftSide/LeftSide.jsx";
-import RightSide from "../../../Components/RightSide/RightSide.jsx";
-import Footer from "../../../Components/Footer/Footer.jsx";
-import Login from "../../../Components/RightSide/Login/Login.jsx";
-import Button from "../../../Components/Button/Button.jsx";
+import FullSize from "../../FullSize/FullSize.jsx";
+import Divisory from "../../Divisory/Divisory.jsx";
+import LeftSide from "../../LeftSide/LeftSide.jsx";
+import RightSide from "../../RightSide/RightSide.jsx";
+import Footer from "../../Footer/Footer.jsx";
+import Login from "../../RightSide/Login/Login.jsx";
+import Button from "../../Button/Button.jsx";
 import StageInputs from "../../Stage/StageInputs.jsx";
 import InterestGroup from "../../InterestGroup/InterestGroup.jsx";
-import LoadingScreen from '../../LoadingScreen/LoadingScreen.jsx';
+import LoadingScreen from "../../LoadingScreen/LoadingScreen.jsx";
 import { CustomToastContainer } from "../../Notification/Notification.js";
 
 import imageBanner from "../../../Assets/donation-banner.png";
+import DatePickerField from "../../DatePickerField/DatePickerField.jsx"; // Import the new DatePickerField
 
-function StageOne() {
+function Stages() {
   // Links
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ function StageOne() {
 
   const [formData, setFormData] = useState({
     cellphone: "",
-    date: "",
+    date: new Date(), // Ensure date is initialized as a Date object
     state: "",
     city: "",
     interests: [],
@@ -75,12 +76,12 @@ function StageOne() {
 
   const handleSecondStepSubmit = (e) => {
     e.preventDefault();
-    // validateForm();
+    validateForm();
     if (selectedGroupsSecondStep.length > 0) {
       toast.success("Cadastro realizado com sucesso!");
       setIsLoading(true);
       setTimeout(() => {
-        navigate('/home');
+        navigate("/home");
       }, 2000);
     } else {
       setIsButtonEnabled(false);
@@ -117,7 +118,7 @@ function StageOne() {
 
   useEffect(() => {
     validateForm();
-  }, [formData, selectedInterests, selectedGroupsSecondStep]);  
+  }, [formData, selectedInterests, selectedGroupsSecondStep]);
 
   // SIMULANDO ENTRADA DE API.
   const fieldsConfigsFirstStep = [
@@ -192,6 +193,8 @@ function StageOne() {
         />
         <RightSide>
           <Login
+            showTabs={true} // Define se as tabs devem ser exibidas
+            activeTab={activeTab} // Passa o estado activeTab como propriedade
             pageTitle={
               <React.Fragment>
                 Prepare-se… <br /> A uma página de distância <br /> de usar o
@@ -200,23 +203,34 @@ function StageOne() {
             }
             rightsideInputs={
               activeTab === 1
-                ? fieldsConfigsFirstStep.map((config) => (
-                  <StageInputs key={config.name} {...config} />
-                ))
+                ? fieldsConfigsFirstStep.map((config) => {
+                    if (config.type === "date") {
+                      return (
+                        <DatePickerField
+                          key={config.name}
+                          value={formData[config.name]}
+                          onChange={handleChange}
+                          label={config.label}
+                        />
+                      );
+                    } else {
+                      return <StageInputs key={config.name} {...config} />;
+                    }
+                  })
                 : [
-                  <InterestGroup
-                    key="interest-group"
-                    onGroupSelectionChange={handleGroupSelectionChange}
-                    selectedGroups={selectedGroupsSecondStep}
-                  />,
-                ]
+                    <InterestGroup
+                      key="interest-group"
+                      onGroupSelectionChange={handleGroupSelectionChange}
+                      selectedGroups={selectedGroupsSecondStep}
+                    />,
+                  ]
             }
             formButtons={[
               <Link
                 to={
                   activeTab === 1
                     ? "/create-account"
-                    : "/create-account-stageone"
+                    : "/create-account/stages"
                 }
                 key="no-key"
               >
@@ -246,8 +260,6 @@ function StageOne() {
                 </Button>
               ),
             ]}
-            showTabs={true} // Define se as tabs devem ser exibidas
-            activeTab={activeTab} // Passa o estado activeTab como propriedade
           />
 
           <CustomToastContainer
@@ -262,4 +274,4 @@ function StageOne() {
   );
 }
 
-export default StageOne;
+export default Stages;

@@ -9,7 +9,7 @@ import {
   StyledOption,
 } from "./StageInputs.js";
 
-const CustomFields = ({
+const StageInputs = ({
   label,
   type,
   placeholder,
@@ -66,4 +66,4 @@ const CustomFields = ({
   );
 };
 
-export default CustomFields;
+export default StageInputs;
