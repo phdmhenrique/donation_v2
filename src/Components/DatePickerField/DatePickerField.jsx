@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { differenceInYears, subYears } from 'date-fns';
+import { differenceInYears, subYears, isValid } from 'date-fns'; // Adicionando a importação do isValid
 import { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -10,6 +10,7 @@ import {
   DateUnique,
   StyledDatePicker,
 } from './DatePickerField.js';
+import './DatePickerField.css';
 
 registerLocale('pt-BR', ptBR);
 
@@ -17,7 +18,9 @@ const DatePickerField = ({ value, onChange, label }) => {
   const currentDate = new Date();
   const minDateFor18YearsOld = subYears(currentDate, 18);
   const datePickerRef = useRef(null);
-  const [selectedDate, setSelectedDate] = useState(value ? new Date(value) : minDateFor18YearsOld);
+  const [selectedDate, setSelectedDate] = useState(
+    value && isValid(new Date(value)) ? new Date(value) : minDateFor18YearsOld // Validando a data antes de atribuir
+  );
 
   const handleDateChange = (date) => {
     setSelectedDate(date);

@@ -38,11 +38,12 @@ export default function Login({
         </TabHeader>
       )}
 
-      {/* Adicionando a propriedade 'key' nos elementos */}
-      {Array.isArray(rightsideInputs) &&
-        rightsideInputs.map((input, index) => (
-          <div key={index}>{input}</div>
-        ))}
+      {/* Verifica se rightsideInputs é um array e mapeia, caso contrário renderiza diretamente */}
+      {Array.isArray(rightsideInputs)
+        ? rightsideInputs.map((input, index) => (
+            <div key={index}>{input}</div>
+          ))
+        : rightsideInputs}
 
       <RightSideButtons className="rightside-buttons">
         {/* Adicionando a propriedade 'key' nos elementos */}

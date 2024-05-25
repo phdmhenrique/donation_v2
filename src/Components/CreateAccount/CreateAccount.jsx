@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import validator from "validator";
@@ -16,10 +16,16 @@ import Button from "../../Components/Button/Button.jsx";
 import imageBanner from "../../Assets/donation-banner.png";
 import SocialMedia from "../../Components/RightSide/SocialMedia/SocialMedia.jsx";
 import CustomFields from "../../Components/CustomFields/CustomFields.jsx";
+import LoadingScreen from '../LoadingScreen/LoadingScreen.jsx'
+
 import { Terms, TermsHightlight } from "./CreateAccount.js";
 import { CustomToastContainer } from "../Notification/Notification.js";
 
 function CreateAccount() {
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     username: "",
@@ -75,9 +81,11 @@ function CreateAccount() {
       toast.error(formErrors[errorField]);
     } else {
       toast.success("A primeira etapa de cadastro foi um sucesso!");
+      setIsLoading(true);
       setTimeout(() => {
+        navigate('/create-account/stages');
         // Redirecionamento para a próxima página ou lógica adicional
-      }, 2000);
+      }, 1300);
     }
   };
 
@@ -130,6 +138,10 @@ function CreateAccount() {
       hasIcon: true,
     },
   ];
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <FullSize>

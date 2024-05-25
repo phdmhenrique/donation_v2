@@ -9,7 +9,7 @@ export const StyledDatePicker = styled(DatePicker)`
 
 export const Container = styled.div`
   max-width: 32rem;
-  height: 8rem;
+  height: 6.2rem;
   display: flex;
   flex-direction: column;
   color: var(--gray-3);

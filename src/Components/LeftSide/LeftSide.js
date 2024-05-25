@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const LeftSideContainer = styled.section`
   width: 50%;
   min-width: 36rem;
+  min-height: 87rem;
   position: relative;
 
   /* Media Queries */

@@ -25,7 +25,7 @@ li {
     outline: 0;
     list-style: none;
     text-decoration: none;
-    font-family: "Uni Neue", sans-serif;
+    font-family: "Uni Neue", sans-serif !important;
 }
 
 :root {
