@@ -10,7 +10,7 @@ import RightSide from "../../RightSide/RightSide.jsx";
 import Footer from "../../Footer/Footer.jsx";
 import Login from "../../RightSide/Login/Login.jsx";
 import Button from "../../Button/Button.jsx";
-import StageInputs from "../../Stage/StageInputs.jsx";
+import StageInputs from "../../StageInputs/StageInputs.jsx";
 import InterestGroup from "../../InterestGroup/InterestGroup.jsx";
 import LoadingScreen from "../../LoadingScreen/LoadingScreen.jsx";
 import { CustomToastContainer } from "../../Notification/Notification.js";
@@ -31,8 +31,8 @@ function Stages() {
   const [formData, setFormData] = useState({
     cellphone: "",
     date: new Date(),
-    state: "",
-    city: "",
+    state: "none",
+    city: "none",
     interests: [],
   });
 
@@ -60,6 +60,7 @@ function Stages() {
 
     if (isFormValid) {
       setActiveTab(2);
+      setIsButtonEnabled(false); // Reset the button state for the second step
     } else {
       const errorField = Object.keys(errors).find((key) => errors[key]);
       if (errorField) {
@@ -72,7 +73,7 @@ function Stages() {
     e.preventDefault();
     const { errors, isFormValid } = validateForm(formData, activeTab, selectedGroupsSecondStep);
     setFormErrors(errors);
-    setIsButtonEnabled(isFormValid);
+    setIsButtonEnabled(isFormValid && selectedGroupsSecondStep.length > 0);
 
     if (isFormValid && selectedGroupsSecondStep.length > 0) {
       toast.success("Cadastro realizado com sucesso!");
@@ -87,38 +88,18 @@ function Stages() {
   };
 
   const handleGroupSelectionChange = (updatedGroups) => {
-    if (activeTab === 2) {
-      setSelectedGroupsSecondStep(updatedGroups);
-    } else {
-      setSelectedInterests(updatedGroups);
-    }
+    setSelectedGroupsSecondStep(updatedGroups);
   };
 
   useEffect(() => {
     const { errors, isFormValid } = validateForm(formData, activeTab, selectedGroupsSecondStep);
+    if (activeTab === 1) {
+      setIsButtonEnabled(isFormValid);
+    } else if (activeTab === 2) {
+      setIsButtonEnabled(selectedGroupsSecondStep.length > 0);
+    }
     setFormErrors(errors);
-    setIsButtonEnabled(isFormValid);
   }, [formData, selectedInterests, selectedGroupsSecondStep, activeTab]);
-
-  const stateOptions = [
-    { value: "none", label: "Selecionar" },
-    { value: "sp", label: "São Paulo" },
-    { value: "rj", label: "Rio de Janeiro" },
-    { value: "mg", label: "Minas Gerais" },
-    { value: "ba", label: "Bahia" },
-    { value: "pr", label: "Paraná" },
-    { value: "am", label: "Amazonas" },
-  ];
-
-  const cityOptions = [
-    { value: "none", label: "Selecionar" },
-    { value: "saopaulo", label: "São Paulo" },
-    { value: "registro", label: "Registro" },
-    { value: "cajati", label: "Cajati" },
-    { value: "jacupiranga", label: "Jacupiranga" },
-    { value: "pariquera-acu", label: "Pariquera-Açu" },
-    { value: "juquia", label: "Juquiá" },
-  ];
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -148,8 +129,8 @@ function Stages() {
                 <StageInputs
                   formData={formData}
                   updateFormData={handleUpdateFormData}
-                  stateOptions={stateOptions}
-                  cityOptions={cityOptions}
+                  // stateOptions={stateOptions}
+                  // cityOptions={cityOptions}
                 />
               ) : (
                 <InterestGroup

@@ -27,8 +27,8 @@ export const validateForm = (formData, activeTab, selectedGroupsSecondStep) => {
   const errors = {
     cellphone: !formData.cellphone ? "Número de telefone é obrigatório." : !validatePhoneNumber(formData.cellphone) ? "Número de telefone inválido" : "",
     date: isAfter(formData.date, minDateFor18YearsOld) ? "Data de nascimento inválida." : "",
-    state: !formData.state ? "Estado é obrigatório." : "",
-    city: !formData.city ? "Cidade é obrigatória." : "",
+    state: validateState(formData.state),
+    city: validateCity(formData.city),
     interests: activeTab === 2 && selectedGroupsSecondStep.length === 0 ? "Selecione ao menos um grupo de interesse!" : "",
   };
 

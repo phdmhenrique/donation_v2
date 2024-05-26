@@ -26,27 +26,28 @@ export const RightsideInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
 `;
 
 export const StyledInfo = styled.div`
-    display: flex;
-    width: 4rem;
-    height: 3rem;
-    color: var(--black);
-    font-size: var(--font__14);
-    border-right: .1rem solid var(--gray-2);
+  display: flex;
+  width: 4rem;
+  height: 3rem;
+  color: var(--black);
+  font-size: var(--font__14);
+  border-right: 0.1rem solid var(--gray-2);
 `;
 
 export const StyledField = styled.div`
-    display: flex;
-    width: 100%;
-    height: 4rem;
-    padding: 0 1rem;
-    border-radius: 0.4rem;
-    border: 0.1rem solid var(--gray-2);
-    background-color: var(--gray-1);
-    transition: 0.2s ease-in-out;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  height: 4rem;
+  padding: 0 1rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--gray-2);
+  background-color: var(--gray-1);
+  transition: 0.2s ease-in-out;
+  align-items: center;
 
   &:focus-within {
     outline: none;
