@@ -24,7 +24,6 @@ function Stages() {
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const [activeTab, setActiveTab] = useState(1);
-  const [selectedInterests, setSelectedInterests] = useState([]);
   const [selectedGroupsSecondStep, setSelectedGroupsSecondStep] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,7 +45,6 @@ function Stages() {
 
   const handleBackButton = () => {
     setActiveTab(1);
-    setSelectedInterests(selectedGroupsSecondStep);
   };
 
   const handleUpdateFormData = (fieldName, fieldValue) => {
@@ -60,7 +58,6 @@ function Stages() {
 
     if (isFormValid) {
       setActiveTab(2);
-      setIsButtonEnabled(false); // Reset the button state for the second step
     } else {
       const errorField = Object.keys(errors).find((key) => errors[key]);
       if (errorField) {
@@ -99,7 +96,7 @@ function Stages() {
       setIsButtonEnabled(selectedGroupsSecondStep.length > 0);
     }
     setFormErrors(errors);
-  }, [formData, selectedInterests, selectedGroupsSecondStep, activeTab]);
+  }, [formData, selectedGroupsSecondStep, activeTab]);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -155,7 +152,7 @@ function Stages() {
                 <Button
                   key="continue"
                   onClick={handleFirstStepValidation}
-                  disabled={!isButtonEnabled}
+                  addStatusClass={isButtonEnabled ? "active" : "disabled"}
                 >
                   Continuar
                 </Button>
@@ -163,7 +160,7 @@ function Stages() {
                 <Button
                   key="confirm"
                   onClick={handleSecondStepValidation}
-                  disabled={!isButtonEnabled}
+                  addStatusClass={isButtonEnabled ? "active" : "disabled"}
                 >
                   Confirmar
                 </Button>

@@ -1,4 +1,13 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { MdArrowDropUp } from "react-icons/md";
+
+export const ArrowIcon = styled(MdArrowDropUp)`
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease-in-out;
+  transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0)")};
+  color: var(--primary);
+`;
 
 export const Select = styled.div`
   width: 100%;
@@ -71,15 +80,4 @@ export const Option = styled.div`
   &:hover {
     color: ${({ active }) => (active ? 'var(--black)' : 'var(--primary)' )};
   }
-`;
-
-export const Arrow = styled.div`
-  width: 0;
-  height: 0;
-  border-left: 0.5rem solid transparent;
-  border-right: 0.5rem solid transparent;
-  border-top: ${({ isOpen }) => (isOpen ? "none" : "0.5rem solid var(--primary)")};
-  border-bottom: ${({ isOpen }) => (isOpen ? "0.5rem solid var(--primary)" : "none")};
-  transition: transform 0.2s ease-in-out;
-  transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0)")};
 `;

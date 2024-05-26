@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Select, OptionsContainer, Option, Arrow } from "./DropdownForm.js";
-import { MdArrowDropUp } from "react-icons/md";
+import { Select, OptionsContainer, Option, ArrowIcon } from "./DropdownForm.js";
 
 const DropdownForm = ({ value, onChange, options }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +33,7 @@ const DropdownForm = ({ value, onChange, options }) => {
     <div ref={dropdownRef}>
       <Select onClick={handleSelectClick}>
         {selectedOption.label}
-        <Arrow isOpen={isOpen} />
+        <ArrowIcon isOpen={isOpen} />
       </Select>
       <OptionsContainer open={isOpen}>
         {options.map((option) => (
