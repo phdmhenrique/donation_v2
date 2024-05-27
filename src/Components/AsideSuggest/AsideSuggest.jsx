@@ -10,18 +10,18 @@ const suggestions = [
         userPhoto: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
+        id: 3,
+        name: "Jessica Wilson",
+        username: "@jessicawilson",
+        backgroundImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=60",
+        userPhoto: "https://randomuser.me/api/portraits/women/50.jpg"
+    },
+    {
         id: 2,
         name: "Jane Doe",
         username: "@janedoe",
         backgroundImage: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=60",
         userPhoto: "https://randomuser.me/api/portraits/women/68.jpg"
-    },
-    {
-        id: 3,
-        name: "John Smith",
-        username: "@johnsmith",
-        backgroundImage: "https://images.unsplash.com/photo-1517817748496-9c3cba602d4e?auto=format&fit=crop&w=600&q=60",
-        userPhoto: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
         id: 4,

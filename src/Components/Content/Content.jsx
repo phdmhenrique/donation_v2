@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import { Container, Table } from './Content.js'
+import { Container } from "./Content.js";
+
+import Tabs from "../Tabs/Tabs.jsx";
+import CreateGroup from '../CreateGroup/CreateGroup.jsx';
 
 export default function Content() {
   return (
     <Container>
-        <Table></Table>
+      <CreateGroup />
+      <Tabs />
     </Container>
-  )
+  );
 }
