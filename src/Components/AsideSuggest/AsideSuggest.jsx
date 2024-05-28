@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Suggest, SuggestContainer, UserPhoto, NameUser, SuggestTitle } from '../AsideSuggest/AsideSuggest.js';
+import SearchInput from '../SearchInput/SearchInput.jsx';
 
 const suggestions = [
     {
@@ -112,6 +113,7 @@ const suggestions = [
 function AsideSuggest() {
     return (
         <Container>
+            <SearchInput />    
             <SuggestTitle>
                 <span>Sugestões</span>
                 <button>Ver tudo</button>

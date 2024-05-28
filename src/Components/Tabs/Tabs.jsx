@@ -3,7 +3,6 @@ import {
   Line,
   Container,
   TabsContainer,
-  TabSearch,
   TabList,
   Tab,
   ResultsAndFilters,
@@ -12,7 +11,7 @@ import {
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
 import UserDonationIcon from "../../Icons/UserDonationIcon.jsx";
 import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
-import SearchIcon from '../../Icons/SearchIcon.jsx';
+import SearchInput from '../SearchInput/SearchInput.jsx';
 
 // Componentes
 import CardGroup from '../CardGroup/CardGroup.jsx';
@@ -54,10 +53,7 @@ const Tabs = () => {
       <Line />
       <Container>
         <TabsContainer>
-          <TabSearch>
-            <input placeholder="Procurar" />
-            <SearchIcon />
-          </TabSearch>
+          <SearchInput />
 
           <TabList>
             {tabData.map((tab, index) => (

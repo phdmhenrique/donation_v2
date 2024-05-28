@@ -17,6 +17,7 @@ export const SuggestTitle = styled.div`
     align-items: center;
     justify-content: space-between;
     font-size: var(--font__16);
+    margin: 3.2rem 0 .4rem 0;
 
     & span {
         font-weight: bold;
@@ -25,7 +26,7 @@ export const SuggestTitle = styled.div`
     & button {
         background: none;
         border: none;
-        color: var(--primary);
+        color: var(--gray-4);
         cursor: pointer;
         font-size: var(--font__14);
     }

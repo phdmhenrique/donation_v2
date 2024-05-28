@@ -48,7 +48,7 @@ li {
     --gray-1: #F1F1F1;
     --gray-2: #E4E4E4;
     --gray-3: #7B7B7B;
-    --gray-4: #585858;
+    --gray-4: #C8C8C8;
     --gray-5: #3F4243;
     --gray-6: #3F4243;
     --gray-7: #A9A9A9;

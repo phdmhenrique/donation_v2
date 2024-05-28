@@ -92,7 +92,13 @@ export const Title = styled.div`
 export const Demonstrator = styled.div`
   grid-area: demonstrator;
   display: flex;
+  align-items: center;
   gap: 0.4rem;
+
+& svg {
+  width: 1.6rem;
+    height: 1.6rem;
+}
 
   & path {
     stroke: var(--primary);
