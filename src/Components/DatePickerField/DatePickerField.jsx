@@ -56,7 +56,7 @@ const DatePickerField = ({ value, onChange, label }) => {
           'Selecione a Data'
         )}
       </DateField>
-      <StyledDatePicker
+    <StyledDatePicker
         ref={datePickerRef}
         selected={selectedDate}
         onChange={handleDateChange}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Card,
@@ -11,6 +11,9 @@ import {
   JoinButton,
   PhotoUsersFromGroup,
 } from "./CardGroup.js";
+
+// Components
+import ConfirmModal from '../ConfirmationModal/ConfirmationModal.jsx';
 
 import GroupImage from "../../Assets/prato.png";
 
@@ -183,12 +186,47 @@ const fetchGroupData = () => {
 };
 
 const CardGroup = () => {
-  const groupData = fetchGroupData();
+  const [groups, setGroups] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedGroupId, setSelectedGroupId] = useState(null);
+  const [requestSentGroups, setRequestSentGroups] = useState([]);
+  const [hoveringGroupId, setHoveringGroupId] = useState(null);
+
+  React.useEffect(() => {
+    const groupData = fetchGroupData();
+    setGroups(groupData);
+  }, []);
+
+  // modal open
+  const openJoinModal = (groupId) => {
+    setSelectedGroupId(groupId);
+    setModalOpen(true);
+  }
+
+  // modal close 
+  const closeJoinModal = () => {
+    setModalOpen(false);
+    setSelectedGroupId(null);
+  }
+
+  // modal confirm
+  const handleConfirmJoinModal = () => {
+    if (selectedGroupId !== null) {
+      setRequestSentGroups((prev) => [...prev, selectedGroupId]);
+      closeJoinModal();
+    }
+  }
+
+  const handleCancelRequest = (groupId) => {
+    setRequestSentGroups((prev) => prev.filter((id) => id !== groupId));
+  }
 
   return (
     <Container>
-      {groupData.map(group => (
-        <Card key={group.id}>
+      {groups.map(group => (
+        <Card key={group.id}
+          onMouseEnter={() => setHoveringGroupId(group.id)}
+          onMouseLeave={() => setHoveringGroupId(null)}>
           <ImageCard>
             <img src={group.image} alt="Group" />
           </ImageCard>
@@ -215,10 +253,23 @@ const CardGroup = () => {
               <LocationIcon />
               {group.address}
             </Address>
-            <JoinButton>Se juntar</JoinButton>
+            <JoinButton
+              onClick={() => requestSentGroups.includes(group.id) ? handleCancelRequest(group.id) : openJoinModal(group.id)}
+              disabled={hoveringGroupId !== group.id && requestSentGroups.includes(group.id)}
+
+            >
+              {hoveringGroupId === group.id && requestSentGroups.includes(group.id) ? 'Cancelar Solicitação' : requestSentGroups.includes(group.id) ? 'Solicitação Enviada' : 'Juntar-se'}
+            </JoinButton>
+
           </ContentCard>
         </Card>
       ))}
+
+      <ConfirmModal
+        isOpen={modalOpen}
+        onClose={closeJoinModal}
+        onConfirm={handleConfirmJoinModal}
+      />
     </Container>
   );
 };

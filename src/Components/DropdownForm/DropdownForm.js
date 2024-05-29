@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { MdArrowDropUp } from "react-icons/md";
 
 export const ArrowIcon = styled(MdArrowDropUp)`
-  width: 1rem;
-  height: 1rem;
+  width: 3rem;
+  height: 3rem;
   transition: transform 0.2s ease-in-out;
   transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0)")};
   color: var(--primary);
@@ -51,15 +51,16 @@ export const OptionsContainer = styled.div`
 
   /* Estilos para o scrollbar */
   &::-webkit-scrollbar {
-    width: .6rem;
+    width: 1.1rem;
   }
-
+  
   &::-webkit-scrollbar-track {
     width: .7rem;
     background: var(--white);
   }
-
+  
   &::-webkit-scrollbar-thumb {
+    border: .2rem solid var(--white);
     background-color: var(--primary);
     border-radius: .5rem;
     cursor: pointer;

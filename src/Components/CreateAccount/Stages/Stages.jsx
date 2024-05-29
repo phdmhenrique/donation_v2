@@ -76,7 +76,7 @@ function Stages() {
       toast.success("Cadastro realizado com sucesso!");
       setIsLoading(true);
       setTimeout(() => {
-        navigate("/home");
+        navigate("/");
       }, 1300);
     } else {
       setIsButtonEnabled(false);
@@ -126,8 +126,6 @@ function Stages() {
                 <StageInputs
                   formData={formData}
                   updateFormData={handleUpdateFormData}
-                  // stateOptions={stateOptions}
-                  // cityOptions={cityOptions}
                 />
               ) : (
                 <InterestGroup

@@ -32,7 +32,7 @@
 
 /* Estilizando o cabeçalho do datepicker */
 .react-datepicker__header {
-    background-color: var(--quaternary);
+    background-color: var(--white-smoke);
     border-bottom: .1rem solid var(--gray-4);
     border-top-left-radius: 0.3rem;
     font-size: var(--font__14);
