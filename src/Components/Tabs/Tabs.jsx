@@ -59,7 +59,7 @@ const Tabs = () => {
             {tabData.map((tab, index) => (
               <Tab
                 key={index}
-                active={activeTab === index}
+                active={activeTab === index ? "true" : undefined}
                 onClick={() => setActiveTab(index)}
               >
                 {tab.icon}

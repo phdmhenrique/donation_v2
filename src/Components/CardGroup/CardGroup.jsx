@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Card,
@@ -6,6 +6,8 @@ import {
   ContentCard,
   Title,
   Demonstrator,
+  PhotoUserUnit,
+  InfoNumberOfDonation,
   Description,
   Address,
   JoinButton,
@@ -192,7 +194,7 @@ const CardGroup = () => {
   const [requestSentGroups, setRequestSentGroups] = useState([]);
   const [hoveringGroupId, setHoveringGroupId] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const groupData = fetchGroupData();
     setGroups(groupData);
   }, []);
@@ -217,6 +219,7 @@ const CardGroup = () => {
     }
   }
 
+  // cancelar solicitação
   const handleCancelRequest = (groupId) => {
     setRequestSentGroups((prev) => prev.filter((id) => id !== groupId));
   }
@@ -224,11 +227,9 @@ const CardGroup = () => {
   return (
     <Container>
       {groups.map(group => (
-        <Card key={group.id}
-          onMouseEnter={() => setHoveringGroupId(group.id)}
-          onMouseLeave={() => setHoveringGroupId(null)}>
+        <Card key={group.id}>
           <ImageCard>
-            <img src={group.image} alt="Group" />
+            <img src={group.image} alt={group.title} />
           </ImageCard>
           <ContentCard>
             <Title>{group.title}</Title>
@@ -242,25 +243,36 @@ const CardGroup = () => {
                 ))}
                 {group.users.length > 5 && (
                   <div>
-                    <span>+{group.users.length - 5}</span>
+                    <PhotoUserUnit>+{group.users.length - 5}</PhotoUserUnit>
                   </div>
                 )}
               </PhotoUsersFromGroup>
-              <span><strong>+{group.donationsPerDay}</strong> Doações por dia</span>
+              <InfoNumberOfDonation><strong>+{group.donationsPerDay}</strong> Doações por dia</InfoNumberOfDonation>
             </Demonstrator>
             <Description>{group.description}</Description>
             <Address>
               <LocationIcon />
               {group.address}
             </Address>
-            <JoinButton
-              onClick={() => requestSentGroups.includes(group.id) ? handleCancelRequest(group.id) : openJoinModal(group.id)}
-              disabled={hoveringGroupId !== group.id && requestSentGroups.includes(group.id)}
-
-            >
-              {hoveringGroupId === group.id && requestSentGroups.includes(group.id) ? 'Cancelar Solicitação' : requestSentGroups.includes(group.id) ? 'Solicitação Enviada' : 'Juntar-se'}
-            </JoinButton>
-
+            {requestSentGroups.includes(group.id) ? (
+              <JoinButton
+                onMouseEnter={() => setHoveringGroupId(group.id)}
+                onMouseLeave={() => setHoveringGroupId(null)}
+                onClick={() => handleCancelRequest(group.id)}
+                disabled={hoveringGroupId !== group.id}
+              >
+                {hoveringGroupId === group.id ? 'Cancelar Solicitação' : 'Solicitação Enviada'}
+              </JoinButton>
+            ) : (
+              <JoinButton
+                onMouseEnter={() => setHoveringGroupId(group.id)}
+                onMouseLeave={() => setHoveringGroupId(null)}
+                onClick={() => openJoinModal(group.id)}
+                disabled={hoveringGroupId !== group.id}
+              >
+                {hoveringGroupId === group.id ? 'Se Juntar' : 'Se Juntar'}
+              </JoinButton>
+            )}
           </ContentCard>
         </Card>
       ))}
@@ -269,6 +281,7 @@ const CardGroup = () => {
         isOpen={modalOpen}
         onClose={closeJoinModal}
         onConfirm={handleConfirmJoinModal}
+        groupName={groups.find(group => group.id === selectedGroupId)?.title || ''}
       />
     </Container>
   );

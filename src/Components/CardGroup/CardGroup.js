@@ -95,27 +95,35 @@ export const Demonstrator = styled.div`
   align-items: center;
   gap: 0.4rem;
 
-& svg {
-  width: 1.6rem;
-    height: 1.6rem;
-}
+  & svg {
+    width: 1.6rem;
+      height: 1.6rem;
+  }
 
   & path {
     stroke: var(--primary);
   }
 
-  & span {
-    font-size: var(--font__16);
-    border-radius: 0.3rem;
-    font-weight: 400;
-    color: var(--gray-5);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+`;
 
-    strong {
-      font-weight: 700;
-    }
+export const PhotoUserUnit = styled.span`
+  font-size: var(--font__12);
+  font-weight: 600;
+  color: var(--gray-6);
+  overflow: hidden;
+`;
+
+export const InfoNumberOfDonation = styled.span`
+  font-size: var(--font__16);
+  border-radius: 0.3rem;
+  font-weight: 400;
+  color: var(--gray-5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  strong {
+    font-weight: 700;
   }
 `;
 
@@ -125,6 +133,7 @@ export const Description = styled.div`
   font-size: var(--font__12);
   font-weight: 500;
   line-height: 1.2rem;
+  padding: 1.5rem 0;
 `;
 
 export const Address = styled.div`
@@ -160,7 +169,8 @@ export const JoinButton = styled.button`
 
 export const PhotoUsersFromGroup = styled.div`
   width: 100%;
-  max-width: 8.6rem;
+  max-width: 9.6rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   position: relative;
@@ -168,9 +178,12 @@ export const PhotoUsersFromGroup = styled.div`
   & div {
     width: 2.3rem;
     height: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    border: 0.1rem solid var(--white);
-    background-color: black;
+    outline: 0.2rem solid var(--white);
+    background-color: var(--white-smoke);
     position: absolute;
 
     & img {

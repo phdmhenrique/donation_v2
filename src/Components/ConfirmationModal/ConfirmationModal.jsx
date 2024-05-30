@@ -1,16 +1,27 @@
 import React from 'react';
-import { ModalOverlay, ModalContent, Button, ConfirmButton, CancelButton } from './ConfirmationModal.js'
+import { ModalOverlay, ModalContent, ModalContentInfos, ModalContentButtons, ModalHeader } from './ConfirmationModal.js'
 
-const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
+import Button from '../Button/Button.jsx';
+
+// icon
+import { IoMdCloseCircle } from "react-icons/io";
+
+const ConfirmationModal = ({ isOpen, groupName, onConfirm, onClose }) => {
   if (!isOpen) return null;
 
   return (
     <ModalOverlay>
       <ModalContent>
-        <h2>Se Juntar</h2>
-        <p>Enviar solicitação para ingressar em "Grupo da Solidariedade"</p>
-        <CancelButton onClick={onClose}>Cancelar</CancelButton>
-        <ConfirmButton onClick={onConfirm}>Enviar</ConfirmButton>
+        <ModalHeader><IoMdCloseCircle onClick={onClose} /></ModalHeader>
+        <ModalContentInfos>
+          <h2>Se Juntar</h2>
+          <p>Enviar solicitação para ingressar em: </p>
+          <span>"{groupName}"</span>
+        </ModalContentInfos>
+        <ModalContentButtons>
+          <Button addStatusClass="active" onClick={onConfirm}>Enviar</Button>
+          <Button addStatusClass="inactive" onClick={onClose}>Cancelar</Button>
+        </ModalContentButtons>
       </ModalContent>
     </ModalOverlay>
   );

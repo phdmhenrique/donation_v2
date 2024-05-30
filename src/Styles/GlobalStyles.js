@@ -50,7 +50,7 @@ li {
     --gray-3: #7B7B7B;
     --gray-4: #C8C8C8;
     --gray-5: #3F4243;
-    --gray-6: #3F4243;
+    --gray-6: #545454;
     --gray-7: #A9A9A9;
 
     /* tamanhos de fonte */
