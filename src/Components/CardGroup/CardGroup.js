@@ -159,7 +159,7 @@ export const JoinButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #ff4242;
+    background-color: var(--quinary);
   }
 
   @media (max-width: 960px) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Line,
   Container,
@@ -8,17 +8,27 @@ import {
   ResultsAndFilters,
   TabContent,
 } from "./Tabs.js";
+
+// Import de API
+import { fetchGroupData } from "../../api/fetchGroupData .js";
+
+// Icons
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
 import UserDonationIcon from "../../Icons/UserDonationIcon.jsx";
 import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
-import SearchInput from '../SearchInput/SearchInput.jsx';
 
 // Componentes
 import CardGroup from '../CardGroup/CardGroup.jsx';
+import SearchInput from '../SearchInput/SearchInput.jsx';
 
-// Componente principal de Tabs
 const Tabs = () => {
+  const [results, setResults] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    const resultsData = fetchGroupData();
+    setResults(resultsData)
+  }, []);
 
   const tabData = [
     {
@@ -69,7 +79,9 @@ const Tabs = () => {
           </TabList>
         </TabsContainer>
       </Container>
-      <ResultsAndFilters>Exibindo 3 de 33 resultados</ResultsAndFilters>
+      <ResultsAndFilters>
+        Exibindo {results.length} de {results.length} resultados
+      </ResultsAndFilters>
       <Line />
       <TabContent>{tabData[activeTab].content}</TabContent>
     </>
