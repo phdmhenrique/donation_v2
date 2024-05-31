@@ -164,9 +164,24 @@ export const JoinButton = styled.button`
   cursor: pointer;
   transition: all 0.2s ease;
 
+  ${({ $isRequested }) =>
+    $isRequested &&
+    `
+      background-color: var(--secondary);
+      color: var(--black);
+  `}
+
   &:hover {
     background-color: var(--quinary);
   }
+
+  ${({ $isRequested }) =>
+    $isRequested &&
+    `
+      &:hover {
+        background-color: var(--quaternary);
+    }
+  `}
 
   @media (max-width: 960px) {
     align-self: center;

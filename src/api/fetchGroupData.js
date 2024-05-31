@@ -16,7 +16,8 @@ export const fetchGroupData = () => {
           "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
           "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
           "https://via.placeholder.com/50/000000/FFFFFF?text=U7",
-        ]
+        ],
+        solicited: false,
       },
       {
         id: 2,
@@ -31,7 +32,8 @@ export const fetchGroupData = () => {
           "https://via.placeholder.com/50/FF0000/FFFFFF?text=U3",
           "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
           "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U5",
-        ]
+        ],
+        solicited: false,
       },
       {
         id: 3,
@@ -47,7 +49,8 @@ export const fetchGroupData = () => {
           "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
           "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
           "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
-        ]
+        ],
+        solicited: false,
       },
       {
         id: 4,
@@ -64,7 +67,8 @@ export const fetchGroupData = () => {
           "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
           "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
           "https://via.placeholder.com/50/000000/FFFFFF?text=U7",
-        ]
+        ],
+        solicited: false,
       },
       {
         id: 5,
@@ -79,7 +83,8 @@ export const fetchGroupData = () => {
           "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
           "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
           "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-        ]
+        ],
+        solicited: false,
       },
       // {
       //   id: 6,
@@ -94,8 +99,8 @@ export const fetchGroupData = () => {
       //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
       //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
       //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-      //   ]
-      // },
+      //   ],
+      // solicited: false   // },
       // {
       //   id: 7,
       //   title: "Grupo de Resgate Animal",
@@ -110,8 +115,8 @@ export const fetchGroupData = () => {
       //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
       //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
       //     "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
-      //   ]
-      // },
+      //   ],
+      // solicited: false   // },
       // {
       //   id: 8,
       //   title: "Grupo de Apoio aos Idosos",
@@ -125,8 +130,8 @@ export const fetchGroupData = () => {
       //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
       //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
       //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-      //   ]
-      // },
+      //   ],
+      // solicited: false   // },
       // {
       //   id: 9,
       //   title: "Grupo de Apoio a Vítimas de Violência",
@@ -140,8 +145,8 @@ export const fetchGroupData = () => {
       //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
       //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
       //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-      //   ]
-      // },
+      //   ],
+      // solicited: false   // },
       // {
       //   id: 10,
       //   title: "Grupo de Reflorestamento",
@@ -157,7 +162,7 @@ export const fetchGroupData = () => {
       //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
       //     "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
       //     "https://via.placeholder.com/50/000000/FFFFFF?text=U7",
-      //   ]
-      // }
+      //   ],
+      // solicited: false   // }
     ];
   };

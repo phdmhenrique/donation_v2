@@ -58,9 +58,5 @@ export const Tab = styled.button`
 `;
 
 export const TabContent = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  padding: 0 1.4rem;
   margin-top: 1.2rem;
 `;
