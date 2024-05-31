@@ -81,83 +81,83 @@ export const fetchGroupData = () => {
           "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
         ]
       },
-      {
-        id: 6,
-        title: "Grupo de Apoio Jurídico",
-        donationsPerDay: 9,
-        description: "Oferecemos assistência jurídica gratuita para pessoas que não têm condições de pagar por advogados.",
-        address: "Avenida dos Advogados, 200, Brasília-DF",
-        image: "https://via.placeholder.com/150/00FFFF/808080?text=Grupo+6",
-        users: [
-          "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
-          "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
-          "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
-          "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
-          "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-        ]
-      },
-      {
-        id: 7,
-        title: "Grupo de Resgate Animal",
-        donationsPerDay: 14,
-        description: "Resgatamos animais abandonados e maltratados, proporcionando cuidados veterinários e lares temporários.",
-        address: "Rua dos Animais, 300, Porto Alegre-RS",
-        image: "https://via.placeholder.com/150/FF6347/808080?text=Grupo+7",
-        users: [
-          "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
-          "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
-          "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
-          "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
-          "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-          "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
-        ]
-      },
-      {
-        id: 8,
-        title: "Grupo de Apoio aos Idosos",
-        donationsPerDay: 5,
-        description: "Oferecemos suporte e companhia para idosos em lares de repouso.",
-        address: "Rua da Esperança, 50, Salvador-BA",
-        image: "https://via.placeholder.com/150/8A2BE2/808080?text=Grupo+8",
-        users: [
-          "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
-          "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
-          "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
-          "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
-          "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-        ]
-      },
-      {
-        id: 9,
-        title: "Grupo de Apoio a Vítimas de Violência",
-        donationsPerDay: 11,
-        description: "Prestamos assistência a vítimas de violência doméstica e abuso, oferecendo apoio legal e psicológico.",
-        address: "Rua da Proteção, 70, Recife-PE",
-        image: "https://via.placeholder.com/150/FFD700/808080?text=Grupo+9",
-        users: [
-          "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
-          "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
-          "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
-          "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
-          "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-        ]
-      },
-      {
-        id: 10,
-        title: "Grupo de Reflorestamento",
-        donationsPerDay: 6,
-        description: "Nosso grupo é dedicado ao reflorestamento de áreas desmatadas e à educação ambiental.",
-        address: "Rua Verde, 90, Manaus-AM",
-        image: "https://via.placeholder.com/150/32CD32/808080?text=Grupo+10",
-        users: [
-          "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
-          "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
-          "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
-          "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
-          "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
-          "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
-          "https://via.placeholder.com/50/000000/FFFFFF?text=U7",
-        ]
-      }
+      // {
+      //   id: 6,
+      //   title: "Grupo de Apoio Jurídico",
+      //   donationsPerDay: 9,
+      //   description: "Oferecemos assistência jurídica gratuita para pessoas que não têm condições de pagar por advogados.",
+      //   address: "Avenida dos Advogados, 200, Brasília-DF",
+      //   image: "https://via.placeholder.com/150/00FFFF/808080?text=Grupo+6",
+      //   users: [
+      //     "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
+      //     "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
+      //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
+      //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
+      //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
+      //   ]
+      // },
+      // {
+      //   id: 7,
+      //   title: "Grupo de Resgate Animal",
+      //   donationsPerDay: 14,
+      //   description: "Resgatamos animais abandonados e maltratados, proporcionando cuidados veterinários e lares temporários.",
+      //   address: "Rua dos Animais, 300, Porto Alegre-RS",
+      //   image: "https://via.placeholder.com/150/FF6347/808080?text=Grupo+7",
+      //   users: [
+      //     "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
+      //     "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
+      //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
+      //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
+      //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
+      //     "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
+      //   ]
+      // },
+      // {
+      //   id: 8,
+      //   title: "Grupo de Apoio aos Idosos",
+      //   donationsPerDay: 5,
+      //   description: "Oferecemos suporte e companhia para idosos em lares de repouso.",
+      //   address: "Rua da Esperança, 50, Salvador-BA",
+      //   image: "https://via.placeholder.com/150/8A2BE2/808080?text=Grupo+8",
+      //   users: [
+      //     "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
+      //     "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
+      //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
+      //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
+      //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
+      //   ]
+      // },
+      // {
+      //   id: 9,
+      //   title: "Grupo de Apoio a Vítimas de Violência",
+      //   donationsPerDay: 11,
+      //   description: "Prestamos assistência a vítimas de violência doméstica e abuso, oferecendo apoio legal e psicológico.",
+      //   address: "Rua da Proteção, 70, Recife-PE",
+      //   image: "https://via.placeholder.com/150/FFD700/808080?text=Grupo+9",
+      //   users: [
+      //     "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
+      //     "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
+      //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
+      //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
+      //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
+      //   ]
+      // },
+      // {
+      //   id: 10,
+      //   title: "Grupo de Reflorestamento",
+      //   donationsPerDay: 6,
+      //   description: "Nosso grupo é dedicado ao reflorestamento de áreas desmatadas e à educação ambiental.",
+      //   address: "Rua Verde, 90, Manaus-AM",
+      //   image: "https://via.placeholder.com/150/32CD32/808080?text=Grupo+10",
+      //   users: [
+      //     "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
+      //     "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",
+      //     "https://via.placeholder.com/50/0000FF/FFFFFF?text=U3",
+      //     "https://via.placeholder.com/50/FFFF00/FFFFFF?text=U4",
+      //     "https://via.placeholder.com/50/FF00FF/FFFFFF?text=U5",
+      //     "https://via.placeholder.com/50/00FFFF/FFFFFF?text=U6",
+      //     "https://via.placeholder.com/50/000000/FFFFFF?text=U7",
+      //   ]
+      // }
     ];
   };

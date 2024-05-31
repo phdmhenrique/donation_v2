@@ -57,15 +57,6 @@ export const Tab = styled.button`
   }
 `;
 
-export const ResultsAndFilters = styled.div`
-  padding: 0 1.4rem;
-  margin: 1.2rem 0;
-  
-  font-size: var(--font__16);
-  color: var(--gray-3);
-  font-weight: bold;
-`;
-
 export const TabContent = styled.section`
   display: flex;
   flex-direction: column;

@@ -5,12 +5,8 @@ import {
   TabsContainer,
   TabList,
   Tab,
-  ResultsAndFilters,
   TabContent,
 } from "./Tabs.js";
-
-// Import de API
-import { fetchGroupData } from "../../api/fetchGroupData .js";
 
 // Icons
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
@@ -22,13 +18,7 @@ import CardGroup from '../CardGroup/CardGroup.jsx';
 import SearchInput from '../SearchInput/SearchInput.jsx';
 
 const Tabs = () => {
-  const [results, setResults] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
-
-  useEffect(() => {
-    const resultsData = fetchGroupData();
-    setResults(resultsData)
-  }, []);
 
   const tabData = [
     {
@@ -79,10 +69,6 @@ const Tabs = () => {
           </TabList>
         </TabsContainer>
       </Container>
-      <ResultsAndFilters>
-        Exibindo {results.length} de {results.length} resultados
-      </ResultsAndFilters>
-      <Line />
       <TabContent>{tabData[activeTab].content}</TabContent>
     </>
   );

@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const ResultsAndFilters = styled.div`
+  font-size: var(--font__16);
+  color: var(--gray-3);
+  font-weight: 500;
+`;
+
 export const Container = styled.div`
   width: 100%;
   display: flex;
