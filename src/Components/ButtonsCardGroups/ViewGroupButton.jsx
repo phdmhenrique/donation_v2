@@ -1,12 +1,19 @@
-// Buttons/ViewGroupButton.jsx
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { JoinButton } from "../CardGroup/CardGroup.js";
 
-const ViewGroupButton = ({ groupId }) => (
-  <JoinButton>
-    Visualizar Grupo
-  </JoinButton>
-);
+const ViewGroupButton = ({ groupId }) => {
+  const navigate = useNavigate();
+
+  const handleViewGroup = () => {
+    navigate(`/group/${groupId}`);
+  };
+
+  return (
+    <JoinButton onClick={handleViewGroup}>
+      Visualizar Grupo
+    </JoinButton>
+  );
+};
 
 export default ViewGroupButton;

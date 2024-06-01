@@ -33,45 +33,51 @@ const Tabs = () => {
     {
       icon: <DashboardIcon />,
       title: "Geral",
-      content: (groups, sentRequests, openJoinModal, handleCancelRequest, hoveringGroupId, setHoveringGroupId) => (
+      content: (groups, sentRequests, openJoinModal, handleCancelRequest, openCancelModal, hoveringGroupId, setHoveringGroupId) => (
         <CardGroup
           groups={groups}
           sentRequests={sentRequests}
           ButtonComponent={JoinCancelButton}
           openJoinModal={openJoinModal}
           handleCancelRequest={handleCancelRequest}
+          openCancelModal={openCancelModal}
           hoveringGroupId={hoveringGroupId}
           setHoveringGroupId={setHoveringGroupId}
+          noDataMessage="Não há grupos para serem carregados." // Adicionado
         />
       ),
     },
     {
       icon: <UserDonationIcon />,
       title: "Meus Grupos",
-      content: (groups, sentRequests, openJoinModal, handleCancelRequest, hoveringGroupId, setHoveringGroupId) => (
+      content: (groups, sentRequests, openJoinModal, handleCancelRequest, openCancelModal, hoveringGroupId, setHoveringGroupId) => (
         <CardGroup
           groups={groups}
           sentRequests={sentRequests}
           ButtonComponent={ViewGroupButton}
           openJoinModal={openJoinModal}
           handleCancelRequest={handleCancelRequest}
+          openCancelModal={openCancelModal}
           hoveringGroupId={hoveringGroupId}
           setHoveringGroupId={setHoveringGroupId}
+          noDataMessage="Você ainda não participa de nenhum grupo." // Adicionado
         />
       ),
     },
     {
       icon: <NewDonationIcon />,
       title: "Solicitações",
-      content: (groups, sentRequests, openJoinModal, handleCancelRequest, hoveringGroupId, setHoveringGroupId) => (
+      content: (groups, sentRequests, openJoinModal, handleCancelRequest, openCancelModal, hoveringGroupId, setHoveringGroupId) => (
         <CardGroup
           groups={groups.filter((group) => group.solicited)}
           sentRequests={sentRequests}
           ButtonComponent={RemoveRequestButton}
           openJoinModal={openJoinModal}
           handleCancelRequest={handleCancelRequest}
+          openCancelModal={openCancelModal}
           hoveringGroupId={hoveringGroupId}
           setHoveringGroupId={setHoveringGroupId}
+          noDataMessage="Não há solicitações para serem carregadas." // Adicionado
         />
       ),
     },
@@ -82,7 +88,9 @@ const Tabs = () => {
   const [sentRequests, setSentRequests] = useState([]);
   const [hoveringGroupId, setHoveringGroupId] = useState(null);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
+  const [groupName, setGroupName] = useState(""); // Adicionar estado para nome da comunidade
   const [modalOpen, setModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -110,6 +118,12 @@ const Tabs = () => {
     setSelectedGroupId(null);
   };
 
+  const openCancelModal = (groupId, groupName) => {
+    setSelectedGroupId(groupId);
+    setGroupName(groupName); // Adicionando o nome da comunidade ao estado
+    setIsCancelModalOpen(true); // Abrir modal de cancelamento
+  };
+
   const handleConfirmJoinModal = () => {
     if (selectedGroupId !== null) {
       updateGroupData(selectedGroupId, true);
@@ -121,6 +135,7 @@ const Tabs = () => {
   const handleCancelRequest = (groupId) => {
     updateGroupData(groupId, false);
     setSentRequests((prev) => prev.filter((id) => id !== groupId));
+    setIsCancelModalOpen(false); // Fechar modal de cancelamento
   };
 
   return (
@@ -141,7 +156,15 @@ const Tabs = () => {
         </TabList>
       </TabsContainer>
       <TabContent>
-        {tabData[activeTab].content(groupData, sentRequests, openJoinModal, handleCancelRequest, hoveringGroupId, setHoveringGroupId)}
+        {tabData[activeTab].content(
+          groupData,
+          sentRequests,
+          openJoinModal,
+          handleCancelRequest,
+          openCancelModal,
+          hoveringGroupId,
+          setHoveringGroupId
+        )}
       </TabContent>
       <ConfirmModal
         isOpen={modalOpen}
@@ -150,6 +173,13 @@ const Tabs = () => {
         groupName={
           groupData.find((group) => group.id === selectedGroupId)?.title || ""
         }
+      />
+      <ConfirmModal
+        isOpen={isCancelModalOpen}
+        onClose={() => setIsCancelModalOpen(false)} // Fechar modal de cancelamento
+        onConfirm={() => handleCancelRequest(selectedGroupId)} // Confirmar cancelamento
+        groupName={groupName} // Usar estado para o nome da comunidade
+        isCancel={true}
       />
     </Container>
   );

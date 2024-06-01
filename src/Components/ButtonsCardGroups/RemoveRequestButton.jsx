@@ -1,9 +1,9 @@
 import React from 'react';
 import { JoinButton } from "../CardGroup/CardGroup.js";
 
-const RemoveRequestButton = ({ groupId, handleCancelRequest }) => {
+const RemoveRequestButton = ({ groupId, groupName, openCancelModal }) => {
   return (
-    <JoinButton onClick={() => handleCancelRequest(groupId)}>
+    <JoinButton onClick={() => openCancelModal(groupId, groupName)}>
       Cancelar Solicitação
     </JoinButton>
   );
