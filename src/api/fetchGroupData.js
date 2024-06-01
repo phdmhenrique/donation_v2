@@ -1,5 +1,5 @@
 // Função para simular a chamada da API
-export const fetchGroupData = (groupId) => {
+export const fetchGroupData = () => {
   return [
     {
       id: 1,
