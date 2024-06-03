@@ -1,18 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchGroupData } from '../api/fetchGroupData.js';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { fetchGroupData } from "../api/fetchGroupData.js";
+// import Layout from "../Components/Layout/Layout.jsx";
 
 const GroupDetails = () => {
-    const { groupId } = useParams();
-    const groups = fetchGroupData();
-    const group = groups.find(group => group.id === parseInt(groupId));
+  const { groupId } = useParams();
+  const groups = fetchGroupData();
+  const group = groups.find((group) => group.id === parseInt(groupId));
 
-    if (!group) {
-        return <div>Grupo não encontrado</div>;
-    }
+  if (!group) {
+    return <div>Grupo não encontrado</div>;
+  }
 
-    return (
-        <div>
+  return (
+      <div>
         <img src={group.banner} alt={`${group.title} banner`} />
         <h1>{group.title}</h1>
         <p>{group.description}</p>
@@ -21,7 +22,7 @@ const GroupDetails = () => {
         <div>Doações por dia: {group.donationsPerDay}</div>
         {/* Adicione outros detalhes conforme necessário */}
       </div>
-    );
+  );
 };
 
 export default GroupDetails;
