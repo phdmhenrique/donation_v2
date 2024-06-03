@@ -1,10 +1,10 @@
-import React from 'react'
-import Layout from '../Components/Layout/Layout.jsx'
+import React from 'react';
+import Content from '../Components/Content/Content.jsx';
 
 function Home() {
   return (
-    <Layout />
-  )
+    <Content />
+  );
 }
 
-export default Home
+export default Home;

@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.1.0",
     "react-input-mask": "^2.0.4",
+    "react-lazyload": "^3.2.1",
     "react-router-dom": "^6.23.0",
     "react-text-mask": "^5.5.0",
     "react-toastify": "^10.0.5",

@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { Container, Logo, LayoutContainer } from "./Layout.js";
-import Footer from '../Footer/Footer.jsx'
-
+import Footer from '../Footer/Footer.jsx';
 import NavAccount from '../NavAccount/NavAccount.jsx';
-import Content from '../Content/Content.jsx';
 import AsideSuggest from '../AsideSuggest/AsideSuggest.jsx';
+import { Outlet } from 'react-router-dom';
 
 function Layout() {
   return (
@@ -12,7 +11,7 @@ function Layout() {
       <Logo>Do</Logo>
       <LayoutContainer>
         <NavAccount />
-        <Content />
+        <Outlet /> {/* Renderiza o conteúdo da rota atual */}
         <AsideSuggest />
       </LayoutContainer>
       <Footer />
@@ -20,4 +19,4 @@ function Layout() {
   )
 }
 
-export default Layout
+export default Layout;

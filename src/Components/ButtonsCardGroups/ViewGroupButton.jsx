@@ -6,7 +6,7 @@ const ViewGroupButton = ({ groupId }) => {
   const navigate = useNavigate();
 
   const handleViewGroup = () => {
-    navigate(`/group/${groupId}`);
+    navigate(`/home/group/${groupId}`);
   };
 
   return (
