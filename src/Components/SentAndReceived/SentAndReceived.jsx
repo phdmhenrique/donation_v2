@@ -23,7 +23,7 @@ export default function SentAndReceived() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <>
+    <TabContentForTab>
       <TabsContainer>
         <TabList>
           {tabData.map((tab, index) => (
@@ -39,6 +39,6 @@ export default function SentAndReceived() {
         </TabList>
       </TabsContainer>
       <TabContentForTab>{tabData[activeTab].content}</TabContentForTab>
-    </>
+    </TabContentForTab>
   );
 }

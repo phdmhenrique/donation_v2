@@ -4,6 +4,7 @@ const CardContribution = () => {
   const contributions = [
     {
       id: 1,
+      titleService: "Doações de livros usados.",
       banner: "https://via.placeholder.com/150",
       tags: ["Educação", "Livros"],
       availability: "10 dias",
@@ -11,6 +12,7 @@ const CardContribution = () => {
     },
     {
       id: 2,
+      titleService: "Serviço de diagnóstico.",
       banner: "https://via.placeholder.com/150",
       tags: ["Saúde", "Medicamentos"],
       availability: "5 dias",
@@ -20,9 +22,9 @@ const CardContribution = () => {
 
   return (
     <div>
-      <h2>Minhas Contribuições</h2>
       {contributions.map((contribution) => (
         <div key={contribution.id} className="contribution">
+          <h1>{contribution.titleService}</h1>
           <img src={contribution.banner} alt="Banner da Doação" />
           <p>Tags: {contribution.tags.join(", ")}</p>
           <p>Disponibilidade: {contribution.availability}</p>
