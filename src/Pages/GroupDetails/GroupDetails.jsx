@@ -17,8 +17,10 @@ import {
   ContainerTabs,
   TabStyled,
   TabListStyled,
+  TabContainerStyled,
 } from './GroupDetails.js';
 import { Container } from '../../Components/Content/Content.js';
+import { TabList, Tab, TabContent } from '../../Components/Tabs/Tabs.js';
 
 // ICONS
 import { FaArrowLeft } from "react-icons/fa";
@@ -31,10 +33,10 @@ import UserDonationIcon from "../../Icons/UserDonationIcon.jsx";
 import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
 
 // Components
-import Tabs from '../../Components/Tabs/Tabs.jsx';
 import SearchInput from "../../Components/SearchInput/SearchInput.jsx";
 
 const GroupDetails = () => {
+  const [activeButton, setActiveButton] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
 
   const { groupId } = useParams();
@@ -68,12 +70,12 @@ const GroupDetails = () => {
     },
     {
       icon: <UserDonationIcon />,
-      title: "Meus Grupos",
-      content: 'Opa 2',
+      title: "Minhas Doações",
+      content: <Dashboard />,
     },
     {
       icon: <NewDonationIcon />,
-      title: "Solicitações",
+      title: "Nova Doação",
       content: 'Opa 03',
     },
   ];
@@ -111,14 +113,34 @@ const GroupDetails = () => {
           {tabButtons.map((tab, index) => (
             <TabStyled
               key={index}
-              active={activeTab === index ? "true" : undefined}
-              onClick={() => setActiveTab(index)}
+              active={activeButton === index ? "true" : undefined}
+              onClick={() => setActiveButton(index)}
             >
               {tab.text}
             </TabStyled>
           ))}
         </TabListStyled>
       </ContainerTabs>
+
+      <TabContainerStyled>
+        <SearchInput />
+        <TabList>
+          {tabData.map((tab, index) => (
+            <Tab
+              key={index}
+              active={activeTab === index ? "true" : undefined}
+              onClick={() => setActiveTab(index)}
+            >
+              {tab.icon}
+              {tab.title}
+            </Tab>
+          ))}
+        </TabList>
+      </TabContainerStyled>
+
+      <TabContent>
+        {tabData[activeTab].content}
+      </TabContent>
 
     </Container>
   );

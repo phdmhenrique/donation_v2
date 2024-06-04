@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LazyLoad from "react-lazyload";
 import { ButtonCreateOrEditGroup } from '../../Components/CreateGroup/CreateGroup.js';
-import { Tab, TabList } from '../../Components/Tabs/Tabs.js';
+import { Tab, TabList, TabsContainer } from '../../Components/Tabs/Tabs.js';
 
 export const LazyLoadStyled = styled(LazyLoad)`
     width: 100%;
@@ -117,7 +117,7 @@ export const ButtonsInviteAndShare = styled.div`
     position: absolute;
     gap: 1.2rem;
     right: 1.2rem;
-    bottom: 10.5%;
+    bottom: 4rem;
 `;
 
 export const ButtonInviteOrShare = styled.button`
@@ -156,6 +156,11 @@ export const ButtonInviteOrShare = styled.button`
 export const ContainerTabs = styled.div`
     width: 100%;
     border-bottom: 0.1rem solid var(--gray-2);
+`;
+
+export const TabContainerStyled = styled(TabsContainer)`
+    margin: 2rem 1.4rem;
+    width: auto;
 `;
 
 export const TabListStyled = styled(TabList)`
