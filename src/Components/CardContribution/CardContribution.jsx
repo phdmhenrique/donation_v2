@@ -1,4 +1,13 @@
 import React from "react";
+import {
+  Container,
+  Card,
+  TitleAndDateInfos,
+  DateInfos,
+  InterestsAndDetails,
+} from './CardContribution.js';
+
+import MoreInfoIcon from '../../Icons/MoreInfoIcon.jsx'
 
 const CardContribution = () => {
   const contributions = [
@@ -7,7 +16,7 @@ const CardContribution = () => {
       titleService: "Doações de livros usados.",
       banner: "https://via.placeholder.com/150",
       tags: ["Educação", "Livros"],
-      availability: "10 dias",
+      availability: "10",
       date: "2024-06-01",
     },
     {
@@ -15,23 +24,32 @@ const CardContribution = () => {
       titleService: "Serviço de diagnóstico.",
       banner: "https://via.placeholder.com/150",
       tags: ["Saúde", "Medicamentos"],
-      availability: "5 dias",
+      availability: "5",
       date: "2024-05-15",
     },
   ];
 
   return (
-    <div>
+    <Container>
       {contributions.map((contribution) => (
-        <div key={contribution.id} className="contribution">
-          <h1>{contribution.titleService}</h1>
+        <Card key={contribution.id}>
           <img src={contribution.banner} alt="Banner da Doação" />
-          <p>Tags: {contribution.tags.join(", ")}</p>
-          <p>Disponibilidade: {contribution.availability}</p>
-          <p>Data: {contribution.date}</p>
-        </div>
+          <TitleAndDateInfos>
+            <h1>{contribution.titleService}</h1>
+            <DateInfos>
+              <p>Data: {contribution.date}</p>
+              <MoreInfoIcon />
+            </DateInfos>
+          </TitleAndDateInfos>
+
+          <InterestsAndDetails>
+            <p>Tags: {contribution.tags.join(", ")}</p>
+            <p>Disponibilidade: {contribution.availability}</p>
+          </InterestsAndDetails>
+
+        </Card>
       ))}
-    </div>
+    </Container>
   );
 };
 
