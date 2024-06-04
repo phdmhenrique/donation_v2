@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Container, TabContentForTab } from "./Darshboard.js";
-import { ResultsAndFilters } from "../CardGroup/CardGroup.js";
 import { TabList, Tab, TabsContainer } from "../../Components/Tabs/Tabs.js";
-
-// import api
-import { fetchGroupData } from "../../api/fetchGroupData.js";
 
 // ICONS
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
-import MyContribution from "../../Icons/MyContribution.jsx";
+import MyContributionicon from "../../Icons/MyContributionIcon.jsx";
 
 // Components
 import DonationProcess from '../DonationProcess/DonationProcess.jsx';
+import CardContribution from '../CardContribution/CardContribution.jsx';
 
 const tabData = [
   {
@@ -20,30 +17,17 @@ const tabData = [
     content: <DonationProcess />,
   },
   {
-    icon: <MyContribution />,
+    icon: <MyContributionicon />,
     title: "Contribuições",
-    content: "Contribuições",
+    content: <CardContribution />,
   },
 ];
 
-export default function Darshboard() {
+export default function Darshboard({ group }) {
   const [activeTab, setActiveTab] = useState(0);
-  const [groupsData, setGroupsData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchGroupData();
-      setGroupsData(data);
-    };
-    fetchData();
-  }, []);
 
   return (
     <Container>
-      <ResultsAndFilters>
-        Exibindo {groupsData.length} de {groupsData.length} resultados
-      </ResultsAndFilters>
-
       <TabsContainer>
         <TabList>
           {tabData.map((tab, index) => (
@@ -58,7 +42,9 @@ export default function Darshboard() {
           ))}
         </TabList>
       </TabsContainer>
-      <TabContentForTab>{tabData[activeTab].content}</TabContentForTab>
+      <TabContentForTab>
+        {React.cloneElement(tabData[activeTab].content, { group })}
+      </TabContentForTab>
     </Container>
   );
 }

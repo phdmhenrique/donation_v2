@@ -51,7 +51,7 @@ const CardGroup = ({
                   <PhotoUsersFromGroup>
                     {group.users.slice(0, 5).map((user, index) => (
                       <div key={index}>
-                        <img src={user} alt={`User ${index + 1}`} />
+                        <img src={user.avatar} alt={`User ${index + 1}`} />
                       </div>
                     ))}
                     {group.users.length > 5 && (

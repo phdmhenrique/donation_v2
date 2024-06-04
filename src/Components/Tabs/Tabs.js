@@ -52,7 +52,9 @@ export const Tab = styled.button`
   
   transition: all 0.2s;
 
-  & path {
+  & path, svg {
+    width: 2rem;
+    height: 2rem;
     fill: ${(props) => (props.active ? "var(--primary)" : "var(--gray-3)")};
   }
 `;
