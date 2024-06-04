@@ -7,8 +7,8 @@ import GlobalStyles from "./Styles/GlobalStyles.js";
 import App from './App.jsx';
 import CreateAccount from './Components/CreateAccount/CreateAccount.jsx';
 import Stages from './Components/CreateAccount/Stages/Stages.jsx';
-import Home from './Pages/Home.jsx';
-import GroupDetails from './Pages/GroupDetails.jsx';
+import Home from './Pages/Home/Home.jsx';
+import GroupDetails from './Pages/GroupDetails/GroupDetails.jsx';
 import Layout from './Components/Layout/Layout.jsx'; // Importando Layout
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -4,7 +4,7 @@ import {
   ContainerReturnPage,
   ContainerCreateGroup,
   ReturnPageMessage,
-  ButtonCreateGroup,
+  ButtonCreateOrEditGroup,
 } from "./CreateGroup.js";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { AiFillEdit } from "react-icons/ai";
@@ -18,7 +18,7 @@ export default function CreateGroup() {
       </ContainerReturnPage>
 
       <ContainerCreateGroup>
-          <ButtonCreateGroup><AiFillEdit /> Criar Grupo</ButtonCreateGroup>
+          <ButtonCreateOrEditGroup><AiFillEdit /> Criar Grupo</ButtonCreateOrEditGroup>
       </ContainerCreateGroup>
     </Container>
   );

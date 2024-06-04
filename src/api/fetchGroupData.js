@@ -3,12 +3,13 @@ export const fetchGroupData = () => {
   return [
     {
       id: 1,
-      title: "Grupo da Solidariedade 1",
+      title: "Solidariedade em Rede",
+      username: 'solidariedadeemrede',
       donationsPerDay: 15,
       description: "Este grupo é dedicado a fornecer suporte alimentar para famílias necessitadas na região de Registro-SP. Junte-se a nós para fazer a diferença!",
       address: "Rua do Moinho, 232, Registro-SP",
-      image: "https://via.placeholder.com/150/0000FF/808080?text=Grupo+1",
-      banner: "https://via.placeholder.com/770x280/0000FF/FFFFFF?text=Banner+Grupo+1",
+      image: "../../src/Assets/comunity-image.jpg",
+      banner: "../../src/Assets/comunity-banner.jpg",
       users: [
         "https://via.placeholder.com/50/FF0000/FFFFFF?text=U1",
         "https://via.placeholder.com/50/00FF00/FFFFFF?text=U2",

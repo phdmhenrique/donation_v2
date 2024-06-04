@@ -45,6 +45,7 @@ li {
     --gray-pure: #686868;
 
     /* escala de cinza */
+    --gray-0: #25323C;
     --gray-1: #F1F1F1;
     --gray-2: #E4E4E4;
     --gray-3: #7B7B7B;

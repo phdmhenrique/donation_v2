@@ -15,7 +15,7 @@ export const Container = styled.nav`
 
 export const TabsContainer = styled.header`
   width: 100%;
-  height: 100%;
+  height: max-content;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

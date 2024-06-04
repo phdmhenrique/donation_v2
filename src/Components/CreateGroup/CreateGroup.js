@@ -31,7 +31,7 @@ export const ContainerCreateGroup = styled.div`
   width: fit-content;
 `;
 
-export const ButtonCreateGroup = styled.button`
+export const ButtonCreateOrEditGroup = styled.button`
   height: 4.2rem;
   display: flex;
   align-items: center;
