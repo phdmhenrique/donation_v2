@@ -34,6 +34,7 @@ import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
 
 // Components
 import SearchInput from "../../Components/SearchInput/SearchInput.jsx";
+import Dashboard from '../../Components/Dashboard/Darshboard.jsx';
 
 const GroupDetails = () => {
   const [activeButton, setActiveButton] = useState(0);
