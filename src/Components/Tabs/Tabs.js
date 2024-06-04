@@ -36,7 +36,7 @@ export const TabList = styled.div`
 `;
 
 export const Tab = styled.button`
-  width: 15.1rem;
+  min-width: 15.1rem;
   height: 3rem;
   display: flex;
   align-items: center;

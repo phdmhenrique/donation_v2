@@ -159,7 +159,7 @@ export const ContainerTabs = styled.div`
 `;
 
 export const TabContainerStyled = styled(TabsContainer)`
-    margin: 2rem 1.4rem;
+    margin: 2rem 1.4rem 0 1.4rem;
     width: auto;
 `;
 

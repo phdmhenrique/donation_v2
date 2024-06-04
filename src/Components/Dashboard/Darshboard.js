@@ -1,3 +1,9 @@
 import styled from "styled-components";
 
-styled
+export const Container = styled.section`
+    padding: 0 1.4rem;
+`;
+
+export const TabContentForTab = styled.div`
+    margin-top: .4rem;
+`;
