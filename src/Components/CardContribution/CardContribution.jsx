@@ -5,29 +5,19 @@ import {
   TitleAndDateInfos,
   DateInfos,
   InterestsAndDetails,
-} from './CardContribution.js';
+  ButtonStyledInterests,
+  Interests,
+  Details,
+} from "./CardContribution.js";
 
-import MoreInfoIcon from '../../Icons/MoreInfoIcon.jsx'
+import { fetchContributionsData } from "../../api/fetchContributionsData.js";
+
+// Icons
+import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
+import { FaEdit } from "react-icons/fa";
 
 const CardContribution = () => {
-  const contributions = [
-    {
-      id: 1,
-      titleService: "Doações de livros usados.",
-      banner: "https://via.placeholder.com/150",
-      tags: ["Educação", "Livros"],
-      availability: "10",
-      date: "2024-06-01",
-    },
-    {
-      id: 2,
-      titleService: "Serviço de diagnóstico.",
-      banner: "https://via.placeholder.com/150",
-      tags: ["Saúde", "Medicamentos"],
-      availability: "5",
-      date: "2024-05-15",
-    },
-  ];
+  const contributions = fetchContributionsData();
 
   return (
     <Container>
@@ -37,16 +27,28 @@ const CardContribution = () => {
           <TitleAndDateInfos>
             <h1>{contribution.titleService}</h1>
             <DateInfos>
-              <p>Data: {contribution.date}</p>
+              <p>{contribution.date}</p>
               <MoreInfoIcon />
             </DateInfos>
           </TitleAndDateInfos>
 
           <InterestsAndDetails>
-            <p>Tags: {contribution.tags.join(", ")}</p>
-            <p>Disponibilidade: {contribution.availability}</p>
-          </InterestsAndDetails>
+            <Interests>
+              {contribution.tags.map((tag, index) => (
+                <ButtonStyledInterests key={index} className="inactive">
+                  #{tag}
+                </ButtonStyledInterests>
+              ))}
+            </Interests>
 
+            <Details>
+              <div>
+                <span>Disponibilidade</span>
+                <p>{contribution.availability}</p>
+              </div>
+              <button>Editar Doação <FaEdit /></button>
+            </Details>
+          </InterestsAndDetails>
         </Card>
       ))}
     </Container>

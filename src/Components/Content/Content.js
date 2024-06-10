@@ -5,4 +5,5 @@ export const Container = styled.section`
     height: 100%;
     border: .1rem solid var(--gray-2);
     border-top: none;
+    overflow: hidden;
 `;

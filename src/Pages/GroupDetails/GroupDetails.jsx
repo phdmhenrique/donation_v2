@@ -35,6 +35,7 @@ import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
 // Components
 import SearchInput from "../../Components/SearchInput/SearchInput.jsx";
 import Dashboard from '../../Components/Dashboard/Darshboard.jsx';
+import CardDonation from '../../Components/CardDonation/CardDonation.jsx';
 
 const GroupDetails = () => {
   const [activeButton, setActiveButton] = useState(0);
@@ -67,7 +68,7 @@ const GroupDetails = () => {
     {
       icon: <DashboardIcon />,
       title: "Geral",
-      content: 'Opa',
+      content: <CardDonation />,
     },
     {
       icon: <UserDonationIcon />,
