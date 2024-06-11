@@ -77,15 +77,86 @@ export const ContributionServiceBanner = styled.div`
 
   .image-container {
     height: 100%;
-  }
-
-  .alternative-content {
+  
+    & .alternative-content {
     width: 100%;
     height: 100%;
-    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    border: 0.2rem solid var(--primary);
+    border-radius: 0.4rem;
+    background-color: var(--white);
+  
+    & .description-contribution {
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      font-size: var(--font__14);
+      color: var(--gray-5);
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 4rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: var(--gray-2);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--gray-7);
+      }
+    }
+
+    & .availability-contribution {
+      width: 22.7rem;
+      height: 100%;
+      background-color: var(--primary);
+      padding: 1rem;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+
+      & .days {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        & .day {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.2rem;
+          opacity: 0.75;
+          border-radius: 0.5rem;
+          background-color: var(--white);
+          color: var(--primary);
+          font-size: var(--font__12);
+        }
+      }
+    }
+  }
+
+
+  & .availability-hours__title {
+    width: 100%;
+    height: min-content;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--white);
+    font-size: var(--font__16);
+    font-weight: 600;
+    color: var(--primary);
+    border-radius: 0.4rem;
+    text-transform: uppercase;
+  }
+
   }
 `;
 

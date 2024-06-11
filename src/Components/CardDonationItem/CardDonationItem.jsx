@@ -16,6 +16,8 @@ import {
   Details,
 } from "../CardContribution/CardContribution.js";
 
+// Components
+
 // ICONS
 import MyContributionIcon from "../../Icons/MyContributionIcon.jsx";
 import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
@@ -56,7 +58,25 @@ const CardItem = ({ contribution }) => {
           >
             {isHovered ? (
               <div className="alternative-content">
-                <p>Conteúdo Alternativo</p>
+                <div className="description-contribution">{contribution.description}</div>
+                <div className="availability-contribution">
+
+                  <div className="days">
+                    <div className="day">Seg</div>
+                    <div className="day">Ter</div>
+                    <div className="day">Qua</div>
+                    <div className="day">Qui</div>
+                    <div className="day">Sex</div>
+                    <div className="day">Sáb</div>
+                    <div className="day">Dom</div>
+                  </div>
+
+                  <div className="availability-hours__title">Horários Disponíveis</div>
+                  <div className="availability-hours">
+                    
+                  </div>
+
+                </div>
               </div>
             ) : (
               <img src={contribution.banner} alt={contribution.titleService} />
