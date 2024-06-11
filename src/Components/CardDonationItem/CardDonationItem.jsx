@@ -24,6 +24,21 @@ import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
 
 const CardItem = ({ contribution }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedDay, setSelectedDay] = useState("Seg");
+
+  const daysOfWeek = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
+  const hours = [
+    ["01:00", "07:00", "13:00", "19:00"],
+    ["02:00", "08:00", "14:00", "20:00"],
+    ["03:00", "09:00", "15:00", "21:00"],
+    ["04:00", "10:00", "16:00", "22:00"],
+    ["05:00", "11:00", "17:00", "23:00"],
+    ["06:00", "12:00", "18:00", "00:00"],
+  ];
+
+  const handleDayClick = (day) => {
+    setSelectedDay(day);
+  };
 
   return (
     <Card>
@@ -62,18 +77,31 @@ const CardItem = ({ contribution }) => {
                 <div className="availability-contribution">
 
                   <div className="days">
-                    <div className="day">Seg</div>
-                    <div className="day">Ter</div>
-                    <div className="day">Qua</div>
-                    <div className="day">Qui</div>
-                    <div className="day">Sex</div>
-                    <div className="day">Sáb</div>
-                    <div className="day">Dom</div>
+                    {daysOfWeek.map(day => (
+                      <div
+                        key={day}
+                        className={`day ${selectedDay === day ? "active" : ""}`}
+                        onClick={() => handleDayClick(day)}
+                      >
+                        {day}
+                      </div>
+                    ))}
                   </div>
 
                   <div className="availability-hours__title">Horários Disponíveis</div>
                   <div className="availability-hours">
-                    
+                    {hours.map((row, rowIndex) => (
+                      <div key={rowIndex} className="hours-row">
+                        {row.map(hour => (
+                          <div
+                            key={hour}
+                            className={`hour ${selectedDay === "Seg" ? "available" : ""}`}
+                          >
+                            {hour}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
                   </div>
 
                 </div>

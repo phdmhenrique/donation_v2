@@ -77,86 +77,111 @@ export const ContributionServiceBanner = styled.div`
 
   .image-container {
     height: 100%;
-  
+
     & .alternative-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    border: 0.2rem solid var(--primary);
-    border-radius: 0.4rem;
-    background-color: var(--white);
-  
-    & .description-contribution {
       width: 100%;
       height: 100%;
-      padding: 1rem;
-      font-size: var(--font__14);
-      color: var(--gray-5);
-      overflow-y: scroll;
-
-      &::-webkit-scrollbar {
-        width: 0.5rem;
-        height: 4rem;
-      }
-
-      &::-webkit-scrollbar-track {
-        background-color: var(--gray-2);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: var(--gray-7);
-      }
-    }
-
-    & .availability-contribution {
-      width: 22.7rem;
-      height: 100%;
-      background-color: var(--primary);
-      padding: 1rem;
-      color: var(--white);
       display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+      align-items: center;
+      border: 0.2rem solid var(--primary);
+      border-radius: 0.4rem;
+      background-color: var(--white);
 
-      & .days {
+      & .description-contribution {
         width: 100%;
-        height: max-content;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.5rem;
+        height: 100%;
+        padding: 1rem;
+        font-size: var(--font__14);
+        color: var(--gray-5);
+        overflow-y: scroll;
 
-        & .day {
+        &::-webkit-scrollbar {
+          width: 0.5rem;
+          height: 4rem;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: var(--gray-2);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: var(--gray-7);
+        }
+      }
+
+      & .availability-contribution {
+        width: 38rem;
+        height: 100%;
+        background-color: var(--primary);
+        padding: 1rem;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        & .days {
+          width: 100%;
+          height: max-content;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.4rem;
+
+          & .day {
+            width: 2.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.2rem;
+            border-radius: 0.5rem;
+            background-color: var(--white);
+            color: var(--primary);
+            font-size: var(--font__12);
+            opacity: 0.75;
+            cursor: pointer;
+          }
+
+          & .day.active {
+            opacity: 1;
+            font-weight: bold;
+          }
+        }
+
+        & .availability-hours__title {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0.2rem;
-          opacity: 0.75;
-          border-radius: 0.5rem;
           background-color: var(--white);
           color: var(--primary);
-          font-size: var(--font__12);
+          border-radius: 0.5rem;
+          font-weight: bold;
+        }
+
+        & .availability-hours {
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          justify-items: center;
+
+          & .hours-row {
+            display: contents;
+
+            & .hour {
+              padding: 0.2rem;
+              font-size: var(--font__16);
+              font-weight: 500;
+              cursor: pointer;
+            }
+
+            & .hour.available {
+              color: var(--white);
+              background-color: var(--green);
+              border-radius: 0.3rem;
+            }
+          }
         }
       }
     }
-  }
-
-
-  & .availability-hours__title {
-    width: 100%;
-    height: min-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--white);
-    font-size: var(--font__16);
-    font-weight: 600;
-    color: var(--primary);
-    border-radius: 0.4rem;
-    text-transform: uppercase;
-  }
-
   }
 `;
 
