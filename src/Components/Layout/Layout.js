@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-    max-width: 192rem;
+    max-width: 132rem;
     height: auto;
     margin: 0 auto;
     padding: 0 1.6rem;
+
+    @media (max-width: 740px) {
+        padding: 0 0.6rem;
+    }
 `;
 
 export const Logo = styled.header`
@@ -15,7 +19,7 @@ export const Logo = styled.header`
     justify-content: center;
     color: var(--primary);
     font-size: var(--font__36);
-    padding: 3rem 0;
+    padding: 1rem 0;
 
     &::after {
         content: 'Nation';
@@ -25,7 +29,7 @@ export const Logo = styled.header`
 
 export const LayoutContainer = styled.section`
     width: 100%;
-    height: 192rem;
+    height: 144rem;
     display: grid;
     grid-template-columns: 19.2rem minmax(77rem, 2fr) 32.5rem;
     justify-content: center;

@@ -12,22 +12,8 @@ export const ResultsAndFiltersStyled = styled(ResultsAndFilters)`
 
 export const ContainerCard = styled.div`
   min-height: 100%;
-  height: 130rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 4rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: var(--gray-2);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--gray-7);
-  }
 `;

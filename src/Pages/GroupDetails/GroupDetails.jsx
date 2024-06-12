@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchGroupData } from "../../api/fetchGroupData.js";
 
@@ -18,24 +18,24 @@ import {
   TabStyled,
   TabListStyled,
   TabContainerStyled,
-} from './GroupDetails.js';
-import { Container } from '../../Components/Content/Content.js';
-import { TabList, Tab, TabContent } from '../../Components/Tabs/Tabs.js';
+} from "./GroupDetails.js";
+import { Container } from "../../Components/Content/Content.js";
+import { TabList, Tab, TabContent } from "../../Components/Tabs/Tabs.js";
 
 // ICONS
 import { FaArrowLeft } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
 import { RiUserAddFill } from "react-icons/ri";
 import { IoMdShare } from "react-icons/io";
-import LocationIcon from '../../Icons/LocationIcon.jsx';
+import LocationIcon from "../../Icons/LocationIcon.jsx";
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
 import UserDonationIcon from "../../Icons/UserDonationIcon.jsx";
 import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
 
 // Components
 import SearchInput from "../../Components/SearchInput/SearchInput.jsx";
-import Dashboard from '../../Components/Dashboard/Darshboard.jsx';
-import CardDonation from '../../Components/CardDonation/CardDonation.jsx';
+import Dashboard from "../../Components/Dashboard/Darshboard.jsx";
+import CardDonation from "../../Components/CardDonation/CardDonation.jsx";
 
 const GroupDetails = () => {
   const [activeButton, setActiveButton] = useState(0);
@@ -78,7 +78,7 @@ const GroupDetails = () => {
     {
       icon: <NewDonationIcon />,
       title: "Nova Doação",
-      content: 'Opa 03',
+      content: "Opa 03",
     },
   ];
 
@@ -95,18 +95,32 @@ const GroupDetails = () => {
         </UserPhoto>
 
         <ComunityInfosAndBack>
-          <Link to="/home"><FaArrowLeft /></Link>
+          <Link to="/home">
+            <FaArrowLeft />
+          </Link>
           <ComunityInformations>
             <ComunityName>{group.title}</ComunityName>
-            <ComunityAddress><LocationIcon />{group.address}</ComunityAddress>
+            <ComunityAddress>
+              <LocationIcon />
+              {group.address}
+            </ComunityAddress>
           </ComunityInformations>
         </ComunityInfosAndBack>
 
-        <ButtonCreateOrEditGroupStyled><AiFillEdit />Editar Grupo</ButtonCreateOrEditGroupStyled>
+        <ButtonCreateOrEditGroupStyled>
+          <AiFillEdit />
+          Editar Grupo
+        </ButtonCreateOrEditGroupStyled>
 
         <ButtonsInviteAndShare>
-          <ButtonInviteOrShare><RiUserAddFill />Convidar Membro</ButtonInviteOrShare>
-          <ButtonInviteOrShare><IoMdShare />Compartilhar</ButtonInviteOrShare>
+          <ButtonInviteOrShare>
+            <RiUserAddFill />
+            Convidar Membro
+          </ButtonInviteOrShare>
+          <ButtonInviteOrShare>
+            <IoMdShare />
+            Compartilhar
+          </ButtonInviteOrShare>
         </ButtonsInviteAndShare>
       </LazyLoadStyled>
 
@@ -140,10 +154,7 @@ const GroupDetails = () => {
         </TabList>
       </TabContainerStyled>
 
-      <TabContent>
-        {tabData[activeTab].content}
-      </TabContent>
-
+      <TabContent>{tabData[activeTab].content}</TabContent>
     </Container>
   );
 };

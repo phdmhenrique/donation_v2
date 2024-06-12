@@ -23,7 +23,7 @@ export const TabsContainer = styled.header`
 
   padding: 0.8rem;
   background-color: var(--gray-1);
-  border: .2rem solid var(--gray-2);
+  border: 0.2rem solid var(--gray-2);
   border-radius: 0.4rem;
 `;
 
@@ -41,18 +41,20 @@ export const Tab = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .4rem;
+  gap: 0.4rem;
   font-size: var(--font__16);
   font-weight: bold;
   cursor: pointer;
   background-color: transparent;
 
-  border-bottom: ${(props) => props.active ? ".3rem solid var(--primary)" : ".3rem solid transparent"};
+  border-bottom: ${(props) =>
+    props.active ? ".3rem solid var(--primary)" : ".3rem solid transparent"};
   color: ${(props) => (props.active ? "var(--primary)" : "var(--gray-3)")};
-  
+
   transition: all 0.2s;
 
-  & path, svg {
+  & path,
+  svg {
     width: 2rem;
     height: 2rem;
     fill: ${(props) => (props.active ? "var(--primary)" : "var(--gray-3)")};

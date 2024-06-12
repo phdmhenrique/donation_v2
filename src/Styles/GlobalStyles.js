@@ -14,7 +14,7 @@ body,
     font-size: 62.5%;
     overflow-x: hidden;
 
-    &::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 0.5rem;
     height: 4rem;
   }

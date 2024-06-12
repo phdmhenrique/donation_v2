@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1.2rem;
   margin-top: 1.6rem;
+  padding-bottom: 2rem;
 `;
 
 export const Card = styled.div`
@@ -50,7 +51,7 @@ export const DateInfos = styled.div`
 `;
 
 export const InterestsAndDetails = styled.div`
-  height: 6rem;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   padding: 2rem 0.8rem 0.8rem;
@@ -64,13 +65,15 @@ export const InterestsAndDetails = styled.div`
 
 export const Interests = styled.div`
   gap: 0.4rem;
+  flex-wrap: wrap;
 `;
 
 export const Details = styled.div`
   gap: 1.2rem;
+  flex-wrap: wrap;
 
   & div {
-    width: min-content;
+    width: max-content;
     height: 100%;
     display: flex;
     align-items: center;
@@ -114,7 +117,8 @@ export const Details = styled.div`
     cursor: pointer;
     transition: 0.1s ease all;
 
-    & svg, path {
+    & svg,
+    path {
       width: 2rem;
       height: 2rem;
       fill: var(--primary);
@@ -126,7 +130,8 @@ export const Details = styled.div`
     background-color: var(--primary);
     color: var(--white);
 
-    & svg, path {
+    & svg,
+    path {
       fill: var(--white);
     }
   }

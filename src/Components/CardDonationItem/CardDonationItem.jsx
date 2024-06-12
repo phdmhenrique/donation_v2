@@ -56,58 +56,58 @@ const CardItem = ({ contribution }) => {
         </ContributionDate>
       </CardInfoUser>
 
+      <ContributionServiceTitle>
+        {contribution.titleService}
+      </ContributionServiceTitle>
+
       <ContributionService>
-        <ContributionServiceTitle>
-          {contribution.titleService}
-        </ContributionServiceTitle>
-
-        <ContributionServiceBanner>
-          <div
-            className={`image-container ${isHovered ? "hovered" : ""}`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            {isHovered ? (
-              <div className="alternative-content">
-                <div className="description-contribution">
-                  {contribution.description}
+        <ContributionServiceBanner
+          className={`${isHovered ? "hovered" : ""}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {isHovered ? (
+            <div className="alternative-content">
+              <div className="description-contribution">
+                {contribution.description}
+              </div>
+              <div className="availability-contribution">
+                <div className="days">
+                  {daysOfWeek.map((day) => (
+                    <div
+                      key={day}
+                      className={`day ${selectedDay === day ? "active" : ""}`}
+                      onClick={() => handleDayClick(day)}
+                    >
+                      {day}
+                    </div>
+                  ))}
                 </div>
-                <div className="availability-contribution">
-                  <div className="days">
-                    {daysOfWeek.map((day) => (
-                      <div
-                        key={day}
-                        className={`day ${selectedDay === day ? "active" : ""}`}
-                        onClick={() => handleDayClick(day)}
-                      >
-                        {day}
-                      </div>
-                    ))}
-                  </div>
 
-                  <div className="availability-hours__title">
-                    Horários Disponíveis
-                  </div>
-                  <div className="availability-hours">
-                    {hours.map((hour) => (
-                      <div
-                        key={hour}
-                        className={`hour ${
-                          isHourAvailable(hour) ? "available" : ""
-                        }`}
-                      >
-                        {hour}
-                      </div>
-                    ))}
-                  </div>
+                <div className="availability-hours__title">
+                  Horários Disponíveis
+                </div>
+                <div className="availability-hours">
+                  {hours.map((hour) => (
+                    <div
+                      key={hour}
+                      className={`hour ${
+                        isHourAvailable(hour) ? "available" : ""
+                      }`}
+                    >
+                      {hour}
+                    </div>
+                  ))}
+                </div>
 
-                  <div className="availability-address">Endereço: {contribution.address}</div>
+                <div className="availability-address">
+                  Endereço: {contribution.address}
                 </div>
               </div>
-            ) : (
-              <img src={contribution.banner} alt={contribution.titleService} />
-            )}
-          </div>
+            </div>
+          ) : (
+            <img src={contribution.banner} alt={contribution.titleService} />
+          )}
         </ContributionServiceBanner>
       </ContributionService>
 
@@ -120,7 +120,7 @@ const CardItem = ({ contribution }) => {
           ))}
         </Interests>
 
-        <Details>
+        <Details className="fodase">
           <div>
             <span>Disponibilidade</span>
             <p>{contribution.quantityAvailability}</p>

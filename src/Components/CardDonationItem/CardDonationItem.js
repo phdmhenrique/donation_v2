@@ -5,13 +5,13 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  min-height: 45.8rem;
   padding: 1.2rem 1.4rem;
   border-top: 0.1rem solid var(--gray-2);
 `;
 
 export const CardInfoUser = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.2rem;
@@ -67,7 +67,7 @@ export const ContributionServiceTitle = styled.h1`
 
 export const ContributionServiceBanner = styled.div`
   width: 100%;
-  height: 26rem;
+  min-height: 28rem;
 
   & img {
     width: 100%;
@@ -75,18 +75,19 @@ export const ContributionServiceBanner = styled.div`
     object-fit: cover;
   }
 
-  .image-container {
-    height: 100%;
-  }
-
   & .alternative-content {
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     border: 0.2rem solid var(--primary);
     border-radius: 0.4rem;
     background-color: var(--white);
+
+    @media (max-width: 620px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 15rem auto;
+    }
   }
 
   & .description-contribution {
@@ -112,7 +113,6 @@ export const ContributionServiceBanner = styled.div`
   }
 
   & .availability-contribution {
-    width: 38rem;
     height: 100%;
     background-color: var(--primary);
     padding: 1rem;
@@ -202,10 +202,11 @@ export const ContributionServiceBanner = styled.div`
     line-height: 1.2rem;
     border-top: 0.2rem solid var(--white);
     padding-top: 0.8rem;
-
   }
 `;
 
 export const InterestsAndDetailsStyled = styled(InterestsAndDetails)`
+  flex-wrap: wrap;
+  gap: 1.2rem;
   border-top: 0.1rem solid var(--gray-2);
 `;
