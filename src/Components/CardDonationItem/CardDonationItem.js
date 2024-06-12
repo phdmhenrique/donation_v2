@@ -67,7 +67,7 @@ export const ContributionServiceTitle = styled.h1`
 
 export const ContributionServiceBanner = styled.div`
   width: 100%;
-  height: 23.7rem;
+  height: 26rem;
 
   & img {
     width: 100%;
@@ -77,111 +77,132 @@ export const ContributionServiceBanner = styled.div`
 
   .image-container {
     height: 100%;
+  }
 
-    & .alternative-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      border: 0.2rem solid var(--primary);
-      border-radius: 0.4rem;
-      background-color: var(--white);
+  & .alternative-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border: 0.2rem solid var(--primary);
+    border-radius: 0.4rem;
+    background-color: var(--white);
+  }
 
-      & .description-contribution {
-        width: 100%;
-        height: 100%;
-        padding: 1rem;
-        font-size: var(--font__14);
-        color: var(--gray-5);
-        overflow-y: scroll;
+  & .description-contribution {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    font-size: var(--font__14);
+    color: var(--gray-5);
+    overflow-y: scroll;
 
-        &::-webkit-scrollbar {
-          width: 0.5rem;
-          height: 4rem;
-        }
-
-        &::-webkit-scrollbar-track {
-          background-color: var(--gray-2);
-        }
-
-        &::-webkit-scrollbar-thumb {
-          background: var(--gray-7);
-        }
-      }
-
-      & .availability-contribution {
-        width: 38rem;
-        height: 100%;
-        background-color: var(--primary);
-        padding: 1rem;
-        color: var(--white);
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-
-        & .days {
-          width: 100%;
-          height: max-content;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 0.4rem;
-
-          & .day {
-            width: 2.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.2rem;
-            border-radius: 0.5rem;
-            background-color: var(--white);
-            color: var(--primary);
-            font-size: var(--font__12);
-            opacity: 0.75;
-            cursor: pointer;
-          }
-
-          & .day.active {
-            opacity: 1;
-            font-weight: bold;
-          }
-        }
-
-        & .availability-hours__title {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: var(--white);
-          color: var(--primary);
-          border-radius: 0.5rem;
-          font-weight: bold;
-        }
-
-        & .availability-hours {
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          justify-items: center;
-
-          & .hours-row {
-            display: contents;
-
-            & .hour {
-              padding: 0.2rem;
-              font-size: var(--font__16);
-              font-weight: 500;
-              cursor: pointer;
-            }
-
-            & .hour.available {
-              color: var(--white);
-              background-color: var(--green);
-              border-radius: 0.3rem;
-            }
-          }
-        }
-      }
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      height: 4rem;
     }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--gray-2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray-7);
+    }
+  }
+
+  & .availability-contribution {
+    width: 38rem;
+    height: 100%;
+    background-color: var(--primary);
+    padding: 1rem;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  & .days {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+
+  & .day {
+    width: 2.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    background-color: var(--white);
+    color: var(--primary);
+    font-size: var(--font__12);
+    opacity: 0.75;
+    cursor: pointer;
+  }
+
+  & .day.active {
+    opacity: 1;
+    font-weight: bold;
+  }
+
+  & .availability-hours__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    color: var(--primary);
+    border-radius: 0.5rem;
+    font-weight: bold;
+  }
+
+  & .availability-hours {
+    margin: 0 auto;
+    display: grid;
+    grid-auto-flow: column dense;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 0.2rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 0.1rem); /* Adjusted to center the divider */
+      background-color: var(--white);
+      z-index: 1;
+    }
+  }
+
+  .hour {
+    display: grid;
+    margin: 0 0.4rem;
+    font-size: var(--font__16);
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .hour.available {
+    opacity: 1;
+    color: var(--white);
+    background-color: var(--green);
+    border-radius: 0.3rem;
+  }
+
+  & .availability-address {
+    font-size: var(--font__12);
+    font-weight: 700;
+    line-height: 1.2rem;
+    border-top: 0.2rem solid var(--white);
+    padding-top: 0.8rem;
+
   }
 `;
 

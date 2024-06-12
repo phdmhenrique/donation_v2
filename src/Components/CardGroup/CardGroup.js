@@ -167,8 +167,7 @@ export const JoinButton = styled.button`
   ${({ $isRequested }) =>
     $isRequested &&
     `
-      background-color: var(--secondary);
-      color: var(--black);
+      color: var(--white);
   `}
 
   &:hover {
@@ -179,7 +178,7 @@ export const JoinButton = styled.button`
     $isRequested &&
     `
       &:hover {
-        background-color: var(--quaternary);
+        background-color: var(--quinary);
     }
   `}
 

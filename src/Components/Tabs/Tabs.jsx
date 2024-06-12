@@ -15,6 +15,7 @@ import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
 // Componentes
 import CardGroup from "../CardGroup/CardGroup.jsx";
 import SearchInput from "../SearchInput/SearchInput.jsx";
+import ConfirmModal from "../ConfirmationModal/ConfirmationModal.jsx";
 
 // Botões
 import JoinCancelButton from "../ButtonsCardGroups/JoinCancelButton.jsx";
@@ -23,9 +24,6 @@ import RemoveRequestButton from "../ButtonsCardGroups/RemoveRequestButton.jsx";
 
 // Função para simular a chamada da API
 import { fetchGroupData } from "../../api/fetchGroupData.js";
-
-// Componentes
-import ConfirmModal from "../ConfirmationModal/ConfirmationModal.jsx";
 
 const Tabs = () => {
   const tabData = [

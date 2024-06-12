@@ -44,7 +44,7 @@ const CardContribution = () => {
             <Details>
               <div>
                 <span>Disponibilidade</span>
-                <p>{contribution.availability}</p>
+                <p>{contribution.quantityAvailability}</p>
               </div>
               <button>Editar Doação <FaEdit /></button>
             </Details>

@@ -112,13 +112,13 @@ export const Details = styled.div`
     font-weight: 700;
     color: var(--black);
     cursor: pointer;
-    transition: 0.2s ease all;
+    transition: 0.1s ease all;
 
     & svg, path {
       width: 2rem;
       height: 2rem;
       fill: var(--primary);
-      transition: 0.2s ease all;
+      transition: 0.1s ease all;
     }
   }
 

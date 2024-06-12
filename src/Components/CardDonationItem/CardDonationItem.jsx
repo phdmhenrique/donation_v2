@@ -15,10 +15,6 @@ import {
   Interests,
   Details,
 } from "../CardContribution/CardContribution.js";
-
-// Components
-
-// ICONS
 import MyContributionIcon from "../../Icons/MyContributionIcon.jsx";
 import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
 
@@ -27,17 +23,17 @@ const CardItem = ({ contribution }) => {
   const [selectedDay, setSelectedDay] = useState("Seg");
 
   const daysOfWeek = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
-  const hours = [
-    ["01:00", "07:00", "13:00", "19:00"],
-    ["02:00", "08:00", "14:00", "20:00"],
-    ["03:00", "09:00", "15:00", "21:00"],
-    ["04:00", "10:00", "16:00", "22:00"],
-    ["05:00", "11:00", "17:00", "23:00"],
-    ["06:00", "12:00", "18:00", "00:00"],
-  ];
+  const hours = Array.from(
+    { length: 24 },
+    (_, i) => i.toString().padStart(2, "0") + ":00"
+  );
 
   const handleDayClick = (day) => {
     setSelectedDay(day);
+  };
+
+  const isHourAvailable = (hour) => {
+    return contribution.availability[selectedDay].includes(hour);
   };
 
   return (
@@ -73,11 +69,12 @@ const CardItem = ({ contribution }) => {
           >
             {isHovered ? (
               <div className="alternative-content">
-                <div className="description-contribution">{contribution.description}</div>
+                <div className="description-contribution">
+                  {contribution.description}
+                </div>
                 <div className="availability-contribution">
-
                   <div className="days">
-                    {daysOfWeek.map(day => (
+                    {daysOfWeek.map((day) => (
                       <div
                         key={day}
                         className={`day ${selectedDay === day ? "active" : ""}`}
@@ -88,22 +85,23 @@ const CardItem = ({ contribution }) => {
                     ))}
                   </div>
 
-                  <div className="availability-hours__title">Horários Disponíveis</div>
+                  <div className="availability-hours__title">
+                    Horários Disponíveis
+                  </div>
                   <div className="availability-hours">
-                    {hours.map((row, rowIndex) => (
-                      <div key={rowIndex} className="hours-row">
-                        {row.map(hour => (
-                          <div
-                            key={hour}
-                            className={`hour ${selectedDay === "Seg" ? "available" : ""}`}
-                          >
-                            {hour}
-                          </div>
-                        ))}
+                    {hours.map((hour) => (
+                      <div
+                        key={hour}
+                        className={`hour ${
+                          isHourAvailable(hour) ? "available" : ""
+                        }`}
+                      >
+                        {hour}
                       </div>
                     ))}
                   </div>
 
+                  <div className="availability-address">Endereço: {contribution.address}</div>
                 </div>
               </div>
             ) : (
@@ -125,7 +123,8 @@ const CardItem = ({ contribution }) => {
         <Details>
           <div>
             <span>Disponibilidade</span>
-            <p>{contribution.availability}</p>
+            <p>{contribution.quantityAvailability}</p>
+            {/* <p>{Object.values(contribution.availability).flat().length}</p> */}
           </div>
           <button>
             Solicitar <MyContributionIcon />
