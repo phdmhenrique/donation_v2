@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { TabContentForTab } from "../Dashboard/Darshboard.js";
 import { TabList, Tab, TabsContainer } from "../../Components/Tabs/Tabs.js";
 
+// API
+import { fetchContributionsData } from "../../api/fetchContributionsData.js";
+
 // ICONS
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
 import CheckedIcon from '../../Icons/CheckedIcon.jsx';
@@ -30,6 +33,8 @@ const tabData = [
 
 export default function DonationProcess({ group }) {
   const [activeTab, setActiveTab] = useState(0);
+
+  // const proccessData = fetchContributionsData();
 
   return (
     <TabContentForTab>
