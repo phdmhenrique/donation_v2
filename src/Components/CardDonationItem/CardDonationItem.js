@@ -67,7 +67,7 @@ export const ContributionServiceTitle = styled.h1`
 
 export const ContributionServiceBanner = styled.div`
   width: 100%;
-  min-height: 28rem;
+ height: 100%;
 
   & img {
     width: 100%;
