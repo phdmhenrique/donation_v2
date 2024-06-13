@@ -60,17 +60,18 @@ const CardItem = ({ contribution }) => {
         {contribution.titleService}
       </ContributionServiceTitle>
 
-      <ContributionService>
-        <ContributionServiceBanner
-          className={`${isHovered ? "hovered" : ""}`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {isHovered ? (
-            <div className="alternative-content">
-              <div className="description-contribution">
-                {contribution.description}
-              </div>
+      <ContributionService
+        className={`${isHovered ? "hovered" : ""}`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {isHovered ? (
+          <div className="alternative-content">
+            <div className="description-contribution">
+              {contribution.description}
+            </div>
+
+            <div className="container-availability__contribution">
               <div className="availability-contribution">
                 <div className="days">
                   {daysOfWeek.map((day) => (
@@ -105,10 +106,12 @@ const CardItem = ({ contribution }) => {
                 </div>
               </div>
             </div>
-          ) : (
+          </div>
+        ) : (
+          <ContributionServiceBanner style={{height: '25rem'}}>
             <img src={contribution.banner} alt={contribution.titleService} />
-          )}
-        </ContributionServiceBanner>
+          </ContributionServiceBanner>
+        )}
       </ContributionService>
 
       <InterestsAndDetailsStyled>

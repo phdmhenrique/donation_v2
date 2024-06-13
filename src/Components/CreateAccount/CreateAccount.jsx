@@ -16,15 +16,12 @@ import Button from "../../Components/Button/Button.jsx";
 import imageBanner from "../../Assets/donation-banner.png";
 import SocialMedia from "../../Components/RightSide/SocialMedia/SocialMedia.jsx";
 import CustomFields from "../../Components/CustomFields/CustomFields.jsx";
-import LoadingScreen from '../LoadingScreen/LoadingScreen.jsx'
 
 import { Terms, TermsHightlight } from "./CreateAccount.js";
 import { CustomToastContainer } from "../Notification/Notification.js";
 
 function CreateAccount() {
   const navigate = useNavigate();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -55,18 +52,41 @@ function CreateAccount() {
 
   const validateForm = () => {
     const errors = {
-      fullName: !formData.fullName ? "Nome Completo é obrigatório" : /\d/.test(formData.fullName) ? "Nome Completo não pode conter números" : "",
-      username: !formData.username ? "Nome de Usuário é obrigatório" : !validator.isAlphanumeric(formData.username.replace(/\s/g, "")) ? "Nome de Usuário não pode conter espaços, caracteres especiais ou acentos" : formData.username.length > 12 ? "Nome de Usuário deve ter no máximo 12 caracteres" : "",
-      email: !formData.email ? "Email é obrigatório" : !validator.isEmail(formData.email) ? "Email inválido" : "",
-      password: !formData.password ? "Senha é obrigatória" : !validator.isStrongPassword(String(formData.password), {
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-        returnScore: false,
-      }) ? "Senha deve conter de 8-16 caracteres, letras maiúsculas, minúsculas, números e símbolos" : "",
-      repeatPassword: !formData.repeatPassword && formData.password ? "Repetir a senha é obrigatório" : formData.password !== formData.repeatPassword ? "As senhas não estão iguais" : "",
+      fullName: !formData.fullName
+        ? "Nome Completo é obrigatório"
+        : /\d/.test(formData.fullName)
+        ? "Nome Completo não pode conter números"
+        : "",
+      username: !formData.username
+        ? "Nome de Usuário é obrigatório"
+        : !validator.isAlphanumeric(formData.username.replace(/\s/g, ""))
+        ? "Nome de Usuário não pode conter espaços, caracteres especiais ou acentos"
+        : formData.username.length > 12
+        ? "Nome de Usuário deve ter no máximo 12 caracteres"
+        : "",
+      email: !formData.email
+        ? "Email é obrigatório"
+        : !validator.isEmail(formData.email)
+        ? "Email inválido"
+        : "",
+      password: !formData.password
+        ? "Senha é obrigatória"
+        : !validator.isStrongPassword(String(formData.password), {
+            minLength: 8,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbols: 1,
+            returnScore: false,
+          })
+        ? "Senha deve conter de 8-16 caracteres, letras maiúsculas, minúsculas, números e símbolos"
+        : "",
+      repeatPassword:
+        !formData.repeatPassword && formData.password
+          ? "Repetir a senha é obrigatório"
+          : formData.password !== formData.repeatPassword
+          ? "As senhas não estão iguais"
+          : "",
     };
 
     setFormErrors(errors);
@@ -81,11 +101,10 @@ function CreateAccount() {
       toast.error(formErrors[errorField]);
     } else {
       toast.success("A primeira etapa de cadastro foi um sucesso!");
-      setIsLoading(true);
+
       setTimeout(() => {
-        navigate('/create-account/stages');
-        // Redirecionamento para a próxima página ou lógica adicional
-      }, 1300);
+        navigate("/create-account/stages");
+      }, 2500);
     }
   };
 
@@ -139,10 +158,6 @@ function CreateAccount() {
     },
   ];
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
   return (
     <FullSize>
       <Divisory>
@@ -174,7 +189,8 @@ function CreateAccount() {
               <Terms key={3}>
                 Ao se inscrever você concorda com nossos{" "}
                 <TermsHightlight>Termos de Serviço</TermsHightlight> e{" "}
-                <TermsHightlight>Política de Privacidade</TermsHightlight> e confirma que tem pelo menos 18 anos de idade.
+                <TermsHightlight>Política de Privacidade</TermsHightlight> e
+                confirma que tem pelo menos 18 anos de idade.
               </Terms>,
             ]}
           />

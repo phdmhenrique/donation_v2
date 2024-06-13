@@ -63,4 +63,5 @@ export const Tab = styled.button`
 
 export const TabContent = styled.section`
   margin-top: 1.2rem;
+  padding-bottom: 1.2rem;
 `;

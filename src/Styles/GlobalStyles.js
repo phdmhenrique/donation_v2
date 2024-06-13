@@ -12,23 +12,8 @@ body,
 #root {
     height: 100%;
     font-size: 62.5%;
-    overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 4rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: var(--gray-2);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--gray-7);
-  }
+    overflow: hidden;
 }
-
-
 
 *,
 button,

@@ -57,17 +57,6 @@ export const ContributionService = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-`;
-
-export const ContributionServiceTitle = styled.h1`
-  font-size: var(--font__16);
-  font-weight: 700;
-  color: var(--gray-5);
-`;
-
-export const ContributionServiceBanner = styled.div`
-  width: 100%;
-  min-height: 28rem;
 
   & img {
     width: 100%;
@@ -76,13 +65,11 @@ export const ContributionServiceBanner = styled.div`
   }
 
   & .alternative-content {
-    width: 100%;
-    height: 100%;
+    min-height: 25rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
     border: 0.2rem solid var(--primary);
     border-radius: 0.4rem;
-    background-color: var(--white);
 
     @media (max-width: 620px) {
       grid-template-columns: 1fr;
@@ -112,9 +99,17 @@ export const ContributionServiceBanner = styled.div`
     }
   }
 
-  & .availability-contribution {
-    height: 100%;
+  & .container-availability__contribution {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--primary);
+  }
+
+  & .availability-contribution {
+    max-width: 24.7rem;
+    height: 100%;
     padding: 1rem;
     color: var(--white);
     display: flex;
@@ -203,6 +198,16 @@ export const ContributionServiceBanner = styled.div`
     border-top: 0.2rem solid var(--white);
     padding-top: 0.8rem;
   }
+`;
+
+export const ContributionServiceTitle = styled.h1`
+  font-size: var(--font__16);
+  font-weight: 700;
+  color: var(--gray-5);
+`;
+
+export const ContributionServiceBanner = styled.div`
+  width: 100%;
 `;
 
 export const InterestsAndDetailsStyled = styled(InterestsAndDetails)`
