@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchGroupData } from "../../api/fetchGroupData.js";
 
@@ -73,7 +73,7 @@ const GroupDetails = () => {
     {
       icon: <UserDonationIcon />,
       title: "Minhas Doações",
-      content: <Dashboard group={group} />,
+      content: <Dashboard username="alexjohnson" />,
     },
     {
       icon: <NewDonationIcon />,

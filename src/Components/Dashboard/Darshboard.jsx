@@ -23,7 +23,7 @@ const tabData = [
   },
 ];
 
-export default function Darshboard({ group }) {
+export default function Darshboard({ username }) {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -43,7 +43,7 @@ export default function Darshboard({ group }) {
         </TabList>
       </TabsContainer>
       <TabContentForTab>
-        {React.cloneElement(tabData[activeTab].content, { group })}
+        {React.cloneElement(tabData[activeTab].content, { username })}
       </TabContentForTab>
     </Container>
   );

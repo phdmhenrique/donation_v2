@@ -10,18 +10,18 @@ import {
   Details,
 } from "./CardContributions.js";
 
-import { fetchContributionsData } from "../../api/fetchContributionsData.js";
+import { fetchUserDonationsData } from "../../api/fetchUserDonationsData.js";
 
 // Icons
 import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
 import { FaEdit } from "react-icons/fa";
 
-const CardContribution = () => {
-  const contributions = fetchContributionsData();
+const CardContribution = ({ username }) => {
+  const { donations } = fetchUserDonationsData(username);
 
   return (
     <Container>
-      {contributions.map((contribution) => (
+      {donations.map((contribution) => (
         <Card key={contribution.id}>
           <img src={contribution.banner} alt="Banner da Doação" />
           <TitleAndDateInfos>

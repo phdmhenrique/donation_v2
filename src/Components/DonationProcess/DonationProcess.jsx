@@ -10,7 +10,7 @@ import { TabContentForTab } from "../Dashboard/Darshboard.js";
 import { TabList, Tab, TabsContainer } from "../../Components/Tabs/Tabs.js";
 
 // API
-import { fetchContributionsData } from "../../api/fetchContributionsData.js";
+import { fetchUserDonationsData } from "../../api/fetchUserDonationsData.js";
 
 // ICONS
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
@@ -36,10 +36,17 @@ const tabData = [
   },
 ];
 
-export default function DonationProcess({ group }) {
+export default function DonationProcess({ username }) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const proccessData = fetchContributionsData();
+  const { donations } = fetchUserDonationsData(username);
+
+  const filteredData = donations.filter(donation => {
+    if (activeTab === 0) return donation.status === 'em andamento';
+    if (activeTab === 1) return donation.status === 'concluída';
+    if (activeTab === 2) return donation.status === 'cancelada';
+    return false;
+  });
 
   return (
     <TabContentForTab>
@@ -58,54 +65,32 @@ export default function DonationProcess({ group }) {
         </TabList>
       </TabsContainer>
 
-      {activeTab === 0 && <SentAndReceived group={group} />}
+      {activeTab === 0 && <SentAndReceived username={username} />}
 
       <Container>
-        {activeTab === 1 && (
-          <>
-            {proccessData.map((process, index) => (
-              <Item key={index}>
-                <InformationDetails>
-                  <h2>{process.titleService}</h2>
-                  <span>Solicitação Enviada</span>
-                </InformationDetails>
+        {filteredData.map((process, index) => (
+          <Item key={index}>
+            <InformationDetails>
+              <h2>{process.titleService}</h2>
+              <span>Solicitação Enviada</span>
+            </InformationDetails>
 
-                <ViewSolicitationAndInfosDonation>
-                  <div className="infos-donation">
-                    <img
-                      src={process.avatar.image}
-                      alt={process.titleService}
-                    />
-                    <span>{process.date}</span>
-                    <span>{process.timeDonationCreated}</span>
-                  </div>
+            <ViewSolicitationAndInfosDonation>
+              <div className="infos-donation">
+                <img
+                  src={`../../src/Assets/photo-people-00.jpg`}
+                  alt={process.titleService}
+                />
+                <span>{process.date}</span>
+                <span>{process.timeDonationCreated}</span>
+              </div>
 
-                  <div>
-                    <button>Visualizar Solicitação</button>
-                  </div>
-                </ViewSolicitationAndInfosDonation>
-              </Item>
-            ))}
-          </>
-        )}
-
-        {activeTab === 2 && (
-          <div>
-            <h2>Doações Canceladas</h2>
-            {group.users.map((user) =>
-              user.donations
-                .filter((donation) => donation.status === "canceled")
-                .map((donation) => (
-                  <div key={donation.id}>
-                    <p>Usuário: {user.name}</p>
-                    <p>Tipo: {donation.type}</p>
-                    <p>Data: {donation.date}</p>
-                    <p>Quantidade: {donation.amount}</p>
-                  </div>
-                ))
-            )}
-          </div>
-        )}
+              <div>
+                <button>Visualizar Solicitação</button>
+              </div>
+            </ViewSolicitationAndInfosDonation>
+          </Item>
+        ))}
       </Container>
     </TabContentForTab>
   );

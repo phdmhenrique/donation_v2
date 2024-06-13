@@ -29,20 +29,20 @@ export const Logo = styled.header`
 
 export const LayoutContainer = styled.section`
   width: 100%;
-  height: calc(100% - 8rem);
+  height: calc(100% - 6rem);
   display: grid;
   grid-template-columns: 19.2rem minmax(77rem, 2fr) 32.5rem;
   justify-content: center;
 
   @media (max-width: 1315px) {
-    grid-template-columns: 9rem minmax(auto, 2fr) 32.5rem; /* Reduz a largura máxima da coluna central */
+    grid-template-columns: 9rem minmax(auto, 2fr) 32.5rem;
   }
 
   @media (max-width: 1216px) {
-    grid-template-columns: 9rem minmax(auto, 77rem); /* Remove a seção da direita */
+    grid-template-columns: 9rem minmax(auto, 77rem);
   }
 
   @media (max-width: 738px) {
-    grid-template-columns: 1fr; /* Remove a parte da esquerda */
+    grid-template-columns: 1fr;
   }
 `;
