@@ -12,7 +12,6 @@ export const ResultsAndFiltersStyled = styled(ResultsAndFilters)`
 
 export const ContainerCard = styled.div`
   min-height: 100%;
-  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;

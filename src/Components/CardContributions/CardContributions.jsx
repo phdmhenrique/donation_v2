@@ -8,7 +8,7 @@ import {
   ButtonStyledInterests,
   Interests,
   Details,
-} from "./CardContribution.js";
+} from "./CardContributions.js";
 
 import { fetchContributionsData } from "../../api/fetchContributionsData.js";
 

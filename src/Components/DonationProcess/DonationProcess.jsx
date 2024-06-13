@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import {
+  Container,
+  Item,
+  InformationDetails,
+  ViewSolicitationAndInfosDonation,
+} from "./DonationProcess.js";
+
 import { TabContentForTab } from "../Dashboard/Darshboard.js";
 import { TabList, Tab, TabsContainer } from "../../Components/Tabs/Tabs.js";
 
@@ -7,11 +14,11 @@ import { fetchContributionsData } from "../../api/fetchContributionsData.js";
 
 // ICONS
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
-import CheckedIcon from '../../Icons/CheckedIcon.jsx';
-import CloseIcon from '../../Icons/CloseIcon.jsx';
+import CheckedIcon from "../../Icons/CheckedIcon.jsx";
+import CloseIcon from "../../Icons/CloseIcon.jsx";
 
 // Components
-import SentAndReceived from '../SentAndReceived/SentAndReceived.jsx';
+import SentAndReceived from "../SentAndReceived/SentAndReceived.jsx";
 
 const tabData = [
   {
@@ -22,19 +29,17 @@ const tabData = [
   {
     icon: <CheckedIcon />,
     title: "Concluídos",
-    content: "Concluídos",
   },
   {
     icon: <CloseIcon />,
     title: "Cancelados",
-    content: "Cancelados",
   },
 ];
 
 export default function DonationProcess({ group }) {
   const [activeTab, setActiveTab] = useState(0);
 
-  // const proccessData = fetchContributionsData();
+  const proccessData = fetchContributionsData();
 
   return (
     <TabContentForTab>
@@ -53,41 +58,55 @@ export default function DonationProcess({ group }) {
         </TabList>
       </TabsContainer>
 
-      {activeTab === 0 && (
-        <SentAndReceived group={group} />
-      )}
+      {activeTab === 0 && <SentAndReceived group={group} />}
 
-      {activeTab === 1 && (
-        <div>
-          <h2>Doações Concluídas</h2>
-          {group.users.map((user) => (
-            user.donations.filter(donation => donation.status === 'completed').map(donation => (
-              <div key={donation.id}>
-                <p>Usuário: {user.name}</p>
-                <p>Tipo: {donation.type}</p>
-                <p>Data: {donation.date}</p>
-                <p>Quantidade: {donation.amount}</p>
-              </div>
-            ))
-          ))}
-        </div>
-      )}
+      <Container>
+        {activeTab === 1 && (
+          <>
+            {proccessData.map((process, index) => (
+              <Item key={index}>
+                <InformationDetails>
+                  <h2>{process.titleService}</h2>
+                  <span>Solicitação Enviada</span>
+                </InformationDetails>
 
-      {activeTab === 2 && (
-        <div>
-          <h2>Doações Canceladas</h2>
-          {group.users.map((user) => (
-            user.donations.filter(donation => donation.status === 'canceled').map(donation => (
-              <div key={donation.id}>
-                <p>Usuário: {user.name}</p>
-                <p>Tipo: {donation.type}</p>
-                <p>Data: {donation.date}</p>
-                <p>Quantidade: {donation.amount}</p>
-              </div>
-            ))
-          ))}
-        </div>
-      )}
+                <ViewSolicitationAndInfosDonation>
+                  <div className="infos-donation">
+                    <img
+                      src={process.avatar.image}
+                      alt={process.titleService}
+                    />
+                    <span>{process.date}</span>
+                    <span>{process.timeDonationCreated}</span>
+                  </div>
+
+                  <div>
+                    <button>Visualizar Solicitação</button>
+                  </div>
+                </ViewSolicitationAndInfosDonation>
+              </Item>
+            ))}
+          </>
+        )}
+
+        {activeTab === 2 && (
+          <div>
+            <h2>Doações Canceladas</h2>
+            {group.users.map((user) =>
+              user.donations
+                .filter((donation) => donation.status === "canceled")
+                .map((donation) => (
+                  <div key={donation.id}>
+                    <p>Usuário: {user.name}</p>
+                    <p>Tipo: {donation.type}</p>
+                    <p>Data: {donation.date}</p>
+                    <p>Quantidade: {donation.amount}</p>
+                  </div>
+                ))
+            )}
+          </div>
+        )}
+      </Container>
     </TabContentForTab>
   );
 }

@@ -14,7 +14,7 @@ import {
   ButtonStyledInterests,
   Interests,
   Details,
-} from "../CardContribution/CardContribution.js";
+} from "../CardContributions/CardContributions.js";
 import MyContributionIcon from "../../Icons/MyContributionIcon.jsx";
 import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
 

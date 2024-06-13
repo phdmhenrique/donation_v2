@@ -8,7 +8,7 @@ import MyContributionicon from "../../Icons/MyContributionIcon.jsx";
 
 // Components
 import DonationProcess from '../DonationProcess/DonationProcess.jsx';
-import CardContribution from '../CardContribution/CardContribution.jsx';
+import CardContributions from '../CardContributions/CardContributions.jsx';
 
 const tabData = [
   {
@@ -19,7 +19,7 @@ const tabData = [
   {
     icon: <MyContributionicon />,
     title: "Contribuições",
-    content: <CardContribution />,
+    content: <CardContributions />,
   },
 ];
 

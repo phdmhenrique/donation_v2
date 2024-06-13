@@ -6,7 +6,6 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1.2rem;
   margin-top: 1.6rem;
-  padding-bottom: 2rem;
 `;
 
 export const Card = styled.div`
