@@ -25,7 +25,7 @@ export const fetchUserDonationsData = (username) => {
       titleService: "Serviço de diagnóstico.",
       banner: "../../src/Assets/banner-service-04.png",
       tags: ["Saúde", "Medicamentos"],
-      quantityAvailability: true,
+      quantityAvailability: 70,
       description: 'Lorem ipsum dolor sit amet consectetur.',
       address: 'Avenida das Américas, Barra da Tijuca, 3050 Rio de Janeiro, RJ',
       timeDonationCreated: '08:30',

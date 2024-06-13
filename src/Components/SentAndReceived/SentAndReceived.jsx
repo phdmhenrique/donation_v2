@@ -10,12 +10,10 @@ const tabData = [
   {
     icon: <FaArrowRightLong />,
     title: "Enviadas",
-    content: 'Enviadas',
   },
   {
     icon: <FaArrowLeftLong />,
     title: "Recebidas",
-    content: "Recebidos",
   },
 ];
 

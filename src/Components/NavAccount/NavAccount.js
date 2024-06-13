@@ -4,7 +4,7 @@ export const Container = styled.nav`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 1.6rem 0 0;
+  padding: 0 1.6rem 1.6rem 0;
   gap: 1.5rem;
 
   overflow-y: scroll;
