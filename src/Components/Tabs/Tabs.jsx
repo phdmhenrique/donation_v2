@@ -30,9 +30,17 @@ const Tabs = () => {
     {
       icon: <DashboardIcon />,
       title: "Geral",
-      content: (groups, sentRequests, openJoinModal, handleCancelRequest, openCancelModal, hoveringGroupId, setHoveringGroupId) => (
+      content: (
+        groups,
+        sentRequests,
+        openJoinModal,
+        handleCancelRequest,
+        openCancelModal,
+        hoveringGroupId,
+        setHoveringGroupId
+      ) => (
         <CardGroup
-          groups={groups}
+          groups={groups.filter((group) => group.comunityAccepted===false)}
           sentRequests={sentRequests}
           ButtonComponent={JoinCancelButton}
           openJoinModal={openJoinModal}
@@ -40,16 +48,24 @@ const Tabs = () => {
           openCancelModal={openCancelModal}
           hoveringGroupId={hoveringGroupId}
           setHoveringGroupId={setHoveringGroupId}
-          noDataMessage="Não há grupos para serem carregados." // Adicionado
+          noDataMessage="Não há grupos para serem carregados."
         />
       ),
     },
     {
       icon: <UserDonationIcon />,
       title: "Meus Grupos",
-      content: (groups, sentRequests, openJoinModal, handleCancelRequest, openCancelModal, hoveringGroupId, setHoveringGroupId) => (
+      content: (
+        groups,
+        sentRequests,
+        openJoinModal,
+        handleCancelRequest,
+        openCancelModal,
+        hoveringGroupId,
+        setHoveringGroupId
+      ) => (
         <CardGroup
-          groups={groups}
+          groups={groups.filter((group) => group.comunityAccepted)}
           sentRequests={sentRequests}
           ButtonComponent={ViewGroupButton}
           openJoinModal={openJoinModal}
@@ -57,16 +73,24 @@ const Tabs = () => {
           openCancelModal={openCancelModal}
           hoveringGroupId={hoveringGroupId}
           setHoveringGroupId={setHoveringGroupId}
-          noDataMessage="Você ainda não participa de nenhum grupo." // Adicionado
+          noDataMessage="Você ainda não participa de nenhum grupo."
         />
       ),
     },
     {
       icon: <NewDonationIcon />,
       title: "Solicitações",
-      content: (groups, sentRequests, openJoinModal, handleCancelRequest, openCancelModal, hoveringGroupId, setHoveringGroupId) => (
+      content: (
+        groups,
+        sentRequests,
+        openJoinModal,
+        handleCancelRequest,
+        openCancelModal,
+        hoveringGroupId,
+        setHoveringGroupId
+      ) => (
         <CardGroup
-          groups={groups.filter((group) => group.solicited)}
+          groups={groups.filter((group) => group.comunitySolicited)}
           sentRequests={sentRequests}
           ButtonComponent={RemoveRequestButton}
           openJoinModal={openJoinModal}
@@ -74,7 +98,7 @@ const Tabs = () => {
           openCancelModal={openCancelModal}
           hoveringGroupId={hoveringGroupId}
           setHoveringGroupId={setHoveringGroupId}
-          noDataMessage="Não há solicitações para serem carregadas." // Adicionado
+          noDataMessage="Não há solicitações para serem carregadas."
         />
       ),
     },
@@ -85,7 +109,7 @@ const Tabs = () => {
   const [sentRequests, setSentRequests] = useState([]);
   const [hoveringGroupId, setHoveringGroupId] = useState(null);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
-  const [groupName, setGroupName] = useState(""); // Adicionar estado para nome da comunidade
+  const [groupName, setGroupName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
 
@@ -100,7 +124,7 @@ const Tabs = () => {
   const updateGroupData = (groupId, solicited) => {
     setGroupData((prevData) =>
       prevData.map((group) =>
-        group.id === groupId ? { ...group, solicited } : group
+        group.comunityId === groupId ? { ...group, comunitySolicited: solicited } : group
       )
     );
   };
@@ -117,8 +141,8 @@ const Tabs = () => {
 
   const openCancelModal = (groupId, groupName) => {
     setSelectedGroupId(groupId);
-    setGroupName(groupName); // Adicionando o nome da comunidade ao estado
-    setIsCancelModalOpen(true); // Abrir modal de cancelamento
+    setGroupName(groupName);
+    setIsCancelModalOpen(true);
   };
 
   const handleConfirmJoinModal = () => {
@@ -132,7 +156,7 @@ const Tabs = () => {
   const handleCancelRequest = (groupId) => {
     updateGroupData(groupId, false);
     setSentRequests((prev) => prev.filter((id) => id !== groupId));
-    setIsCancelModalOpen(false); // Fechar modal de cancelamento
+    setIsCancelModalOpen(false);
   };
 
   return (
@@ -168,14 +192,14 @@ const Tabs = () => {
         onClose={closeJoinModal}
         onConfirm={handleConfirmJoinModal}
         groupName={
-          groupData.find((group) => group.id === selectedGroupId)?.title || ""
+          groupData.find((group) => group.comunityId === selectedGroupId)?.comunityTitle || ""
         }
       />
       <ConfirmModal
         isOpen={isCancelModalOpen}
-        onClose={() => setIsCancelModalOpen(false)} // Fechar modal de cancelamento
-        onConfirm={() => handleCancelRequest(selectedGroupId)} // Confirmar cancelamento
-        groupName={groupName} // Usar estado para o nome da comunidade
+        onClose={() => setIsCancelModalOpen(false)}
+        onConfirm={() => handleCancelRequest(selectedGroupId)}
+        groupName={groupName}
         isCancel={true}
       />
     </Container>

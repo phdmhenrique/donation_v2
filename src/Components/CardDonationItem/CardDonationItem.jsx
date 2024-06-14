@@ -18,7 +18,7 @@ import {
 import MyContributionIcon from "../../Icons/MyContributionIcon.jsx";
 import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
 
-const CardItem = ({ contribution }) => {
+const CardDonationItem = ({ donation }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [selectedDay, setSelectedDay] = useState("Seg");
 
@@ -33,7 +33,7 @@ const CardItem = ({ contribution }) => {
   };
 
   const isHourAvailable = (hour) => {
-    return contribution.availability[selectedDay].includes(hour);
+    return donation.donationAvailability[selectedDay].includes(hour);
   };
 
   return (
@@ -41,23 +41,23 @@ const CardItem = ({ contribution }) => {
       <CardInfoUser>
         <CardInfoUserDetails>
           <img
-            src={contribution.avatar.image}
-            alt={contribution.titleService}
+            src={donation.member.memberImage}
+            alt={donation.member.memberUsername}
           />
           <Usernames>
-            <span>{contribution.avatar.name}</span>
-            <p>@{contribution.avatar.username}</p>
+            <span>{donation.member.memberName}</span>
+            <p>@{donation.member.memberUsername}</p>
           </Usernames>
         </CardInfoUserDetails>
 
         <ContributionDate>
-          {contribution.date}
+          {donation.donationDate}
           <MoreInfoIcon />
         </ContributionDate>
       </CardInfoUser>
 
       <ContributionServiceTitle>
-        {contribution.titleService}
+        {donation.donationTitle}
       </ContributionServiceTitle>
 
       <ContributionService
@@ -68,7 +68,7 @@ const CardItem = ({ contribution }) => {
         {isHovered ? (
           <div className="alternative-content">
             <div className="description-contribution">
-              {contribution.description}
+              {donation.donationDescription}
             </div>
 
             <div className="container-availability__contribution">
@@ -102,32 +102,31 @@ const CardItem = ({ contribution }) => {
                 </div>
 
                 <div className="availability-address">
-                  Endereço: {contribution.address}
+                  Endereço: {donation.donationAddress}
                 </div>
               </div>
             </div>
           </div>
         ) : (
           <ContributionServiceBanner style={{height: '25rem'}}>
-            <img src={contribution.banner} alt={contribution.titleService} />
+            <img src={donation.donationBanner} alt={donation.donationTitle} />
           </ContributionServiceBanner>
         )}
       </ContributionService>
 
       <InterestsAndDetailsStyled>
         <Interests>
-          {contribution.tags.map((tag, index) => (
+          {donation.donationTags.map((tag, index) => (
             <ButtonStyledInterests key={index} className="inactive">
               #{tag}
             </ButtonStyledInterests>
           ))}
         </Interests>
 
-        <Details className="fodase">
+        <Details>
           <div>
             <span>Disponibilidade</span>
-            <p>{contribution.quantityAvailability}</p>
-            {/* <p>{Object.values(contribution.availability).flat().length}</p> */}
+            <p>{donation.donationQuantityAvailability}</p>
           </div>
           <button>
             Solicitar <MyContributionIcon />
@@ -138,4 +137,4 @@ const CardItem = ({ contribution }) => {
   );
 };
 
-export default CardItem;
+export default CardDonationItem;

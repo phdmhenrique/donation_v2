@@ -1,24 +1,30 @@
-import React, { useRef, useEffect } from "react";
-import { fetchContributionsData } from "../../api/fetchContributionsData.js";
+import React from "react";
 import {
   Container,
   ResultsAndFiltersStyled,
   ContainerCard,
 } from "./CardDonation.js";
-import CardItem from "../CardDonationItem/CardDonationItem.jsx";
 
-export default function CardDonation() {
-  const contributions = fetchContributionsData();
+// Components
+import CardDonationItem from "../CardDonationItem/CardDonationItem.jsx";
+
+export default function CardDonation({ members }) {
+  const donations = members.flatMap((member) =>
+    member.donations.map((donation) => ({
+      ...donation,
+      member,
+    }))
+  );
 
   return (
     <Container>
       <ResultsAndFiltersStyled>
-        Exibindo {contributions.length} de {contributions.length} resultados
+        Exibindo {donations.length} de {donations.length} resultados
       </ResultsAndFiltersStyled>
 
       <ContainerCard>
-        {contributions.map((contribution, index) => (
-          <CardItem key={index} contribution={contribution} />
+        {donations.map((donation, index) => (
+          <CardDonationItem key={index} donation={donation} />
         ))}
       </ContainerCard>
     </Container>

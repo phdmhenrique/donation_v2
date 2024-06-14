@@ -9,6 +9,14 @@ export const LazyLoadStyled = styled(LazyLoad)`
   background-color: var(--white);
   position: relative;
 
+  & .shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: -1rem -5rem 15rem 4.5rem var(--black);
+  }
+
   & img {
     width: 100%;
     height: 32rem;

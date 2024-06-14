@@ -43,7 +43,7 @@ const GroupDetails = () => {
 
   const { groupId } = useParams();
   const groups = fetchGroupData();
-  const group = groups.find((group) => group.id === parseInt(groupId));
+  const group = groups.find((group) => group.comunityId === parseInt(groupId));
 
   if (!group) {
     return <div>Grupo não encontrado</div>;
@@ -54,7 +54,7 @@ const GroupDetails = () => {
       text: `Doações`,
     },
     {
-      text: `Membros (${group.users.length})`,
+      text: `Membros (${group.members.length})`,
     },
     {
       text: `Regras do Grupo`,
@@ -68,7 +68,7 @@ const GroupDetails = () => {
     {
       icon: <DashboardIcon />,
       title: "Geral",
-      content: <CardDonation />,
+      content: <CardDonation members={group.members} />,
     },
     {
       icon: <UserDonationIcon />,
@@ -78,19 +78,20 @@ const GroupDetails = () => {
     {
       icon: <NewDonationIcon />,
       title: "Nova Doação",
-      content: "Opa 03",
+      content: "Novas Doações",
     },
   ];
 
   return (
     <Container>
       <LazyLoadStyled height={200} offset={100} once>
-        <img src={group.banner} alt={group.title} />
+        <div className="shadow"></div>
+        <img src={group.comunityBanner} alt={group.comunityTitle} />
         <UserPhoto>
-          <img src={group.image} alt={group.title} />
+          <img src={group.comunityImage} alt={group.comunityTitle} />
           <ComunityUsername>
-            <p>{group.title}</p>
-            <p>@{group.username}</p>
+            <p>{group.comunityTitle}</p>
+            <p>@{group.comunityUsername}</p>
           </ComunityUsername>
         </UserPhoto>
 
@@ -99,10 +100,10 @@ const GroupDetails = () => {
             <FaArrowLeft />
           </Link>
           <ComunityInformations>
-            <ComunityName>{group.title}</ComunityName>
+            <ComunityName>{group.comunityTitle}</ComunityName>
             <ComunityAddress>
               <LocationIcon />
-              {group.address}
+              {group.comunityAddress}
             </ComunityAddress>
           </ComunityInformations>
         </ComunityInfosAndBack>

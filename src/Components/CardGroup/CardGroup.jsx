@@ -28,53 +28,53 @@ const CardGroup = ({
   openCancelModal,
   hoveringGroupId,
   setHoveringGroupId,
-  noDataMessage, // Adicionado
+  noDataMessage,
 }) => {
   return (
     <Container>
       {groups.length === 0 ? (
-        <NoDataMessage message={noDataMessage} /> // Exibir mensagem quando não houver dados
+        <NoDataMessage message={noDataMessage} />
       ) : (
         <>
           <ResultsAndFilters>
             Exibindo {groups.length} de {groups.length} resultados
           </ResultsAndFilters>
           {groups.map((group) => (
-            <Card key={group.id}>
+            <Card key={group.comunityId}>
               <ImageCard>
-                <img src={group.image} alt={group.title} />
+                <img src={group.comunityImage} alt={group.comunityTitle} />
               </ImageCard>
               <ContentCard>
-                <Title>{group.title}</Title>
+                <Title>{group.comunityTitle}</Title>
                 <Demonstrator>
                   <GroupIcon />
                   <PhotoUsersFromGroup>
-                    {group.users.slice(0, 5).map((user, index) => (
+                    {group.members.slice(0, 5).map((member, index) => (
                       <div key={index}>
-                        <img src={user.avatar} alt={`User ${index + 1}`} />
+                        <img src={member.memberImage} alt={`User ${index + 1}`} />
                       </div>
                     ))}
-                    {group.users.length > 5 && (
+                    {group.members.length > 5 && (
                       <div>
-                        <PhotoUserUnit>+{group.users.length - 5}</PhotoUserUnit>
+                        <PhotoUserUnit>+{group.members.length - 5}</PhotoUserUnit>
                       </div>
                     )}
                   </PhotoUsersFromGroup>
                   <InfoNumberOfDonation>
-                    <strong>+{group.donationsPerDay}</strong> Doações por dia
+                    <strong>+{group.comunityDonationsPerDay}</strong> Doações por dia
                   </InfoNumberOfDonation>
                 </Demonstrator>
-                <Description>{group.description}</Description>
+                <Description>{group.comunityDescription}</Description>
                 <Address>
                   <LocationIcon />
-                  {group.address}
+                  {group.comunityAddress}
                 </Address>
                 <ButtonComponent
-                  groupId={group.id}
-                  groupName={group.title} // Adicionado
+                  groupId={group.comunityId}
+                  groupName={group.comunityTitle}
                   openJoinModal={openJoinModal}
                   handleCancelRequest={handleCancelRequest}
-                  openCancelModal={openCancelModal} // Adicionado
+                  openCancelModal={openCancelModal}
                   sentRequests={sentRequests}
                   hoveringGroupId={hoveringGroupId}
                   setHoveringGroupId={setHoveringGroupId}
