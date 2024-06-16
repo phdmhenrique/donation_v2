@@ -52,7 +52,9 @@ export const DateInfos = styled.div`
 export const InterestsAndDetails = styled.div`
   height: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 1.2rem;
   padding: 2rem 0.8rem 0.8rem;
 
   & div {
@@ -137,7 +139,7 @@ export const Details = styled.div`
 `;
 
 export const ButtonStyledInterests = styled(ButtonStyled)`
-  width: min-content;
+  width: max-content;
   height: 100%;
   padding: 0.6rem 0.4rem;
 `;

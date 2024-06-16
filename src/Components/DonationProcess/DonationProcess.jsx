@@ -10,7 +10,7 @@ import { TabContentForTab } from "../Dashboard/Darshboard.js";
 import { TabList, Tab, TabsContainer } from "../../Components/Tabs/Tabs.js";
 
 // API
-import { fetchUserDonationsData } from "../../api/fetchUserDonationsData.js";
+import { fetchMemberDonationsData } from "../../api/fetchMemberDonationsData.js";
 
 // ICONS
 import DashboardIcon from "../../Icons/DashboardICon.jsx";
@@ -24,7 +24,6 @@ const tabData = [
   {
     icon: <DashboardIcon />,
     title: "Em Andamento",
-    content: <SentAndReceived />,
   },
   {
     icon: <CheckedIcon />,
@@ -39,12 +38,11 @@ const tabData = [
 export default function DonationProcess({ username }) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const { donations } = fetchUserDonationsData(username);
+  const { donations, member } = fetchMemberDonationsData(username);
 
-  const filteredData = donations.filter(donation => {
-    if (activeTab === 0) return donation.status === 'em andamento';
-    if (activeTab === 1) return donation.status === 'concluída';
-    if (activeTab === 2) return donation.status === 'cancelada';
+  const filteredData = donations.filter((donation) => {
+    if (activeTab === 1) return donation.donationStatus === 1; // concluídos
+    if (activeTab === 2) return donation.donationStatus === 2; // cancelados
     return false;
   });
 
@@ -65,24 +63,31 @@ export default function DonationProcess({ username }) {
         </TabList>
       </TabsContainer>
 
-      {activeTab === 0 && <SentAndReceived username={username} />}
+      {activeTab === 0 && (
+        <SentAndReceived donations={donations} member={member} />
+      )}
 
       <Container>
         {filteredData.map((process, index) => (
           <Item key={index}>
             <InformationDetails>
-              <h2>{process.titleService}</h2>
-              <span>Solicitação Enviada</span>
+              <h2>{process.donationTitle}</h2>
+              <span>
+                {process.donationStatus === 1
+                  ? "Solicitação Concluída"
+                  : "Solicitação Cancelada"}
+              </span>
             </InformationDetails>
 
             <ViewSolicitationAndInfosDonation>
               <div className="infos-donation">
-                <img
-                  src={`../../src/Assets/photo-people-00.jpg`}
-                  alt={process.titleService}
-                />
-                <span>{process.date}</span>
-                <span>{process.timeDonationCreated}</span>
+                <img src={member.memberImage} alt={process.donationTitle} />
+                <div className="divisory"></div>
+
+                <span>{process.donationDate}</span>
+                <div className="divisory"></div>
+
+                <span>{process.donationTimeCreated}</span>
               </div>
 
               <div>

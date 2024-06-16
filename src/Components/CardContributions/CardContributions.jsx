@@ -10,31 +10,31 @@ import {
   Details,
 } from "./CardContributions.js";
 
-import { fetchUserDonationsData } from "../../api/fetchUserDonationsData.js";
+import { fetchMemberDonationsData } from "../../api/fetchMemberDonationsData.js";
 
 // Icons
 import MoreInfoIcon from "../../Icons/MoreInfoIcon.jsx";
 import { FaEdit } from "react-icons/fa";
 
 const CardContribution = ({ username }) => {
-  const { donations } = fetchUserDonationsData(username);
+  const { donations } = fetchMemberDonationsData(username);
 
   return (
     <Container>
-      {donations.map((contribution) => (
-        <Card key={contribution.id}>
-          <img src={contribution.banner} alt="Banner da Doação" />
+      {donations.map((donation) => (
+        <Card key={donation.donationId}>
+          <img src={donation.donationBanner} alt={donation.donationTitle} />
           <TitleAndDateInfos>
-            <h1>{contribution.titleService}</h1>
+            <h1>{donation.donationTitle}</h1>
             <DateInfos>
-              <p>{contribution.date}</p>
+              <p>{donation.donationDate}</p>
               <MoreInfoIcon />
             </DateInfos>
           </TitleAndDateInfos>
 
           <InterestsAndDetails>
             <Interests>
-              {contribution.tags.map((tag, index) => (
+              {donation.donationTags.map((tag, index) => (
                 <ButtonStyledInterests key={index} className="inactive">
                   #{tag}
                 </ButtonStyledInterests>
@@ -44,7 +44,7 @@ const CardContribution = ({ username }) => {
             <Details>
               <div>
                 <span>Disponibilidade</span>
-                <p>{contribution.quantityAvailability}</p>
+                <p>{donation.donationQuantityAvailability}</p>
               </div>
               <button>Editar Doação <FaEdit /></button>
             </Details>

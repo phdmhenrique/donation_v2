@@ -7,7 +7,7 @@ export const fetchGroupData = () => {
       comunityUsername: "solidariedadeemrede",
       comunityDonationsPerDay: 15,
       comunityDescription:
-        "Este grupo é dedicado a fornecer suporte alimentar para famílias necessitadas na região de Registro-SP. Junte-se a nós para fazer a diferença!",
+        "Neste grupo nós doamos aquilo que podemos e pegamos aquilo que precisamos. Serviços e bens serão sempre bem-vindos. Vamos melhorar a nossa comunidade e fornecer qualquer tipo de suporte necessitados na região de Registro-SP. Junte-se a nós para fazer a diferença!",
       comunityAddress: "Rua do Moinho, 232, Registro-SP",
       comunityImage: "../../src/Assets/comunity-image.jpg",
       comunityBanner: "../../src/Assets/comunity-banner-01.png",
@@ -22,10 +22,12 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 1,
+              donationSolicited: true,
               donationTitle: "Manutenção Geral de Computador",
               donationBanner: "../../src/Assets/banner-service-03.png",
               donationTags: ["Serviço", "Gratuito", "Ferramenta"],
               donationQuantityAvailability: 12,
+
               donationAvailability: {
                 Seg: ["01:00", "04:00", "23:00", "19:00"],
                 Ter: ["02:00", "08:00", "14:00", "20:00"],
@@ -51,7 +53,8 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 2,
-              donationTitle: "Café Tradicional",
+              donationSolicited: true,
+              donationTitle: "Doando grãos e pó de café tradicional",
               donationBanner: "../../src/Assets/banner-service-06.jpg",
               donationTags: ["Grãos", "Café"],
               donationQuantityAvailability: "15kg",
@@ -81,6 +84,7 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 3,
+              donationSolicited: true,
               donationTitle: "Serviço de Diagnóstico",
               donationBanner: "../../src/Assets/banner-service-04.png",
               donationTags: ["Saúde", "Medicamentos"],
@@ -111,6 +115,7 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 4,
+              donationSolicited: true,
               donationTitle: "Amoras da Estação",
               donationBanner: "../../src/Assets/banner-service-05.png",
               donationTags: ["Saúde", "Medicamentos", "Nutrição"],
@@ -141,7 +146,8 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 5,
-              donationTitle: "Promoção em Frutas",
+              donationSolicited: true,
+              donationTitle: "Doando Frutas em geral",
               donationBanner: "../../src/Assets/banner-service-07.jpg",
               donationTags: ["Frutas", "Promoção"],
               donationQuantityAvailability: 31,
@@ -171,7 +177,8 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 6,
-              donationTitle: "Doando cereais",
+              donationSolicited: true,
+              donationTitle: "Doando pacotes de cereais",
               donationBanner: "../../src/Assets/banner-service-08.jpg",
               donationTags: ["Cereais", "Grãos"],
               donationQuantityAvailability: 42,
@@ -210,9 +217,9 @@ export const fetchGroupData = () => {
       members: [
         {
           memberId: 1,
-          memberName: "Cameron Williamson",
-          memberUsername: "cameronwilliamson",
-          memberImage: "../../src/Assets/photo-people-02.jpg",
+          memberName: "Helena Brigs",
+          memberUsername: "helenabrigs",
+          memberImage: "../../src/Assets/photo-people-07.jpg",
           donations: [
             {
               donationId: 1,
@@ -239,9 +246,9 @@ export const fetchGroupData = () => {
         },
         {
           memberId: 2,
-          memberName: "Courtney Henry",
-          memberUsername: "courtneyhenry",
-          memberImage: "../../src/Assets/photo-people-04.png",
+          memberName: "Jéssica Afton",
+          memberUsername: "jessyafton",
+          memberImage: "../../src/Assets/photo-people-08.jpg",
           donations: [
             {
               donationId: 2,

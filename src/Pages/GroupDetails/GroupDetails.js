@@ -22,6 +22,7 @@ export const LazyLoadStyled = styled(LazyLoad)`
     height: 32rem;
     object-fit: cover;
     object-position: top;
+    outline: 0.2rem solid var(--gray-2);
   }
 
   @media (max-width: 840px) {
