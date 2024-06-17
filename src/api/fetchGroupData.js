@@ -1,5 +1,5 @@
 // Função para simular a chamada da API
-export const fetchGroupData = () => {
+export const fetchGroupData = async () => {
   return [
     {
       comunityId: 1,
@@ -7,7 +7,7 @@ export const fetchGroupData = () => {
       comunityUsername: "solidariedadeemrede",
       comunityDonationsPerDay: 15,
       comunityDescription:
-        "Neste grupo nós doamos aquilo que podemos e pegamos aquilo que precisamos. Serviços e bens serão sempre bem-vindos. Vamos melhorar a nossa comunidade e fornecer qualquer tipo de suporte necessitados na região de Registro-SP. Junte-se a nós para fazer a diferença!",
+        "Neste grupo nós doamos aquilo que podemos e pegamos aquilo que precisamos. Serviços e bens serão sempre bem-vindos. Vamos melhorar a nossa comunidade e fornecer qualquer tipo de suporte aos necessitados na região de Registro-SP. Junte-se a nós para fazer a diferença!",
       comunityAddress: "Rua do Moinho, 232, Registro-SP",
       comunityImage: "../../src/Assets/comunity-image.jpg",
       comunityBanner: "../../src/Assets/comunity-banner-01.png",
@@ -22,12 +22,11 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 1,
-              donationSolicited: true,
+              donationSolicited: false,
               donationTitle: "Manutenção Geral de Computador",
               donationBanner: "../../src/Assets/banner-service-03.png",
               donationTags: ["Serviço", "Gratuito", "Ferramenta"],
               donationQuantityAvailability: 12,
-
               donationAvailability: {
                 Seg: ["01:00", "04:00", "23:00", "19:00"],
                 Ter: ["02:00", "08:00", "14:00", "20:00"],
@@ -40,7 +39,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "19:30",
               donationDate: "Junho 24",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Oferecemos serviços gratuitos de manutenção e reparo de computadores. Se o seu computador está lento ou com problemas, estamos aqui para ajudar a restaurá-lo ao seu melhor desempenho. Nossos especialistas são voluntários dedicados e experientes.",
               donationAddress: "Rua do Marechal, Centro, 222 Registro, SP",
             },
           ],
@@ -53,7 +52,7 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 2,
-              donationSolicited: true,
+              donationSolicited: false,
               donationTitle: "Doando grãos e pó de café tradicional",
               donationBanner: "../../src/Assets/banner-service-06.jpg",
               donationTags: ["Grãos", "Café"],
@@ -70,7 +69,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "12:30",
               donationDate: "Maio 06",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Estamos doando 15kg de grãos de café e pó de café tradicional, perfeito para você que ama um bom café. Este café de alta qualidade é ideal para uso doméstico ou em pequenos negócios.",
               donationAddress:
                 "Praça da Liberdade, Liberdade, 100 Belo Horizonte, MG",
             },
@@ -84,7 +83,7 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 3,
-              donationSolicited: true,
+              donationSolicited: false,
               donationTitle: "Serviço de Diagnóstico",
               donationBanner: "../../src/Assets/banner-service-04.png",
               donationTags: ["Saúde", "Medicamentos"],
@@ -101,7 +100,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "15:24",
               donationDate: "Agosto 22",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Oferecemos serviços gratuitos de diagnóstico médico para detectar possíveis problemas de saúde. Nossos profissionais de saúde estão prontos para ajudar a comunidade com exames e orientações.",
               donationAddress:
                 "Avenida das Américas, Barra da Tijuca, 3050 Rio de Janeiro, RJ",
             },
@@ -115,10 +114,10 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 4,
-              donationSolicited: true,
+              donationSolicited: false,
               donationTitle: "Amoras da Estação",
               donationBanner: "../../src/Assets/banner-service-05.png",
-              donationTags: ["Saúde", "Medicamentos", "Nutrição"],
+              donationTags: ["Saúde", "Nutrição"],
               donationQuantityAvailability: 72,
               donationAvailability: {
                 Seg: ["12:00", "18:00", "00:00"],
@@ -132,7 +131,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "09:14",
               donationDate: "Março 12",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Estamos doando amoras frescas e deliciosas da estação, colhidas localmente. Essas frutas são ricas em vitaminas e perfeitas para lanches saudáveis.",
               donationAddress:
                 "Travessa dos Pioneiros, Centro, 870 Curitiba, PR",
             },
@@ -146,7 +145,7 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 5,
-              donationSolicited: true,
+              donationSolicited: false,
               donationTitle: "Doando Frutas em geral",
               donationBanner: "../../src/Assets/banner-service-07.jpg",
               donationTags: ["Frutas", "Promoção"],
@@ -163,7 +162,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "18:52",
               donationDate: "Novembro 17",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Estamos doando uma variedade de frutas frescas, incluindo maçãs, laranjas e bananas. Ótimas para uma alimentação saudável e balanceada.",
               donationAddress:
                 "Rua das Palmeiras, Bela Vista, 450 Porto Alegre, RS",
             },
@@ -177,7 +176,7 @@ export const fetchGroupData = () => {
           donations: [
             {
               donationId: 6,
-              donationSolicited: true,
+              donationSolicited: false,
               donationTitle: "Doando pacotes de cereais",
               donationBanner: "../../src/Assets/banner-service-08.jpg",
               donationTags: ["Cereais", "Grãos"],
@@ -194,7 +193,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "20:13",
               donationDate: "Janeiro 02",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Estamos doando pacotes de cereais variados, ricos em fibras e nutrientes essenciais. Perfeitos para um café da manhã saudável.",
               donationAddress:
                 "Alameda dos Anjos, Santo Antônio, 1280 Salvador, BA",
             },
@@ -239,7 +238,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "19:30",
               donationDate: "Junho 24",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Oferecemos serviços gratuitos de manutenção e reparo de computadores. Se o seu computador está lento ou com problemas, estamos aqui para ajudar a restaurá-lo ao seu melhor desempenho. Nossos especialistas são voluntários dedicados e experientes.",
               donationAddress: "Rua do Marechal, Centro, 222 Registro, SP",
             },
           ],
@@ -268,7 +267,7 @@ export const fetchGroupData = () => {
               donationTimeCreated: "12:30",
               donationDate: "Maio 24",
               donationDescription:
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni corrupti sapiente quidem quae laudantium maiores excepturi veniam optio, repudiandae accusamus id ut enim nemo suscipit accusantium! Eligendi, explicabo repellendus animi, quam adipisci saepe molestias ut corporis maiores quod id fugiat, ipsum nihil labore! Repellendus voluptatum doloribus nobis non nam.",
+                "Doação de 15kg de café tradicional, perfeito para começar o dia com energia. Este café é de alta qualidade e traz um sabor autêntico e encorpado.",
               donationAddress:
                 "Praça da Liberdade, Liberdade, 100 Belo Horizonte, MG",
             },

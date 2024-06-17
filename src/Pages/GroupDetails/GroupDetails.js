@@ -211,7 +211,6 @@ export const TabContainerStyled = styled(TabsContainer)`
 export const TabListStyled = styled(TabList)`
   max-width: 100rem;
   display: flex;
-  justify-content: space-between;
   margin: 4.3rem auto 0 auto;
 `;
 

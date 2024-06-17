@@ -63,9 +63,7 @@ export default function DonationProcess({ username }) {
         </TabList>
       </TabsContainer>
 
-      {activeTab === 0 && (
-        <SentAndReceived donations={donations} member={member} />
-      )}
+      {activeTab === 0 && <SentAndReceived donations={donations} member={member} />}
 
       <Container>
         {filteredData.map((process, index) => (
@@ -73,15 +71,16 @@ export default function DonationProcess({ username }) {
             <InformationDetails>
               <h2>{process.donationTitle}</h2>
               <span>
-                {process.donationStatus === 1
-                  ? "Solicitação Concluída"
-                  : "Solicitação Cancelada"}
+                {process.donationStatus === 1 ? 'Solicitação Concluída' : 'Solicitação Cancelada'}
               </span>
             </InformationDetails>
 
             <ViewSolicitationAndInfosDonation>
               <div className="infos-donation">
-                <img src={member.memberImage} alt={process.donationTitle} />
+                <img
+                  src={member.memberImage}
+                  alt={process.donationTitle}
+                />
                 <div className="divisory"></div>
 
                 <span>{process.donationDate}</span>

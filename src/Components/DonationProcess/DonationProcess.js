@@ -6,23 +6,36 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-top: 1.6rem;
+
+  /* @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  } */
 `;
 
 export const Item = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "info details";
   gap: 1.2rem;
   min-height: 10rem;
   border: 0.1rem solid var(--primary);
   padding: 1.2rem;
   border-radius: 0.5rem;
-
   color: var(--primary);
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "info" "details";
+  }
 `;
 
 export const InformationDetails = styled.div`
+  grid-area: info;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -38,12 +51,13 @@ export const InformationDetails = styled.div`
 `;
 
 export const ViewSolicitationAndInfosDonation = styled.div`
+  grid-area: details;
   display: flex;
-  align-items: flex-end;
   flex-direction: column;
   gap: 1.2rem;
 
   & button {
+    width: 100%;
     background-color: var(--primary);
     color: var(--white);
     border-radius: 0.5rem;
@@ -54,15 +68,19 @@ export const ViewSolicitationAndInfosDonation = styled.div`
 
   & .infos-donation {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
+
+    @media (max-width: 480px) {
+      justify-content: flex-start;
+    }
 
     & .divisory {
       width: 0.2rem;
       height: 1.5rem;
       background-color: var(--primary);
-      margin: 0 0.8rem;
     }
 
     & img {

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import {
   Container,
   ContainerReturnPage,
@@ -13,12 +14,16 @@ export default function CreateGroup() {
   return (
     <Container>
       <ContainerReturnPage>
-        <FaArrowLeftLong />
+        <Link to="/">
+          <FaArrowLeftLong />
+        </Link>
         <ReturnPageMessage>Grupos</ReturnPageMessage>
       </ContainerReturnPage>
 
       <ContainerCreateGroup>
-          <ButtonCreateOrEditGroup><AiFillEdit /> Criar Grupo</ButtonCreateOrEditGroup>
+        <ButtonCreateOrEditGroup>
+          <AiFillEdit /> Criar Grupo
+        </ButtonCreateOrEditGroup>
       </ContainerCreateGroup>
     </Container>
   );

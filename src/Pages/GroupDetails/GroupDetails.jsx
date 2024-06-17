@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchGroupData } from "../../api/fetchGroupData.js";
 
@@ -36,14 +36,23 @@ import NewDonationIcon from "../../Icons/NewDonationIcon.jsx";
 import SearchInput from "../../Components/SearchInput/SearchInput.jsx";
 import Dashboard from "../../Components/Dashboard/Darshboard.jsx";
 import CardDonation from "../../Components/CardDonation/CardDonation.jsx";
+import NewDonations from '../../Components/NewDonations/NewDonations.jsx';
 
 const GroupDetails = () => {
   const [activeButton, setActiveButton] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
+  const [group, setGroup] = useState(null);
 
   const { groupId } = useParams();
-  const groups = fetchGroupData();
-  const group = groups.find((group) => group.comunityId === parseInt(groupId));
+
+  useEffect(() => {
+    async function fetchData() {
+      const groups = await fetchGroupData();
+      const group = groups.find(group => group.comunityId === parseInt(groupId));
+      setGroup(group);
+    }
+    fetchData();
+  }, [groupId]);
 
   if (!group) {
     return <div>Grupo não encontrado</div>;
@@ -75,11 +84,11 @@ const GroupDetails = () => {
       title: "Minhas Doações",
       content: <Dashboard username="alexjohnson" />,
     },
-    {
-      icon: <NewDonationIcon />,
-      title: "Nova Doação",
-      content: "Novas Doações",
-    },
+    // {
+    //   icon: <NewDonationIcon />,
+    //   title: "Nova Doação",
+    //   content: <NewDonations />,
+    // },
   ];
 
   return (
@@ -108,16 +117,16 @@ const GroupDetails = () => {
           </ComunityInformations>
         </ComunityInfosAndBack>
 
-        <ButtonCreateOrEditGroupStyled>
+        {/* <ButtonCreateOrEditGroupStyled>
           <AiFillEdit />
           Editar Grupo
-        </ButtonCreateOrEditGroupStyled>
+        </ButtonCreateOrEditGroupStyled> */}
 
         <ButtonsInviteAndShare>
-          <ButtonInviteOrShare>
+          {/* <ButtonInviteOrShare>
             <RiUserAddFill />
             Convidar Membro
-          </ButtonInviteOrShare>
+          </ButtonInviteOrShare> */}
           <ButtonInviteOrShare>
             <IoMdShare />
             Compartilhar
