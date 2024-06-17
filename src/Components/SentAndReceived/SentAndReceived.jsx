@@ -21,6 +21,7 @@
     {
       icon: <FaArrowRightLong />,
       title: "Enviadas",
+      content: 'Enviadas',
     },
     {
       icon: <FaArrowLeftLong />,

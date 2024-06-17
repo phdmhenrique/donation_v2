@@ -46,7 +46,7 @@ export default function CardDonation({ members, onDonationRequest }) {
           <CardDonationItem
             key={index}
             donation={donation}
-            onDonationRequest={onDonationRequest} // Certifique-se de passar onDonationRequest corretamente
+            onDonationRequest={onDonationRequest}
             onRequestClick={handleRequestClick}
           />
         ))}
