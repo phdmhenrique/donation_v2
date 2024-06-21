@@ -17,8 +17,6 @@ import { CustomToastContainer } from "../../Notification/Notification.js";
 
 import { validateForm } from "./ValidationForm.js"; // Importe a função de validação
 
-import imageBanner from "../../../Assets/donation-banner.png";
-
 function Stages() {
   const navigate = useNavigate();
 
@@ -108,8 +106,6 @@ function Stages() {
         <LeftSide
           DonationTitles={["#Cultive", "#Manifeste", "#Impacte"]}
           customClasses="leftside__more-titles"
-          imgPath={imageBanner}
-          alt="Donation Logo"
         />
         <RightSide>
           <Login

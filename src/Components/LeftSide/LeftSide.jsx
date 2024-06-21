@@ -1,16 +1,22 @@
 import React from "react";
-import { LeftSideContainer, TitleList, TitleItem, ImageBanner } from "./LeftSide.js";
+import { Container } from "./LeftSide.js";
+import donationBanner from "../../Assets/donation-images/donation-banner.png";
 
-function LeftSide({ DonationTitles, customClasses, bold, imgPath, altImg }) {
+function LeftSide({ donationTitles, customClasses, bold }) {
   return (
-    <LeftSideContainer className="leftside">
-      <TitleList className={`leftside__title ${customClasses}`}>
-        {DonationTitles.map((DonationTitle, index) => (
-          <TitleItem key={index} className={bold === index ? "bold" : "fw300"}>{DonationTitle}</TitleItem>
+    <Container className="leftside">
+      <ul className={`leftside-title ${customClasses}`}>
+        {donationTitles.map((donationTitle, index) => (
+          <li
+            key={index}
+            className={`leftside-item ${bold === index ? "bold" : "fw300"}`}
+          >
+            {donationTitle}
+          </li>
         ))}
-      </TitleList>
-      <ImageBanner src={imgPath} alt={altImg} className="img-banner" />
-    </LeftSideContainer>
+      </ul>
+      <img src={donationBanner} alt="Banner Donation" className="img-banner" />
+    </Container>
   );
 }
 

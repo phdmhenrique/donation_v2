@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./Fonts/fonts.css";
 import GlobalStyles from "./Styles/GlobalStyles.js";
 
-import App from './App.jsx';
-import CreateAccount from './Components/CreateAccount/CreateAccount.jsx';
+import App from './Pages/App/App.jsx';
+import CreateAccount from './Pages/CreateAccount/CreateAccount.jsx';
 import Stages from './Components/CreateAccount/Stages/Stages.jsx';
 import Home from './Pages/Home/Home.jsx';
 import GroupDetails from './Pages/GroupDetails/GroupDetails.jsx';

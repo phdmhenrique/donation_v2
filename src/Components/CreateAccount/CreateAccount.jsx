@@ -9,11 +9,10 @@ import Divisory from "../../Components/Divisory/Divisory.jsx";
 import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
 import RightSide from "../../Components/RightSide/RightSide.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
-import LinkStyled from "../../Components/LinkStyled/LinkStyled";
+import LinkResponse from "../../Components/LinkStyled/LinkStyled.jsx";
 import Login from "../../Components/RightSide/Login/Login.jsx";
 import NoAccount from "../../Components/RightSide/Account/Account.jsx";
 import Button from "../../Components/Button/Button.jsx";
-import imageBanner from "../../Assets/donation-banner.png";
 import SocialMedia from "../../Components/RightSide/SocialMedia/SocialMedia.jsx";
 import CustomFields from "../../Components/CustomFields/CustomFields.jsx";
 
@@ -162,10 +161,8 @@ function CreateAccount() {
     <FullSize>
       <Divisory>
         <LeftSide
-          DonationTitles={["#Compartilhe", "#Inspire", "#Transforme"]}
+          donationTitles={["#Compartilhe", "#Inspire", "#Transforme"]}
           customClasses="leftside__more-titles"
-          imgPath={imageBanner}
-          alt="Donation Logo"
         />
         <RightSide>
           <Login
@@ -197,9 +194,9 @@ function CreateAccount() {
 
           <NoAccount className="no-account">
             Já tem uma conta?{" "}
-            <LinkStyled to="/" className="link">
+            <LinkResponse to="/" className="link">
               Entrar agora
-            </LinkStyled>
+            </LinkResponse>
           </NoAccount>
 
           <SocialMedia

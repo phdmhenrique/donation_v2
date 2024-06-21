@@ -1,8 +1,8 @@
 import React from 'react'
-import { LinkStyled } from './LinkStyled.js';
+import { LinkResponse } from './LinkStyled.js';
 
-export default function LinkStyled({ children, to, path}) {
+export default function LinkStyled({ children, to}) {
   return (
-    <LinkStyled to={to} path={path}>{children}</LinkStyled>
+    <LinkResponse to={to}>{children}</LinkResponse>
   )
 }

@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  RightsideLabel,
-  RightsideInputs,
-  StyledInput,
-  StyledEyeIcon,
-  StyledSelect,
-  StyledOption,
-  StyledInfo,
-} from "./CustomFields.js";
+import { Container, StyledInput, StyledEyeIcon } from "./CustomFields.js";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 
 const CustomFields = ({
@@ -17,7 +9,6 @@ const CustomFields = ({
   value,
   name,
   onChange,
-  options,
   hasIcon,
 }) => {
   const [inputType, setInputType] = useState(type);
@@ -31,38 +22,31 @@ const CustomFields = ({
   };
 
   return (
-    <RightsideInputs className="rightside-inputs">
-      <RightsideLabel>{label}</RightsideLabel>
-      {type === "select" ? (
-        <StyledSelect onChange={(e) => handleInputChange(e.target.value)} value={value} name={name}>
-          {options.map((option) => (
-            <StyledOption key={option.value} value={option.value}>
-              {option.label}
-            </StyledOption>
-          ))}
-        </StyledSelect>
-      ) : (
-        <div style={{ position: "relative" }}>
+    <Container>
+      <label htmlFor={name} className="input-label">
+        {label}
+      </label>
+      <div style={{ position: "relative" }}>
+        <StyledInput
+          id={name}
+          type={inputType}
+          placeholder={placeholder}
+          value={value}
+          name={name}
+          onChange={(e) => onChange(name, e.target.value)}
+        />
 
-          <StyledInput
-            type={inputType}
-            placeholder={placeholder}
-            value={value}
-            onChange={(e) => onChange(name, e.target.value)}
-          />
-
-          {hasIcon && (
-            <StyledEyeIcon>
-              {inputType === "password" ? (
-                <IoEyeOutline onClick={handleTogglePassword} />
-              ) : (
-                <IoEyeOffOutline onClick={handleTogglePassword} />
-              )}
-            </StyledEyeIcon>
-          )}
-        </div>
-      )}
-    </RightsideInputs>
+        {hasIcon && (
+          <StyledEyeIcon>
+            {inputType === "password" ? (
+              <IoEyeOutline onClick={handleTogglePassword} />
+            ) : (
+              <IoEyeOffOutline onClick={handleTogglePassword} />
+            )}
+          </StyledEyeIcon>
+        )}
+      </div>
+    </Container>
   );
 };
 

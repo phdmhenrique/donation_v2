@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PhotoUser from '../../Assets/photo-people-00.jpg';
+import PhotoUser from '../../Assets/photo-users/photo-people-00.jpg';
 import { Container, PhotoUserImage, NavListLinks, NavLink } from './NavAccount.js';
 
 // ICONS

@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-  width: 144rem;
-  max-width: 100%;
+  max-width: 144rem;
+  width: 100%;
   margin: 0 auto;
+  background-color: var(--white);
+  border-left: 0.2rem solid var(--gray-2);
+  border-right: 0.2rem solid var(--gray-2);
 `;
 
 export const FooterContent = styled.div`
@@ -24,7 +27,6 @@ export const FooterInfos = styled.div`
   max-width: 100%;
   min-height: 32.1rem;
   border-top: 0.1rem solid var(--white-smoke);
-  background-color: var(--white);
   padding: 4.1rem 4.1rem 0 4.1rem;
   display: flex;
   flex-direction: column;
@@ -73,7 +75,7 @@ export const InfosLi = styled.li`
 export const SocialMedia = styled.div`
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 `;
 
 export const SocialMediaSpan = styled.span`
