@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <GlobalStyles />
       <Routes>
         <Route exact path="/" element={<App />} />
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/create-account/stages" element={<Stages />} />
+        {/* <Route path="/create-account" element={<CreateAccount />} /> */}
+        {/* <Route path="/create-account/stages" element={<Stages />} /> */}
 
         {/* Rota base para Home com Layout */}
         <Route path="/home" element={<Layout />}>
