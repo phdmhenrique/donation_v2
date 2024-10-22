@@ -11,7 +11,9 @@ export default function Template({ leftsideContent, rightsideContent }) {
         <section className="container-leftside">{leftsideContent}</section>
         <section className="container-rightside">
           <div className="rightside">
-            {rightsideContent}
+            {/* <form className="form-container"> */}
+              {rightsideContent}
+            {/* </form> */}
           </div>
         </section>
       </header>

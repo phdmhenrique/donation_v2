@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import Template from "../../Components/Template/Template.jsx";
-import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
+import Template from '../../Components/Template/Template.jsx';
 import Register from '../../Components/Register/Register.jsx';
+import LeftSide from "../../Components/LeftSide/LeftSide.jsx";
 
-export default function CreateAccount() {
+function CreateAccount() {
   return (
     <Template
       leftsideContent={
@@ -15,8 +15,10 @@ export default function CreateAccount() {
         />
       }
       rightsideContent={
-        <Register />
+        <Register pageTitle="Cadastrar" />
       }
     />
   );
 }
+
+export default CreateAccount;

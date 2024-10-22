@@ -3,13 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import validator from "validator";
 import "react-toastify/dist/ReactToastify.css";
-import { Container } from "./Login.js";
 
 // Components
-import { PageTitle } from "../Template/Template.js";
+import {
+  PageTitle,
+  ButtonsContainer,
+  ContainerInputs,
+  ContainerForm,
+} from "../Template/Template.js";
 import CustomFields from "../CustomFields/CustomFields.jsx";
 import LoadingScreen from "../LoadingScreen/LoadingScreen.jsx";
 import Button from "../Button/Button.jsx";
+import NoAccount from "../RightSide/Account/Account.jsx";
+import LinkStyled from "../LinkStyled/LinkStyled.jsx";
+import Message from "../Message/Message.jsx";
+import OtherAccess from "../OtherAccess/OtherAccess.jsx";
 import { CustomToastContainer } from "../Notification/Notification.jsx";
 
 export default function Login({ pageTitle }) {
@@ -75,7 +83,6 @@ export default function Login({ pageTitle }) {
       toast.success("Login realizado com sucesso");
       setTimeout(() => {
         navigate("/home");
-        // redirecionamento para a próxima página ou lógica adicional.
       }, 2000);
     }
   };
@@ -105,16 +112,25 @@ export default function Login({ pageTitle }) {
   }
 
   return (
-    <Container onSubmit={handleSubmit}>
+    <ContainerForm>
       <PageTitle>{pageTitle}</PageTitle>
 
-      {fieldsConfigs.map((config) => (
-        <CustomFields key={config.name} {...config} />
-      ))}
+      <ContainerInputs>
+        {fieldsConfigs.map((config) => (
+          <CustomFields key={config.name} {...config} />
+        ))}
+      </ContainerInputs>
 
-      <div className="buttons">
-        <Button></Button>
-      </div>
+      <ButtonsContainer>
+        <Button
+          type="button"
+          addStatusClass={isButtonEnabled ? "active" : "disabled"}
+          onClick={handleSubmit}
+        >
+          Entrar
+        </Button>
+        <span className="forget">Esqueceu sua senha?</span>
+      </ButtonsContainer>
 
       <NoAccount className="no-account">
         Não tem uma conta?{" "}
@@ -123,7 +139,9 @@ export default function Login({ pageTitle }) {
         </LinkStyled>
       </NoAccount>
 
-      <SocialMedia
+      <OtherAccess />
+
+      <Message
         message={
           <React.Fragment>
             Compartilhe, Inspire, Transforme.
@@ -131,14 +149,9 @@ export default function Login({ pageTitle }) {
             Unindo Ações para um Mundo Melhor.
           </React.Fragment>
         }
-        optionalComponent={<OtherAccess />}
       />
 
-      <CustomToastContainer
-        toastStyle={{
-          fontSize: "1.4rem",
-        }}
-      />
-    </Container>
+      <CustomToastContainer />
+    </ContainerForm>
   );
 }

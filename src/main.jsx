@@ -9,7 +9,7 @@ import CreateAccount from './Pages/CreateAccount/CreateAccount.jsx';
 import Stages from './Components/CreateAccount/Stages/Stages.jsx';
 import Home from './Pages/Home/Home.jsx';
 import GroupDetails from './Pages/GroupDetails/GroupDetails.jsx';
-import Layout from './Components/Layout/Layout.jsx'; // Importando Layout
+import Layout from './Components/Layout/Layout.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <GlobalStyles />
       <Routes>
         <Route exact path="/" element={<App />} />
-        {/* <Route path="/create-account" element={<CreateAccount />} /> */}
-        {/* <Route path="/create-account/stages" element={<Stages />} /> */}
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/create-account/stages" element={<Stages />} />
 
         {/* Rota base para Home com Layout */}
         <Route path="/home" element={<Layout />}>

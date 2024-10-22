@@ -1,5 +1,4 @@
-import React from 'react';
-import { LoadingContainer, Spinner } from './LoadingScreen.js';
+import { LoadingContainer, Spinner } from "./LoadingScreen.js";
 
 const LoadingScreen = () => {
   return (

@@ -30,14 +30,12 @@ export const Container = styled.main`
     height: 100%;
     display: flex;
     margin: 0 auto;
-    border-left: 0.2rem solid var(--gray-2);
-    border-right: 0.2rem solid var(--gray-2);
   }
 
   & .container-leftside,
   .container-rightside {
     width: calc(100% / 2);
-    height: 100%;
+    min-height: 100%;
   }
 
   & .rightside {
@@ -75,4 +73,32 @@ export const PageTitle = styled.h1`
   font-weight: 700;
   word-wrap: break-word;
   margin-bottom: 2.4rem;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+
+  & .forget {
+    color: var(--gray-3);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+export const ContainerInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+`;
+
+export const ContainerForm = styled.form`
+  max-width: 32rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;

@@ -13,7 +13,7 @@ import Button from "../../Button/Button.jsx";
 import StageInputs from "../../StageInputs/StageInputs.jsx";
 import InterestGroup from "../../InterestGroup/InterestGroup.jsx";
 import LoadingScreen from "../../LoadingScreen/LoadingScreen.jsx";
-import { CustomToastContainer } from "../../Notification/Notification.js";
+import { CustomToastContainer } from "../../Notification/Notification.jsx";
 
 import { validateForm } from "./ValidationForm.js"; // Importe a função de validação
 
