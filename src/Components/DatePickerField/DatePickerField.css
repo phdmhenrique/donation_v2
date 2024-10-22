@@ -1,0 +1,189 @@
+/* datepicker-styles.css */
+
+/* Estilizando o container do datepicker */
+.react-datepicker {
+    max-width: 52rem;
+    min-width: 32rem;
+    max-height: 32rem;
+    overflow: hidden;
+    color: var(--primary);
+    border: none;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.react-datepicker__day--selected {
+    background-color: var(--primary);
+    color: var(--black) !important;
+    font-weight: bold;
+}
+
+.react-datepicker__month {
+    background-color: var(--white-smoke);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: .5rem 0;
+    margin: 0;
+}
+
+/* Estilizando o cabeçalho do datepicker */
+.react-datepicker__header {
+    background-color: var(--white-smoke);
+    border-bottom: .1rem solid var(--gray-4);
+    border-top-left-radius: 0.3rem;
+    font-size: var(--font__14);
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilizando os dias da semana no cabeçalho */
+.react-datepicker__day-name {
+    color: var(--black);
+    font-weight: bold;
+}
+
+/* Estilizando os dias do mês */
+.react-datepicker__day {
+    color: var(--gray-5);
+    font-size: var(--font__14);
+}
+
+.react-datepicker__day:hover {
+    background-color: var(--primary);
+    color: var(--white-smoke);
+    font-weight: bold;
+}
+
+/* Estilizando o botão de seleção de mês e ano */
+.react-datepicker__navigation {
+    color: var(--black);
+}
+
+.react-datepicker__navigation:hover {
+    background-color: transparent;
+    color: var(--black);
+}
+
+/* Estilizando os inputs */
+.react-datepicker__input-container input {
+    border: 1px solid red;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/* Estilizando o ícone do calendário no input */
+.react-datepicker__input-container button {
+    background-color: transparent;
+    border: none;
+}
+
+/* pra data que não funciona */
+.react-datepicker__day--disabled,
+.react-datepicker__month-text--disabled,
+.react-datepicker__quarter-text--disabled,
+.react-datepicker__year-text--disabled {
+    cursor: not-allowed !important;
+    color: var(--primary);
+}
+
+/* pro texto do mês e ano */
+.react-datepicker__portal .react-datepicker__current-month, .react-datepicker__portal .react-datepicker-time__header {
+    font-size: var(--font__18);
+    color: var(--black);
+    text-transform: uppercase;
+}
+
+/* pro icone de ir e voltar */
+.react-datepicker__year-read-view--down-arrow, .react-datepicker__month-read-view--down-arrow, .react-datepicker__month-year-read-view--down-arrow, .react-datepicker__navigation-icon::before {
+    border-color: var(--black);
+}
+
+/* dropdown de mês e ano */
+.react-datepicker__header__dropdown {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* .react-datepicker__year-dropdown-container--select, .react-datepicker__month-dropdown-container--select, .react-datepicker__month-year-dropdown-container--select, .react-datepicker__year-dropdown-container--scroll, .react-datepicker__month-dropdown-container--scroll, .react-datepicker__month-year-dropdown-container--scroll {
+    display: flex;
+    background-color: green;
+    margin: 0;
+} */
+
+.react-datepicker__day--keyboard-selected {
+    background-color: var(--primary);
+    color: var(--black);
+    font-weight: bold;   
+}
+
+/* Estilizando o dropdown de seleção de mês */
+.react-datepicker__month-select,
+.react-datepicker__year-select {
+    background-color: var(--primary);
+    color: var(--white);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Estilizando as opções do dropdown de mês e ano */
+.react-datepicker__month-select option,
+.react-datepicker__year-select option {
+    background-color: var(--white-smoke);
+    color: var(--black);
+    text-transform: capitalize;
+}
+
+/* Estilizando o hover das opções do dropdown */
+.react-datepicker__month-dropdown option:hover,
+.react-datepicker__year-dropdown option:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* Estilizando o dropdown container */
+.react-datepicker__month-dropdown-container,
+.react-datepicker__year-dropdown-container {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    /* Adicionando um scrollbar personalizado */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--white-smoke);
+}
+
+/* Estilizando as opções do dropdown container */
+.react-datepicker__month-dropdown,
+.react-datepicker__year-dropdown {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* Estilizando o scrollbar */
+.react-datepicker__month-dropdown-container::-webkit-scrollbar,
+.react-datepicker__year-dropdown-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.react-datepicker__month-dropdown-container::-webkit-scrollbar-track,
+.react-datepicker__year-dropdown-container::-webkit-scrollbar-track {
+    background-color: var(--white-smoke);
+}
+
+.react-datepicker__month-dropdown-container::-webkit-scrollbar-thumb,
+.react-datepicker__year-dropdown-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 4px;
+}
+
+.react-datepicker__month-dropdown-container::-webkit-scrollbar-thumb:hover,
+.react-datepicker__year-dropdown-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-dark);
+}
